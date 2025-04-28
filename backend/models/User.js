@@ -44,10 +44,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         select: false,
     }
-});
+}, {timestamps: true});
 
 userSchema.methods.generateAuthToken = function () {
-    const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({_id: this._id}, process.env.JWT_SECRET);
     return token;
 };
 
@@ -59,6 +59,6 @@ userSchema.statics.hashPassword = async function (password) {
     return await bcrypt.hash(password, 10);
 };
 
-const userModel = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = userModel;
+module.exports = User;

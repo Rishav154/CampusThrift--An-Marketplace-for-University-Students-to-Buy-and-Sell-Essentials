@@ -1,33 +1,35 @@
 import {Button} from "@/components/ui/button.jsx";
-import Navbar from "@/components/Navbar.jsx";
 import React from "react";
+import Navbar from "@/components/Navbar.jsx";
+import Footer from "@/components/Footer.jsx";
 
 
 const imagesArray = [
     {
-        url:"https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA",
-        id:1,
+        url: "https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA",
+        id: 1,
     },
     {
-        url:"https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA",
-        id:2,
+        url: "https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA",
+        id: 2,
     },
     {
-        url:"https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA",
-        id:3,
+        url: "https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA",
+        id: 3,
     },
     {
-        url:"https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA",
-        id:4,
+        url: "https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA",
+        id: 4,
     }
-    ]
+]
 
 function Product() {
     return (
         <>
             <div className="bg-orange-50 h-screen">
                 <Navbar showLoginButton={false}/>
-                <main className="w-[93vw] lg:w-[70vw] flex flex-col sm:flex-row justify-start items-start gap-10 mx-auto my-10">
+                <main
+                    className="w-[93vw] lg:w-[70vw] flex flex-col sm:flex-row justify-start items-start gap-10 mx-auto my-10">
                     {/*Left Part*/}
                     <div className="grid sm:w-[50%] gap-3">
                         <img
@@ -52,7 +54,9 @@ function Product() {
                     <div className="sm:w-[50%] lg:w-[30%]">
                         <div className="pb-5">
                             <h2 className="font-extrabold text-2xl">CASTOR K631 PRO Wired RGB Mechanical Keyboard</h2>
-                            <p className="text-sm my-2"> 65% Bluetooth + 2.4Ghz Wireless + Wired RGB Mechanical Keyboard (Red Switch) adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi.</p>
+                            <p className="text-sm my-2"> 65% Bluetooth + 2.4Ghz Wireless + Wired RGB Mechanical Keyboard
+                                (Red Switch) adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat
+                                in id cursus mi.</p>
 
                         </div>
                         <div className="py-5 border-t border-b">
@@ -60,7 +64,11 @@ function Product() {
                         </div>
                         <div className="py-5 border-b">
                             <h3 className="font-bold text-2xl">Description</h3>
-                            <p className="text-base my-2">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus leo eu aenean sed diam.<br/> Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium.</p>
+                            <p className="text-base my-2">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque
+                                faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis
+                                convallis tempus leo eu aenean sed diam.<br/> Lorem ipsum dolor sit amet consectetur
+                                adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus
+                                mi pretium.</p>
                         </div>
                         <div className="flex items-center my-8 gap-5">
                             <img
@@ -75,12 +83,14 @@ function Product() {
                         </div>
                         <div className="grid grid-cols-2 gap-5 mt-8">
                             <Button className="rounded-lg text-base font-semibold h-12 ">Message Seller</Button>
-                            <Button className="rounded-lg text-base font-semibold h-12">Add to Cart</Button>
+                            <Button className="rounded-lg text-base font-semibold h-12">Seller Profile</Button>
                         </div>
 
-                        <Button className="bg-green-500 hover:bg-green-500/70 rounded-lg w-full mt-5 text-xl font-bold h-12">Buy</Button>
+                        <Button
+                            className="bg-green-500 hover:bg-green-500/70 rounded-lg w-full mt-5 text-xl font-bold h-12">Buy</Button>
                     </div>
                 </main>
+                <Footer/>
             </div>
         </>
     );
