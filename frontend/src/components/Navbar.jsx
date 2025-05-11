@@ -29,7 +29,7 @@ function Navbar({showLoginButton = true, showProfileButton = true}) {
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-4">
                     <Link
-                        to="/profile/dashboard"
+                        to="/profile/dashboard/create-product"
                         className="whitespace-nowrap transition-all duration-500 ease-in-out bg-green-500 hover:bg-white hover:text-black backdrop-blur-sm text-white font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-400/40"
                     >
                         <PlusCircle className="h-5 w-5"/>

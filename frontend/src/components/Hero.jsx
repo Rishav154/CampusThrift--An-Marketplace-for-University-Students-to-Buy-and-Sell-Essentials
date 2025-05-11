@@ -23,12 +23,13 @@ function HeroSection() {
 
                     {/* Subheading */}
                     <p className="text-2xl text-gray-500 mb-8">
-                        Your campus marketplace for textbooks, tech, electronics, furniture, and more -- all from fellow
+                        Your campus marketplace for textbooks, tech, electronics, furniture, and more -- all from
+                        fellow
                         students at price that make sense.
                     </p>
 
                     {/* CTA Button */}
-                    <div className="flex justify-center items-center gap-8 mt-12">
+                    <div className="flex justify-center items-center gap-8 mt-12 ">
                         <div className="">
                             <Link to={"/home"}
                                   className="whitespace-nowrap flex items-center gap-4 font-semibold bg-white hover:bg-green-500 hover:text-white text-black py-4 px-8 rounded-xl transition-colors shadow-md">
@@ -37,7 +38,7 @@ function HeroSection() {
                             </Link>
                         </div>
                         <div className="">
-                            <Link to={"/profile/dashboard"}
+                            <Link to={"/profile/dashboard/create-product"}
                                   className="whitespace-nowrap flex items-center gap-4 font-semibold bg-green-500  hover:bg-white hover:text-black text-white py-4 px-10 rounded-xl transition-colors shadow-md">
                                 <PlusCircle className="h-5 w-5"/>
                                 List an Item
@@ -51,7 +52,8 @@ function HeroSection() {
             <div className="bg-[#FADA7A] lg:h-96 mx-auto px-12 pt-8">
                 <h2 className="text-xl font-bold text-black mb-6 text-left">Categories :</h2>
 
-                <div className="font-semibold grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-10 px-28 ">
+                <div
+                    className="font-semibold grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-10 px-28 ">
                     {/* Category 1 */}
                     <div
                         className="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center hover:shadow-lg transition-shadow">

@@ -3,23 +3,89 @@ import {Label} from "@radix-ui/react-label";
 import {Input} from "@/components/ui/input.jsx";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
 import {Button} from "@/components/ui/button.jsx";
-import {Loader2, Upload, X} from "lucide-react";
+import {Upload, X} from "lucide-react";
 import {useRef, useState} from "react";
 import {Textarea} from "@/components/ui/textarea.jsx";
+import toast from "react-hot-toast";
+import {PuffLoader} from "react-spinners";
+import axios from "axios";
+import useErrorLogout from "@/hooks/use-error-logout.jsx";
 
 function CreateProduct() {
 
     const [images, setImages] = useState([]);
     const fileInputRef = useRef(null);
     const [isLoading, setIsLoading] = useState(false);
+    const {handleErrorLogout} = useErrorLogout()
 
     const removeImage = (indexToRemove) => {
-        setImages(images.filter(image => image !== indexToRemove));
+        setImages(images.filter((_, index) => index !== indexToRemove));
     }
 
     const handleImageUpload = (e) => {
+        const files = e.target.files
+        if (files) {
+            const newImages = Array.from(files).map((file) => ({
+                preview: URL.createObjectURL(file),
+                file: file
+            }));
+            setImages((prevImages) => [...prevImages, ...newImages].slice(0, 4));
+        }
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const description = e.target.description.value;
+        const price = e.target.price.value;
+        const color = e.target.color.value;
+        const category = e.target.category.value;
+
+        if (!name || !description || !price || !category || images.length === 0) {
+            toast.error("Please fill all the fields");
+            return;
+        }
+
+        if (name.trim() === "" || description.trim() === "" || price <= 0 || category.trim() === "") {
+            toast.error("Fields cannot be empty");
+            return;
+        }
+
+        if (images.length < 4) {
+            toast.error("Please upload at least 4 images");
+            return;
+        }
+
+        setIsLoading(true);
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("description", description);
+        formData.append("price", price);
+        formData.append("color", color);
+        formData.append("category", category);
+        images.forEach((image) => {
+            formData.append("images", image.file)
+        });
+
+        try {
+            const res = await axios.post(
+                `${import.meta.env.VITE_API_URL}/create-product`,
+                formData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                }
+            )
+            toast.success(`Success\n${res.data.message}`);
+        } catch (error) {
+            return handleErrorLogout(error, "Error uploading product");
+        } finally {
+            setIsLoading(false);
+        }
 
     }
+
 
     return (
         <>
@@ -30,7 +96,7 @@ function CreateProduct() {
                         store.</CardDescription>
                 </CardHeader>
 
-                <form>
+                <form onSubmit={onSubmit}>
                     <div className="flex flex-col lg:flex-row lg:w-[70vw]">
                         <CardContent className={"w-full"}>
                             <div className={"space-y-2"}>
@@ -71,33 +137,34 @@ function CreateProduct() {
                             <div className={"space-y-2"}>
                                 <Label htmlFor="images">Product Images</Label>
                                 <div className={"flex flex-wrap gap-4"}>
-                                    <div className={"relative"}>
-                                        <img
-                                            src={"https://imgs.search.brave.com/jM1TJuulxmDqCUx3WDDaKLhjhG_J7LZA7MBXBceKfHg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLXBp/bmstYmx1ZS1rZXli/b2FyZC1kZXNrXzIz/LTIxNDk2ODAyNTcu/anBnP3NlbXQ9YWlz/X2h5YnJpZA"}
-                                            alt={`Product Image ${1}`}
-                                            width={100}
-                                            height={100}
-                                            className={"rounded-md object-cover"}
-                                        />
-                                        <Button
-                                            variant={"destructive"}
-                                            size="icon"
-                                            className={"absolute -top-2 -right-2 h-4 w-4 rounded-full"}
-                                            onClick={() => {
-                                                removeImage(0)
-                                            }}>
-                                            <X className={"h-4 w-4"}/>
-                                            <span className={"sr-only"}>Remove Image</span>
+                                    {images.map((image, index) => (
+                                        <div className="relative" key={index}>
+                                            <img
+                                                src={image?.preview}
+                                                alt={`Product Image ${index + 1}`}
+                                                className="w-[100px] h-[100px] object-cover rounded-md"
+                                            />
+                                            <Button
+                                                variant="destructive"
+                                                size="icon"
+                                                className="absolute -top-2 -right-2 h-4 w-4 rounded-full"
+                                                onClick={() => removeImage(index)}
+                                            >
+                                                <X className="h-4 w-4"/>
+                                                <span className="sr-only">Remove Image</span>
+                                            </Button>
+                                        </div>
+                                    ))}
+
+                                    {images.length < 4 && (
+                                        <Button type="button" onClick={() => fileInputRef.current?.click()}
+                                                className={"w-[100px] h-[100px]"}
+                                                variant={"outline"}
+                                        >
+                                            <Upload className={"h-6 w-6"}/>
+                                            <span className={"sr-only"}>Upload Image</span>
                                         </Button>
-                                    </div>
-                                    {/*    images.length > 4 && ( */}
-                                    <Button onClick={() => {
-                                        fileInputRef.current.click()
-                                    }} className={"w-[100px] h-[100px]"} variant={"outline"}>
-                                        <Upload className={"h-6 w-6"}/>
-                                        <span className={"sr-only"}>Upload Image</span>
-                                    </Button>
-                                    {/* ) */}
+                                    )}
                                 </div>
                                 <Input
                                     type={"file"}
@@ -120,9 +187,13 @@ function CreateProduct() {
 
                     </div>
                     <CardFooter>
-                        <Button type="submit" className={"w-full"} disabled={!isLoading}>
-                            {isLoading && <Loader2 className={"mr-2 h-4 w-4 animate-spin"}/>}
-                            {isLoading ? "Adding Product" : "Add Product"}
+                        <Button type="submit" className="w-full mt-6" disabled={isLoading}>
+                            {isLoading ? (
+                                <div className="flex items-center gap-2">
+                                    <PuffLoader color="white" size={30}/>
+                                    Adding Product...
+                                </div>
+                            ) : "Add Product"}
                         </Button>
                     </CardFooter>
                 </form>

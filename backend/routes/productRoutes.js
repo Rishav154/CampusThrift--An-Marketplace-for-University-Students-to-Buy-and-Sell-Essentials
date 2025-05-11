@@ -16,9 +16,9 @@ router.put("/update-product/:id", verifyToken, updateProduct);
 
 router.delete("/delete-product/:id", verifyToken, deleteProduct);
 
-router.get("get-products", getProducts);
+router.get("/get-products", getProducts);
 
-router.get("get-products-by-name/:name", getProductByName);
+router.get("/get-products-by-name/:name", getProductByName);
 
 router.put("/blacklist-product/:id", verifyToken, blacklistProduct);
 

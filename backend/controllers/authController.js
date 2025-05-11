@@ -4,14 +4,14 @@ const signup = async (req, res) => {
     const {firstname, lastname, email, phone, university, course, yearOfGrad, password} = req.body;
 
     try {
+
         let user = await User.findOne({$or: [{email}, {phone}]});
 
         if (user) {
             return res.status(409).json({success: false, message: "User already exists with given email or phone."});
         }
 
-        const hashedPassword = await user.hashPassword(password);
-
+        const hashedPassword = await User.hashPassword(password);
         const newUser = new User({
             fullname: {firstname, lastname},
             email,
@@ -75,6 +75,7 @@ const login = async (req, res) => {
                 email: user.email,
                 phone: user.phone,
                 course: user.course,
+                university: user.university,
                 yearOfGrad: user.yearOfGrad,
             },
         });

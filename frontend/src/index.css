@@ -17,6 +17,7 @@
 }
 
 @theme inline {
+    --color-customOrange: var(--customOrange);
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
@@ -55,6 +56,7 @@
 }
 
 :root {
+    --customOrange: #FFFDFa;
     --radius: 0.625rem;
     --background: oklch(1 0 0);
     --foreground: oklch(0.141 0.005 285.823);

@@ -10,8 +10,10 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {Button} from "@/components/ui/button.jsx";
+import {useDispatch} from "react-redux";
+import {setUserLogout} from "@/redux/slices/authSlice.js";
 
 // Menu items.
 const items = [
@@ -42,8 +44,18 @@ const items = [
     },
 ]
 
+
 export function AppSidebar({navbarHeight = "64px"}) {
     const {pathname} = useLocation()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        dispatch(setUserLogout());
+
+        navigate('/login');
+    };
+
 
     return (
         <Sidebar
@@ -74,7 +86,7 @@ export function AppSidebar({navbarHeight = "64px"}) {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>
-                <Button>Logout</Button>
+                <Button onClick={handleLogout}>Logout</Button>
             </SidebarFooter>
         </Sidebar>
     )

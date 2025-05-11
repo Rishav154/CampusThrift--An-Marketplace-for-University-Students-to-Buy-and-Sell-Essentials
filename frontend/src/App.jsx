@@ -15,8 +15,11 @@ import Orders from "@/components/Orders.jsx";
 import Settings from "@/components/Settings.jsx";
 import Home from "@/pages/Home.jsx";
 import Profile from "@/components/Profile.jsx";
+import MyOrders from "@/pages/MyOrders.jsx";
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
+import ProtectedRoute from "@/components/ProtectedRoute.jsx";
+
 
 function App() {
     return (
@@ -26,20 +29,74 @@ function App() {
                     <Toaster position="top-right" reverseOrder={false}/>
                     <Routes>
                         <Route path="/" element={<Hero/>}/>
-                        <Route path="/login" element={<Login/>}/>
-                        <Route path="/signup" element={<Signup/>}/>
+
+                        <Route path="/login" element={
+                            <ProtectedRoute>
+                                <Login/>
+                            </ProtectedRoute>
+                        }/>
+
+                        <Route path="/signup" element={
+                            <ProtectedRoute>
+                                <Signup/>
+                            </ProtectedRoute>
+                        }/>
+
                         <Route path="/termsandconditions" element={<TermsAndConditions/>}/>
-                        <Route path="/home" element={<Home/>}/>
+
+                        <Route path="/home" element={
+                            <ProtectedRoute>
+                                <Home/>
+                            </ProtectedRoute>
+                        }/>
+
                         <Route path="/product" element={<Product/>}/>
-                        <Route path="/checkout" element={<Checkout/>}/>
+
+                        <Route path="/checkout" element={
+                            <ProtectedRoute>
+                                <Checkout/>
+                            </ProtectedRoute>
+                        }/>
+
+                        <Route path="/orders" element={
+                            <ProtectedRoute>
+                                <MyOrders/>
+                            </ProtectedRoute>
+                        }/>
+
                         <Route path="/success" element={<Success/>}/>
-                        <Route path="/profile" element={<AdminLayout children={<Profile/>}/>}/>
+
+                        <Route path="/profile" element={
+                            <ProtectedRoute>
+                                <AdminLayout children={<Profile/>}/>
+                            </ProtectedRoute>
+                        }/>
+
                         <Route path="/profile/dashboard/create-product"
-                               element={<AdminLayout children={<CreateProduct/>}/>}/>
+                               element={
+                                   <ProtectedRoute>
+                                       <AdminLayout children={<CreateProduct/>}/>
+                                   </ProtectedRoute>
+                               }/>
+
                         <Route path="/profile/dashboard/all-products"
-                               element={<AdminLayout children={<AllProducts/>}/>}/>
-                        <Route path="/profile/dashboard/orders" element={<AdminLayout children={<Orders/>}/>}/>
-                        <Route path="/profile/dashboard/settings" element={<AdminLayout children={<Settings/>}/>}/>
+                               element={
+                                   <ProtectedRoute>
+                                       <AdminLayout children={<AllProducts/>}/>
+                                   </ProtectedRoute>
+                               }/>
+
+                        <Route path="/profile/dashboard/orders" element={
+                            <ProtectedRoute>
+                                <AdminLayout children={<Orders/>}/>
+                            </ProtectedRoute>
+                        }/>
+
+                        <Route path="/profile/dashboard/settings" element={
+                            <ProtectedRoute>
+                                <AdminLayout children={<Settings/>}/>
+                            </ProtectedRoute>
+                        }/>
 
 
                         <Route path="/*" element={<Error/>}/>

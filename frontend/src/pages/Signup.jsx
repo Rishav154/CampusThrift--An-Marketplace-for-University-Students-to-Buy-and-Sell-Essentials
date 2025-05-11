@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import {
+    ArrowLeft,
+    Calendar,
     Eye,
     EyeOff,
+    GraduationCap,
+    LoaderCircle,
+    Lock,
     Mail,
     Phone,
-    Lock,
-    User,
     School,
-    Calendar,
-    GraduationCap,
-    ArrowLeft,
-    LoaderCircle
+    User
 } from 'lucide-react';
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -45,7 +45,7 @@ export default function RegisterForm() {
         const toastId = toast.loading("Creating your account...");
 
         try {
-            await axios.post("http://localhost:4000/api/signup", {
+            await axios.post(`${import.meta.env.VITE_API_URL}/signup`, {
                 firstname: firstName,
                 lastname: lastName,
                 email,
@@ -56,10 +56,10 @@ export default function RegisterForm() {
                 password,
             });
 
-            toast.success("Account created successfully!", { id: toastId });
+            toast.success("Account created successfully!", {id: toastId});
             navigate('/login');
         } catch (err) {
-            toast.error(err.response?.data?.message || "Registration failed", { id: toastId });
+            toast.error(err.response?.data?.message || "Registration failed", {id: toastId});
         } finally {
             setLoading(false);
         }
@@ -71,7 +71,7 @@ export default function RegisterForm() {
                 className="absolute top-10 left-10 text-gray-700 hover:text-orange-400 transition-colors flex items-center gap-1"
                 onClick={() => navigate('/')}
             >
-                <ArrowLeft className="h-7 w-7" />
+                <ArrowLeft className="h-7 w-7"/>
             </button>
             <div className="max-w-md w-full bg-white p-8 rounded-xl border border-gray-800 shadow-lg">
                 <h2 className="text-orange-400 text-3xl font-bold mb-2 text-center">Create an account</h2>
@@ -83,7 +83,7 @@ export default function RegisterForm() {
                     {/* First Name */}
                     <div className="grid grid-cols-2 gap-4">
                         <div className="relative">
-                            <User className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                            <User className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                             <input
                                 type="text"
                                 placeholder="First Name"
@@ -95,7 +95,7 @@ export default function RegisterForm() {
 
                         {/* Last Name */}
                         <div className="relative">
-                            <User className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                            <User className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                             <input
                                 type="text"
                                 placeholder="Last Name"
@@ -108,7 +108,7 @@ export default function RegisterForm() {
 
                     {/* Email */}
                     <div className="relative mt-4">
-                        <Mail className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                        <Mail className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                         <input
                             type="email"
                             placeholder="you@example.com"
@@ -120,7 +120,7 @@ export default function RegisterForm() {
 
                     {/* Phone */}
                     <div className="relative mt-4">
-                        <Phone className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                        <Phone className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                         <input
                             type="tel"
                             placeholder="Phone Number"
@@ -132,7 +132,7 @@ export default function RegisterForm() {
 
                     {/* University */}
                     <div className="relative mt-4">
-                        <School className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                        <School className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                         <input
                             type="text"
                             placeholder="University"
@@ -144,7 +144,7 @@ export default function RegisterForm() {
 
                     {/* Course */}
                     <div className="relative mt-4">
-                        <GraduationCap className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                        <GraduationCap className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                         <select
                             value={course}
                             onChange={(e) => setCourse(e.target.value)}
@@ -159,7 +159,7 @@ export default function RegisterForm() {
 
                     {/* Year of Graduation */}
                     <div className="relative mt-4">
-                        <Calendar className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                        <Calendar className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                         <input
                             type="text"
                             placeholder="Year of Graduation"
@@ -171,7 +171,7 @@ export default function RegisterForm() {
 
                     {/* Password */}
                     <div className="relative mt-4">
-                        <Lock className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                        <Lock className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                         <input
                             type={showPassword ? "text" : "password"}
                             placeholder="Password"
@@ -179,14 +179,15 @@ export default function RegisterForm() {
                             onChange={(e) => setPassword(e.target.value)}
                             className="bg-transparent border border-gray-700 text-orange-500 text-sm rounded-md pl-10 py-2 pr-10 w-full"
                         />
-                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-2.5">
-                            {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                        <button type="button" onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-2.5">
+                            {showPassword ? <EyeOff className="h-5 w-5"/> : <Eye className="h-5 w-5"/>}
                         </button>
                     </div>
 
                     {/* Confirm Password */}
                     <div className="relative mt-4">
-                        <Lock className="absolute left-3 top-3.5 text-gray-600 h-4 w-4" />
+                        <Lock className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                         <input
                             type={showConfirmPassword ? "text" : "password"}
                             placeholder="Confirm Password"
@@ -194,8 +195,9 @@ export default function RegisterForm() {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             className="bg-transparent border border-gray-700 text-orange-500 text-sm rounded-md pl-10 py-2 pr-10 w-full"
                         />
-                        <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-2.5">
-                            {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                        <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                className="absolute right-3 top-2.5">
+                            {showConfirmPassword ? <EyeOff className="h-5 w-5"/> : <Eye className="h-5 w-5"/>}
                         </button>
                     </div>
 
@@ -209,7 +211,8 @@ export default function RegisterForm() {
                             className="mt-1 mr-2"
                         />
                         <label htmlFor="terms">
-                            I agree to the <Link to="/termsandconditions" className="text-orange-400 underline">Terms and Conditions</Link>
+                            I agree to the <Link to="/termsandconditions" className="text-orange-400 underline">Terms
+                            and Conditions</Link>
                         </label>
                     </div>
 
@@ -225,7 +228,7 @@ export default function RegisterForm() {
                     >
                         {loading ? (
                             <>
-                                <LoaderCircle className="h-4 w-4 animate-spin" /> Creating Account...
+                                <LoaderCircle className="h-4 w-4 animate-spin"/> Creating Account...
                             </>
                         ) : (
                             <>
@@ -243,8 +246,18 @@ export default function RegisterForm() {
                 </div>
 
                 {/* Google Button */}
-                <button className="w-full flex items-center justify-center gap-3 font-semibold border border-gray-600 text-orange-400 py-2 rounded-md hover:bg-white hover:text-black transition-all">
-                    <svg className="h-5 w-5" viewBox="0 0 533.5 544.3"><path fill="#EA4335" d="M533.5 278.4c0-18.5-1.5-36.2-4.3-53.4H272v101h147.1c-6.4 34.3-25.5 63.4-54.3 82.9v68h87.9c51.5-47.4 80.8-117.2 80.8-198.5z"/><path fill="#34A853" d="M272 544.3c72.8 0 133.9-24.1 178.6-65.5l-87.9-68c-24.4 16.4-55.4 26-90.7 26-69.8 0-129-47.1-150.2-110.3H33v69.1c44.5 88.1 135.7 148.7 239 148.7z"/><path fill="#4A90E2" d="M121.8 326.5c-10.6-31.3-10.6-65.5 0-96.8V160.6H33c-35 69.8-35 151.2 0 221l88.8-55.1z"/><path fill="#FBBC05" d="M272 107.7c39.6 0 75.1 13.6 103 40.2l77.1-77.1C405.9 24.1 344.8 0 272 0 168.7 0 77.5 60.6 33 148.7l88.8 55.1C143 154.8 202.2 107.7 272 107.7z"/></svg>
+                <button
+                    className="w-full flex items-center justify-center gap-3 font-semibold border border-gray-600 text-orange-400 py-2 rounded-md hover:bg-white hover:text-black transition-all">
+                    <svg className="h-5 w-5" viewBox="0 0 533.5 544.3">
+                        <path fill="#EA4335"
+                              d="M533.5 278.4c0-18.5-1.5-36.2-4.3-53.4H272v101h147.1c-6.4 34.3-25.5 63.4-54.3 82.9v68h87.9c51.5-47.4 80.8-117.2 80.8-198.5z"/>
+                        <path fill="#34A853"
+                              d="M272 544.3c72.8 0 133.9-24.1 178.6-65.5l-87.9-68c-24.4 16.4-55.4 26-90.7 26-69.8 0-129-47.1-150.2-110.3H33v69.1c44.5 88.1 135.7 148.7 239 148.7z"/>
+                        <path fill="#4A90E2"
+                              d="M121.8 326.5c-10.6-31.3-10.6-65.5 0-96.8V160.6H33c-35 69.8-35 151.2 0 221l88.8-55.1z"/>
+                        <path fill="#FBBC05"
+                              d="M272 107.7c39.6 0 75.1 13.6 103 40.2l77.1-77.1C405.9 24.1 344.8 0 272 0 168.7 0 77.5 60.6 33 148.7l88.8 55.1C143 154.8 202.2 107.7 272 107.7z"/>
+                    </svg>
                     Continue with Google
                 </button>
 

@@ -6,12 +6,13 @@ const User = require('./models/User');
 const {readdirSync} = require("fs")
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: process.env.CLIENT_URL
+    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    credentials: true
 }));
 
 connectToDB();

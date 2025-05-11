@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar.jsx";
 
 function AdminLayout({children}) {
     return (
-        <div className="flex flex-col min-h-screen bg-[#FFFDFa]">
+        <div className="flex flex-col min-h-screen bg-customOrange">
             {/* Navbar with z-50 */}
             <Navbar showLoginButton={false}/>
 

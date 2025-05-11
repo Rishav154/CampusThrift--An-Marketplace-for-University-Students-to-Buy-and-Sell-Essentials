@@ -3,11 +3,11 @@ const cloudinary = require("../utils/cloudinary");
 
 const createProduct = async (req, res) => {
     try {
-        const {name, price, description, category} = req.body;
+        const {name, price, description, color, category} = req.body;
 
         const uploadedImages = [];
         for (const file of req.files) {
-            const result = await cloudinary.uploader.upload(req.files[file].path, {
+            const result = await cloudinary.uploader.upload(file.path, {
                 folder: "products",
             });
 
@@ -16,16 +16,18 @@ const createProduct = async (req, res) => {
                 id: result.public_id,
             });
         }
+
         const product = new Product({
             name,
             price,
             description,
+            color,
             category,
             images: uploadedImages,
         })
 
         await product.save();
-        return res.status(200).json({success: true, message: "Product added Successfully", data: product});
+        return res.status(200).json({success: true, message: "Product listed successfully", data: product});
 
     } catch (err) {
         res.status(500).json({success: false, message: err.message});
