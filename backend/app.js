@@ -1,7 +1,9 @@
+const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
 const connectToDB = require('./db/db');
 const {readdirSync} = require("fs")
+dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 
