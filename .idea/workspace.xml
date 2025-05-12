@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Payment Gateway Integrated">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/OrderProductTile.jsx" afterDir="false" />
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Add Cash on Delivery payment option and order creation functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/orderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/orderRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/orderRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Orders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Orders.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +119,7 @@
       <workItem from="1746978302550" duration="11351000" />
       <workItem from="1746990672700" duration="4516000" />
       <workItem from="1747038825571" duration="1446000" />
-      <workItem from="1747051618572" duration="15849000" />
+      <workItem from="1747051618572" duration="17661000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -162,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747052112097</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add Cash on Delivery payment option and order creation functionality">
+      <option name="closed" value="true" />
+      <created>1747071263745</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1747071263745</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +172,9 @@
     <MESSAGE value="Backend Done" />
     <MESSAGE value="..." />
     <MESSAGE value="Payment Gateway Integrated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment Gateway Integrated" />
+    <MESSAGE value="Campus Thrift MVP done" />
+    <MESSAGE value="Add Cash on Delivery payment option and order creation functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Cash on Delivery payment option and order creation functionality" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

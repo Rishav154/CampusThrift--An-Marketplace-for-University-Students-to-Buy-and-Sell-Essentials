@@ -1,17 +1,15 @@
-const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
 const connectToDB = require('./db/db');
 const User = require('./models/User');
 const {readdirSync} = require("fs")
-dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: process.env.CLIENT_URL,
     credentials: true
 }));
 
