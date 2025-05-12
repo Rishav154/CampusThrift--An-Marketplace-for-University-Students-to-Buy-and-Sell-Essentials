@@ -123,7 +123,11 @@ const getProducts = async (req, res) => {
 const getProductByName = async (req, res) => {
     const {name} = req.params;
     try {
-        const product = await Product.findOne({name})
+        const product = await Product.findOne({
+            name: {
+                $regex: new RegExp(name, "i"),
+            }
+        })
         if (!product) {
             return res.status(404).json({success: false, message: "Product not found"});
         }

@@ -5,12 +5,14 @@ import {Label} from "@/components/ui/label.jsx";
 import {Input} from "@/components/ui/input.jsx";
 import {Textarea} from "@/components/ui/textarea.jsx";
 import {Button} from "@/components/ui/button.jsx";
+import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group.jsx";
 import React, {useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import useRazorpay from "@/hooks/use-razorpay.jsx";
 import {PuffLoader} from "react-spinners";
+import axios from "axios"; // Make sure to import axios
 
 function Checkout() {
     const [billingInfo, setBillingInfo] = useState({
@@ -21,6 +23,7 @@ function Checkout() {
     });
     const [product, setProduct] = useState({});
     const [isProcessing, setIsProcessing] = useState(false);
+    const [paymentMethod, setPaymentMethod] = useState("online");
 
     const {isAuthenticated} = useSelector((state) => state.auth);
     const {generatePayment, verifyPayment} = useRazorpay();
@@ -71,6 +74,29 @@ function Checkout() {
         return true;
     };
 
+    const createCODOrder = async () => {
+        try {
+            await axios.post(`${import.meta.env.VITE_API_URL}/create-cod-order`, {
+                    name: billingInfo.name,
+                    email: billingInfo.email,
+                    phone: billingInfo.phone,
+                    address: billingInfo.address,
+                    amount: product.price,
+                    products: [{id: product._id}]
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                });
+
+            toast.success("Order placed successfully!");
+            navigate('/orders');
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Failed to place order");
+        }
+    };
+
     const handlePayment = async () => {
         if (!isAuthenticated) {
             navigate("/login");
@@ -83,6 +109,18 @@ function Checkout() {
 
         if (product.blacklisted) {
             toast.error("Product isn't available for purchase");
+            return;
+        }
+
+        if (paymentMethod === "cod") {
+            try {
+                setIsProcessing(true);
+                await createCODOrder();
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setIsProcessing(false);
+            }
             return;
         }
 
@@ -194,6 +232,24 @@ function Checkout() {
                                         className="w-full mt-1"
                                     />
                                 </div>
+
+                                <div className="mt-4">
+                                    <Label className="text-base font-medium mb-2 block">Payment Method</Label>
+                                    <RadioGroup
+                                        value={paymentMethod}
+                                        onValueChange={setPaymentMethod}
+                                        className="flex flex-col space-y-2"
+                                    >
+                                        <div className="flex items-center space-x-2">
+                                            <RadioGroupItem value="online" id="online"/>
+                                            <Label htmlFor="online" className="font-normal">Online Payment</Label>
+                                        </div>
+                                        <div className="flex items-center space-x-2">
+                                            <RadioGroupItem value="cod" id="cod"/>
+                                            <Label htmlFor="cod" className="font-normal">Cash on Delivery</Label>
+                                        </div>
+                                    </RadioGroup>
+                                </div>
                             </div>
 
                             <Button
@@ -205,7 +261,8 @@ function Checkout() {
                                     <div className="flex items-center gap-2">
                                         <PuffLoader color="white" size={30}/>
                                         Processing...
-                                    </div>) : "Proceed to Payment"}
+                                    </div>
+                                ) : paymentMethod === "cod" ? "Place Order (COD)" : "Proceed to Payment"}
                             </Button>
                         </Card>
                     </div>

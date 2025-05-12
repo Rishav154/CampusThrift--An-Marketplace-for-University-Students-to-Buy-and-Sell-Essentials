@@ -5,33 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Payment Gateway Integrated">
-      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/use-razorpay.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/OrderProductTile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/orderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/paymentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/paymentController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/verifyToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/verifyToken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Product.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/orderRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/orderRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/productRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/productRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AllProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AllProducts.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/FilterMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FilterMenu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/AdminLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/OrderData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OrderData.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Orders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Orders.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/MyOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Success.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Success.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Orders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Orders.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +128,7 @@
       <workItem from="1746978302550" duration="11351000" />
       <workItem from="1746990672700" duration="4516000" />
       <workItem from="1747038825571" duration="1446000" />
-      <workItem from="1747051618572" duration="311000" />
+      <workItem from="1747051618572" duration="15849000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -171,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746945873782</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Payment Gateway Integrated">
+      <option name="closed" value="true" />
+      <created>1747052112097</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747052112097</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

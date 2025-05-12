@@ -1,5 +1,6 @@
 const Order = require("../models/Order");
 const User = require("../models/User");
+const Product = require("../models/Product"); // Assuming you have a Product model
 
 const getOrderByUserId = async (req, res) => {
     const userId = req.id;
@@ -66,9 +67,69 @@ const updateOrderStatus = async (req, res) => {
     }
 }
 
+const createCODOrder = async (req, res) => {
+    try {
+        const {products, name, email, phone, address, amount} = req.body;
+        const userId = req.id;
+
+        if (!products || !products.length) {
+            return res.status(400).json({
+                success: false,
+                message: "At least one product is required"
+            });
+        }
+
+        const productValidation = await Promise.all(
+            products.map(async (productItem) => {
+                const product = await Product.findById(productItem.id);
+                if (!product) {
+                    return false;
+                }
+                return true;
+            })
+        );
+
+        if (productValidation.some(valid => !valid)) {
+            return res.status(400).json({
+                success: false,
+                message: "One or more products do not exist"
+            });
+        }
+
+        const newOrder = new Order({
+            name,
+            email,
+            phone: parseInt(phone.replace(/\D/g, '')),
+            address,
+            amount,
+            products,
+            userId,
+            razorpayOrderId: 'COD-' + Date.now(),
+            razorpayPaymentId: 'COD-' + Math.random().toString(36).substring(2, 15),
+            razorpaySignature: 'COD-SIGNATURE',
+            status: 'pending'
+        });
+
+        await newOrder.save();
+
+        return res.status(201).json({
+            success: true,
+            message: "COD Order created successfully",
+            order: newOrder
+        });
+    } catch (error) {
+        console.error('Error creating COD order:', error);
+        return res.status(500).json({
+            success: false,
+            message: 'Server error while creating COD order',
+            error: error.message
+        });
+    }
+}
+
 module.exports = {
     getOrderByUserId,
     getAllOrders,
-    updateOrderStatus
+    updateOrderStatus,
+    createCODOrder
 }
-
