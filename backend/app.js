@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const connectToDB = require('./db/db');
-const User = require('./models/User');
 const {readdirSync} = require("fs")
 
 const PORT = process.env.PORT || 4000;
