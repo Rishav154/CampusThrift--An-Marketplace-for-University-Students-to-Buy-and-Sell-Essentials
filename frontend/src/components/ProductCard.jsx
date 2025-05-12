@@ -18,9 +18,9 @@ function ProductCard({
                     className={"px-3 grid gap-1 py-2 absolute bg-white w-full bottom-0 translate-y-[3rem] group-hover:translate-y-0 transform transition-all ease-in-out duration-300 rounded-xl"}>
                     <h2>{name}</h2>
                     <div className={"mb-2"}>
-                        <span>Rs.{price}</span>
+                        <span>₹ {price}</span>
                     </div>
-                    <LinkButton to={`/product`} text={"View Product"}/>
+                    <LinkButton to={`/product/${name.split(" ").join("-")}`} text={"View Product"}/>
                 </div>
             </div>
         </>

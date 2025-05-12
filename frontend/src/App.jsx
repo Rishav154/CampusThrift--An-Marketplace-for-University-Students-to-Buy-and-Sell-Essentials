@@ -11,11 +11,11 @@ import Success from "@/pages/Success.jsx";
 import AdminLayout from "@/components/Layout/AdminLayout.jsx";
 import CreateProduct from "@/components/CreateProduct.jsx";
 import AllProducts from "@/components/AllProducts.jsx";
-import Orders from "@/components/Orders.jsx";
+import Orders from "@/pages/Orders.jsx";
 import Settings from "@/components/Settings.jsx";
 import Home from "@/pages/Home.jsx";
 import Profile from "@/components/Profile.jsx";
-import MyOrders from "@/pages/MyOrders.jsx";
+import MyOrders from "@/components/MyOrders.jsx";
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
 import ProtectedRoute from "@/components/ProtectedRoute.jsx";
@@ -50,9 +50,9 @@ function App() {
                             </ProtectedRoute>
                         }/>
 
-                        <Route path="/product" element={<Product/>}/>
+                        <Route path="/product/:productName" element={<Product/>}/>
 
-                        <Route path="/checkout" element={
+                        <Route path="/checkout/:productName" element={
                             <ProtectedRoute>
                                 <Checkout/>
                             </ProtectedRoute>

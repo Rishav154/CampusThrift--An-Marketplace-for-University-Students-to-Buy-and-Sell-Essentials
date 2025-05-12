@@ -1,6 +1,9 @@
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Input} from "@/components/ui/input.jsx";
+import axios from "axios";
+import {setProducts} from "@/redux/slices/productSlice.js";
+import {useDispatch} from "react-redux";
 
 const categoryData = {
     trigger: "Category",
@@ -9,7 +12,7 @@ const categoryData = {
 
 const priceData = {
     trigger: "Price",
-    items: ["Low to High", "High to Low"],
+    items: ["500", "1000", "2000", "3000", "4000", "5000"]
 }
 
 
@@ -18,6 +21,18 @@ function FilterMenu() {
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
     const [search, setSearch] = useState("");
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const getFilterProducts = async () => {
+            const res = await axios.get(
+                `${import.meta.env.VITE_API_URL}/get-products?category=${category}&price=${price}&search=${search}`
+            )
+            const data = await res.data;
+            dispatch(setProducts(data.data));
+        }
+        getFilterProducts()
+    }, [category, price, search]);
 
     return (
         <>
@@ -45,8 +60,9 @@ function FilterMenu() {
                         </SelectTrigger>
                         <SelectContent position={"popper"}>
                             {
-                                priceData.items.map((item, index) => (
-                                    <SelectItem value={item} key={index} className={"capitalize"}>{item}</SelectItem>
+                                priceData.items.map((item) => (
+                                    <SelectItem value={item} key={item} className={"capitalize"}>Less
+                                        than {item}</SelectItem>
                                 ))
                             }
 

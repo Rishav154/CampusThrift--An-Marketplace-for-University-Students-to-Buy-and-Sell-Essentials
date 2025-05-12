@@ -2,7 +2,7 @@ const Order = require("../models/Order");
 const User = require("../models/User");
 
 const getOrderByUserId = async (req, res) => {
-    const {userId} = req.id;
+    const userId = req.id;
 
     try {
         const orders = await Order.find({userId}).populate({

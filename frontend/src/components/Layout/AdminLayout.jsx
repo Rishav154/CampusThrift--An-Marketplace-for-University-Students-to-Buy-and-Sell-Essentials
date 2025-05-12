@@ -4,16 +4,15 @@ import Navbar from "@/components/Navbar.jsx";
 
 function AdminLayout({children}) {
     return (
-        <div className="flex flex-col min-h-screen bg-customOrange">
-            {/* Navbar with z-50 */}
+        <div className="flex flex-col h-screen bg-customOrange overflow-hidden">
             <Navbar showLoginButton={false}/>
 
             {/* Content area with sidebar and main content */}
-            <div className="flex flex-1">
+            <div className="flex flex-1 overflow-hidden">
                 <SidebarProvider>
                     <AppSidebar navbarHeight="64px"/>
 
-                    <main className="flex-1 pt-4 px-4 sm:px-6 md:px-10 transition-all duration-300">
+                    <main className="flex-1 pt-4 px-4 sm:px-6 md:px-10 transition-all duration-300 overflow-auto">
                         <div className="mb-8 -ml-4">
                             <SidebarTrigger/>
                         </div>

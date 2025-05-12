@@ -20,6 +20,7 @@ const productSchema = new mongoose.Schema({
         },
         category: {
             type: String,
+            enum: ["Cat1", "Cat2", "Cat3"],
             required: true,
         },
         images: {

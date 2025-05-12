@@ -89,14 +89,14 @@ const getProducts = async (req, res) => {
         const totalProducts = await Product.countDocuments(query);
         const totalPages = Math.ceil(totalProducts / limit);
         const products = await Product.find(query)
-            .select("name price images description blacklisted")
+            .select("name price images description color category blacklisted")
             .limit(limit)
             .skip((page - 1) * limit)
 
         let newProductsArray = [];
         products.forEach((product) => {
             const productObj = product.toObject();
-            productObj.images = productObj.images[0].url;
+            productObj.image = productObj.images[0];
             delete productObj.images;
             newProductsArray.push(productObj);
         })

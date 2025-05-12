@@ -13,9 +13,9 @@ function Success() {
 
         return () => clearInterval(interval)
     }, [])
-    
+
     setTimeout(() => {
-        window.location.href = "/"
+        window.location.href = "/home"
     }, 3000)
 
     return (
@@ -23,7 +23,7 @@ function Success() {
             <Navbar showLoginButton={false}/>
             <div className="flex flex-col justify-center items-center w-screen h-screen bg-orange-50">
                 <h1 className="text-3xl sm:text-4xl font-bold">Payment Successfull</h1>
-                <Link to={"/"} className={"underline text-sm sm:text-lg"}>
+                <Link to={"/home"} className={"underline text-sm sm:text-lg"}>
                     Go to Home (Redirecting you in {count} seconds )
                 </Link>
             </div>

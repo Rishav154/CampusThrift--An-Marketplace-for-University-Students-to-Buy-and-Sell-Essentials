@@ -2,7 +2,7 @@ const router = require("express").Router();
 const verifyToken = require("../middlewares/verifyToken");
 const {getOrderByUserId, getAllOrders, updateOrderStatus} = require("../controllers/orderController");
 
-router.get("/get-orders-by-user-ic", verifyToken, getOrderByUserId)
+router.get("/get-orders-by-user-id", verifyToken, getOrderByUserId)
 
 router.get("/get-all-orders", verifyToken, getAllOrders)
 

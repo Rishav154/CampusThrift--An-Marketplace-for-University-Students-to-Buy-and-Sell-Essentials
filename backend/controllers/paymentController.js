@@ -3,7 +3,7 @@ const User = require('../models/User');
 const {validatePaymentVerification} = require('razorpay/dist/utils/razorpay-utils');
 const Product = require('../models/Product');
 const Order = require('../models/Order');
-
+const crypto = require('crypto');
 
 var instance = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
@@ -15,6 +15,7 @@ const generatePayment = async (req, res) => {
 
     try {
         const {amount} = req.body;
+
         const options = {
             amount: amount * 100,  // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: "INR",
@@ -46,7 +47,16 @@ const generatePayment = async (req, res) => {
 const verifyPayment = async (req, res) => {
     const userId = req.id;
     try {
-        const {razorpay_order_id, razorpay_payment_id, amount, address, productArray} = req.body;
+        const {
+            razorpay_order_id,
+            razorpay_payment_id,
+            amount,
+            address,
+            name,
+            email,
+            phone,
+            productArray
+        } = req.body;
 
         const signature = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
             .update(`${razorpay_order_id}|${razorpay_payment_id}`)
@@ -75,7 +85,11 @@ const verifyPayment = async (req, res) => {
                 }
             )
         }
+
         await Order.create({
+            name,
+            email,
+            phone: Number(phone),
             amount: amount / 100,
             razorpayOrderId: razorpay_order_id,
             razorpayPaymentId: razorpay_payment_id,
@@ -90,5 +104,4 @@ const verifyPayment = async (req, res) => {
         return res.status(500).json({success: false, message: err.message});
     }
 }
-
 module.exports = {generatePayment, verifyPayment}

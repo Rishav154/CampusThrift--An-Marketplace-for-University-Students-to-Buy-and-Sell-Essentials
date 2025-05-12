@@ -11,7 +11,7 @@ function Navbar({showLoginButton = true, showProfileButton = true}) {
             <div className="max-w-full mx-auto flex items-center justify-between h-16">
                 {/* Logo and Brand */}
                 <div className="flex items-center space-x-2">
-                    <Link to="/">
+                    <Link to="/home">
                         <span className="text-lg font-bold">CampusThrift</span>
                     </Link>
                 </div>
