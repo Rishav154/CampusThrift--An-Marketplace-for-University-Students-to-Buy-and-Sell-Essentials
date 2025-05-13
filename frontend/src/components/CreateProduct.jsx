@@ -17,6 +17,7 @@ function CreateProduct() {
     const fileInputRef = useRef(null);
     const [isLoading, setIsLoading] = useState(false);
     const {handleErrorLogout} = useErrorLogout()
+    const formRef = useRef(null);
 
     const removeImage = (indexToRemove) => {
         setImages(images.filter((_, index) => index !== indexToRemove));
@@ -30,6 +31,13 @@ function CreateProduct() {
                 file: file
             }));
             setImages((prevImages) => [...prevImages, ...newImages].slice(0, 4));
+        }
+    }
+
+    const resetForm = () => {
+        if (formRef.current) {
+            formRef.current.reset();
+            setImages([]);
         }
     }
 
@@ -78,53 +86,58 @@ function CreateProduct() {
                 }
             )
             toast.success(`Success\n${res.data.message}`);
+            // Reset form after successful submission
+            resetForm();
         } catch (error) {
             return handleErrorLogout(error, "Error uploading product");
         } finally {
             setIsLoading(false);
         }
-
     }
-
 
     return (
         <>
-            <div className=" w-full max-w-2xl -z-10">
-                <CardHeader>
-                    <CardTitle className={"text-2xl"}>Add New Product</CardTitle>
-                    <CardDescription>Enter the details for the new product you want to add to your
+            <div className="w-full max-w-5xl -z-10 mx-auto px-2">
+                <CardHeader className="py-6 px-8">
+                    <CardTitle className="text-2xl font-bold">Add New Product</CardTitle>
+                    <CardDescription className="text-gray-600 mt-1">Enter the details for the new product you want to
+                        add to your
                         store.</CardDescription>
                 </CardHeader>
 
-                <form onSubmit={onSubmit}>
-                    <div className="flex flex-col lg:flex-row lg:w-[70vw]">
-                        <CardContent className={"w-full"}>
-                            <div className={"space-y-2"}>
-                                <Label htmlFor="name">Name</Label>
-                                <Input id="name" name="name" placeholder={"Enter Product Name"} required/>
+                <form onSubmit={onSubmit} ref={formRef}>
+                    <div className="flex flex-col lg:flex-row lg:gap-12">
+                        <CardContent className="w-full px-8 py-4">
+                            <div className="space-y-4 mb-5">
+                                <Label htmlFor="name" className="font-medium">Name</Label>
+                                <Input id="name" name="name" placeholder="Enter Product Name" className="mt-1"
+                                       required/>
                             </div>
-                            <div className={"space-y-2"}>
-                                <Label htmlFor="description">Description</Label>
+                            <div className="space-y-4 mb-5">
+                                <Label htmlFor="description" className="font-medium">Description</Label>
                                 <Textarea rows={4} id="description" name="description"
-                                          placeholder={"Enter Product Description"}
+                                          placeholder="Enter Product Description"
+                                          className="mt-1 resize-none"
                                           required/>
                             </div>
-                            <div className={"space-y-2"}>
-                                <Label htmlFor="price">Price</Label>
-                                <Input id="price" name="price" type="number" placeholder={"0.00"} step={"0.01"}
-                                       min={"0"} required/>
+                            <div className="space-y-4 mb-5">
+                                <Label htmlFor="price" className="font-medium">Price</Label>
+                                <Input id="price" name="price" type="number" placeholder="0.00" step="0.01"
+                                       min="0" className="mt-1" required/>
+                                <p className="text-xs text-gray-500 mt-1">Enter price in INR</p>
                             </div>
-                            <div className={"space-y-2"}>
-                                <Label htmlFor="color">Color</Label>
-                                <Input id="color" name="color" placeholder={"Color of Product"} required/>
+                            <div className="space-y-4 mb-5">
+                                <Label htmlFor="color" className="font-medium">Color</Label>
+                                <Input id="color" name="color" placeholder="Color of Product" className="mt-1"
+                                       required/>
                             </div>
-
                         </CardContent>
-                        <CardContent className={"w-full"}>
-                            <div className={"space-y-2"}>
-                                <Label htmlFor="category">Category</Label>
+
+                        <CardContent className="w-full px-6 py-4">
+                            <div className="space-y-4 mb-5">
+                                <Label htmlFor="category" className="font-medium">Category</Label>
                                 <Select name="category" required>
-                                    <SelectTrigger>
+                                    <SelectTrigger className="mt-1">
                                         <SelectValue placeholder="Select a category"/>
                                     </SelectTrigger>
                                     <SelectContent>
@@ -140,20 +153,24 @@ function CreateProduct() {
                                     </SelectContent>
                                 </Select>
                             </div>
-                            <div className={"space-y-2"}>
-                                <Label htmlFor="images">Product Images</Label>
-                                <div className={"flex flex-wrap gap-4"}>
+                            <div className="space-y-4">
+                                <div className="flex justify-between items-center">
+                                    <Label htmlFor="images" className="font-medium">Product Images</Label>
+                                    <span className="text-sm text-gray-500">{images.length}/4 images</span>
+                                </div>
+                                <div
+                                    className="flex flex-wrap gap-5 mt-2 border-2 border-dashed border-gray-200 rounded-md p-6 bg-gray-50">
                                     {images.map((image, index) => (
-                                        <div className="relative" key={index}>
+                                        <div className="relative group" key={index}>
                                             <img
                                                 src={image?.preview}
                                                 alt={`Product Image ${index + 1}`}
-                                                className="w-[100px] h-[100px] object-cover rounded-md"
+                                                className="w-[140px] h-[140px] object-cover rounded-md shadow-sm border border-gray-100"
                                             />
                                             <Button
                                                 variant="destructive"
                                                 size="icon"
-                                                className="absolute -top-2 -right-2 h-4 w-4 rounded-full"
+                                                className="absolute -top-2 -right-2 h-6 w-6 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                                                 onClick={() => removeImage(index)}
                                             >
                                                 <X className="h-4 w-4"/>
@@ -163,47 +180,50 @@ function CreateProduct() {
                                     ))}
 
                                     {images.length < 4 && (
-                                        <Button type="button" onClick={() => fileInputRef.current?.click()}
-                                                className={"w-[100px] h-[100px]"}
-                                                variant={"outline"}
+                                        <Button
+                                            type="button"
+                                            onClick={() => fileInputRef.current?.click()}
+                                            className="w-[140px] h-[140px] flex flex-col gap-2"
+                                            variant="outline"
                                         >
-                                            <Upload className={"h-6 w-6"}/>
-                                            <span className={"sr-only"}>Upload Image</span>
+                                            <Upload className="h-6 w-6"/>
+                                            <span className="text-xs">Upload Image</span>
                                         </Button>
+                                    )}
+
+                                    {images.length === 0 && (
+                                        <div className="w-full text-center py-4 text-gray-500 text-sm">
+                                            No images selected yet
+                                        </div>
                                     )}
                                 </div>
                                 <Input
-                                    type={"file"}
-                                    id={"images"}
-                                    name={"images"}
-                                    accept={"image/*"}
+                                    type="file"
+                                    id="images"
+                                    name="images"
+                                    accept="image/*"
                                     multiple
-                                    className={"hidden"}
+                                    className="hidden"
                                     onChange={handleImageUpload}
                                     ref={fileInputRef}
                                 />
-                                <p className="text-sm text-muted-foreground mt-2">Upload up to 4 images. Supported
-                                    Formats:
-                                    JPG, PNG, GIF</p>
-
+                                <p className="text-sm text-gray-500 mt-2">Upload up to 4 images. Supported
+                                    Formats: JPG, PNG, GIF</p>
                             </div>
-
-
                         </CardContent>
-
                     </div>
-                    <CardFooter>
-                        <Button type="submit" className="w-full mt-6" disabled={isLoading}>
+
+                    <CardFooter className="px-8 pb-6 pt-2">
+                        <Button type="submit" className="w-full py-6 text-base font-medium" disabled={isLoading}>
                             {isLoading ? (
-                                <div className="flex items-center gap-2">
-                                    <PuffLoader color="white" size={30}/>
-                                    Adding Product...
+                                <div className="flex items-center justify-center gap-3">
+                                    <PuffLoader color="white" size={24}/>
+                                    <span>Adding Product...</span>
                                 </div>
                             ) : "Add Product"}
                         </Button>
                     </CardFooter>
                 </form>
-
             </div>
         </>
     );

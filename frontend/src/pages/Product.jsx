@@ -96,7 +96,7 @@ function Product() {
                         </div>
                         <div className="flex items-center my-8 gap-5">
                             <img
-                                src="https://imgs.search.brave.com/nbCpeiTb2EuR438T9lxPf9scFMTWUEL3jEV0vMOjaRs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzEwLzUwLzQzLzM4/LzM2MF9GXzEwNTA0/MzM4MTBfbGZaMUdn/ZkpxS0ZOZ2VyNHJM/QzlvMnNLbktwclRp/YjIuanBn"
+                                src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
                                 alt="Seller Profile"
                                 className="w-14 h-14 rounded-full object-center object-cover border dark:border-none"
                             />

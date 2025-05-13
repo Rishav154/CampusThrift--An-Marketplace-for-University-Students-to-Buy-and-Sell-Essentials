@@ -19,7 +19,7 @@ function Profile() {
                 <div className="relative h-60 w-60 overflow-hidden rounded-full border-4 border-white shadow-xl mb-4">
                     <div className="absolute inset-0 rounded-full overflow-hidden">
                         <img
-                            src="https://images.pexels.com/photos/31969440/pexels-photo-31969440/free-photo-of-casual-man-working-on-laptop-in-cozy-cafe.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                            src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
                             alt="Profile Picture"
                             className="h-full w-full object-cover"
                         />

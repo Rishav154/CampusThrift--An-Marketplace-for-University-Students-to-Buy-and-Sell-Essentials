@@ -4,11 +4,11 @@ import Navbar from "@/components/Navbar.jsx";
 
 function AdminLayout({children}) {
     return (
-        <div className="flex flex-col h-screen bg-customOrange overflow-hidden">
+        <div className="flex flex-col h-screen bg-customOrange">
             <Navbar showLoginButton={false}/>
 
             {/* Content area with sidebar and main content */}
-            <div className="flex flex-1 overflow-hidden">
+            <div className="flex flex-1">
                 <SidebarProvider>
                     <AppSidebar navbarHeight="64px"/>
 
