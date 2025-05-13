@@ -7,14 +7,30 @@ import {useDispatch} from "react-redux";
 
 const categoryData = {
     trigger: "Category",
-    items: ["Cat1", "Cat2", "Cat3"],
+    items: [
+        "All",
+        "Textbooks",
+        "Electronics",
+        "Furniture",
+        "Clothing",
+        "Stationary",
+        "Sports & Fitness Gear",
+        "Dorm & Apartment Essentials"
+    ],
 }
 
 const priceData = {
     trigger: "Price",
-    items: ["500", "1000", "2000", "3000", "4000", "5000"]
-}
-
+    items: [
+        "All",
+        "500",
+        "1000",
+        "2000",
+        "3000",
+        "4000",
+        "5000"
+    ]
+};
 
 function FilterMenu() {
 
@@ -25,14 +41,28 @@ function FilterMenu() {
 
     useEffect(() => {
         const getFilterProducts = async () => {
-            const res = await axios.get(
-                `${import.meta.env.VITE_API_URL}/get-products?category=${category}&price=${price}&search=${search}`
-            )
+            const params = new URLSearchParams();
+
+            if (category && category !== "All") {
+                params.append("category", category);
+            }
+
+            if (price && price !== "All") {
+                params.append("price", price);
+            }
+
+            if (search) {
+                params.append("search", search);
+            }
+
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/get-products?${params.toString()}`);
             const data = await res.data;
             dispatch(setProducts(data.data));
-        }
-        getFilterProducts()
+        };
+
+        getFilterProducts();
     }, [category, price, search]);
+
 
     return (
         <>
@@ -61,11 +91,11 @@ function FilterMenu() {
                         <SelectContent position={"popper"}>
                             {
                                 priceData.items.map((item) => (
-                                    <SelectItem value={item} key={item} className={"capitalize"}>Less
-                                        than {item}</SelectItem>
+                                    <SelectItem value={item} key={item} className={"capitalize"}>
+                                        {item === "All" ? "All" : `Less than ${item}`}
+                                    </SelectItem>
                                 ))
                             }
-
                         </SelectContent>
                     </Select>
                 </div>

@@ -188,11 +188,16 @@ function AllProducts() {
                                     <SelectValue placeholder="Select Category"/>
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value={"all"}>All Categories</SelectItem>
-                                    <SelectItem value={"cat1"}>Cat1</SelectItem>
-                                    <SelectItem value={"cat2"}>Cat2</SelectItem>
-                                    <SelectItem value={"cat3"}>Cat3</SelectItem>
-                                    <SelectItem value={"cat4"}>Cat4</SelectItem>
+                                    <SelectItem value="all">All</SelectItem>
+                                    <SelectItem value="Textbooks">Textbooks</SelectItem>
+                                    <SelectItem value="Electronics">Electronics</SelectItem>
+                                    <SelectItem value="Furniture">Furniture</SelectItem>
+                                    <SelectItem value="Clothing">Clothing</SelectItem>
+                                    <SelectItem value="Stationary">Stationary</SelectItem>
+                                    <SelectItem value="Sports & Fitness Gear">Sports & Fitness Gear</SelectItem>
+                                    <SelectItem value="Dorm & Apartment Essentials">Dorm & Apartment
+                                        Essentials</SelectItem>
+                                    <SelectItem value="Others">Others</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -288,9 +293,15 @@ function AllProducts() {
                                             <SelectValue placeholder="Select a category"/>
                                         </SelectTrigger>
                                         <SelectContent>
-                                            <SelectItem value="Cat1">Cat1</SelectItem>
-                                            <SelectItem value="Cat2">Cat2</SelectItem>
-                                            <SelectItem value="Cat3">Cat3</SelectItem>
+                                            <SelectItem value="Textbooks">Textbooks</SelectItem>
+                                            <SelectItem value="Electronics">Electronics</SelectItem>
+                                            <SelectItem value="Furniture">Furniture</SelectItem>
+                                            <SelectItem value="Clothing">Clothing</SelectItem>
+                                            <SelectItem value="Stationary">Stationary</SelectItem>
+                                            <SelectItem value="Sports & Fitness Gear">Sports & Fitness Gear</SelectItem>
+                                            <SelectItem value="Dorm & Apartment Essentials">Dorm & Apartment
+                                                Essentials</SelectItem>
+                                            <SelectItem value="Others">Others</SelectItem>
                                         </SelectContent>
                                     </Select>
                                 </div>

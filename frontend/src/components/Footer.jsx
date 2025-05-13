@@ -1,223 +1,88 @@
 import React from "react";
-import {Button} from "@/components/ui/button";
-import {FacebookIcon, Twitter, Youtube} from "lucide-react";
+import {ArrowUp, Github, Linkedin, Mail} from "lucide-react";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
-    return (
-        <>
-            <footer className="footer-1 bg-green-200 backdrop-blur-3xl py-8 sm:py-12 mt-10">
-                <div className="container mx-auto px-4">
-                    <div className="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
-                        <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
-                            <h5 className="text-xl font-bold mb-6 dark:text-white">Features</h5>
-                            <ul className="list-none footer-links">
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Cool stuff
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Random feature
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Team feature
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Stuff for developers
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Another one
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Last time
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
-                            <h5 className="text-xl font-bold mb-6 dark:text-white">Resources</h5>
-                            <ul className="list-none footer-links">
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Resource
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Resource name
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Another resource
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Final resource
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-                            <h5 className="text-xl font-bold mb-6 dark:text-white">About</h5>
-                            <ul className="list-none footer-links">
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Team
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Locations
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Privacy
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Terms
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-                            <h5 className="text-xl font-bold mb-6 dark:text-white">Help</h5>
-                            <ul className="list-none footer-links">
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Support
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Help Center
-                                    </a>
-                                </li>
-                                <li className="mb-2">
-                                    <a
-                                        href="#"
-                                        className="border-b border-solid border-transparent hover:border-customGray hover:text-customGrborder-customGray dark:hover:text-gray-300"
-                                    >
-                                        Contact Us
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto">
-                            <h5 className="text-xl font-bold mb-6 sm:text-center xl:text-left dark:text-white">
-                                Stay connected
-                            </h5>
-                            <div className="flex sm:justify-center xl:justify-start">
-                                <a
-                                    href=""
-                                    className="w-8 h-8 rounded-full text-center py-1 text-gray-600 dark:text-gray-300"
-                                >
-                                    <FacebookIcon/>
-                                </a>
-                                <a
-                                    href=""
-                                    className="w-8 h-8 rounded-full text-center py-1 ml-2 text-gray-600 dark:text-gray-300"
-                                >
-                                    <Twitter/>
-                                </a>
-                                <a
-                                    href=""
-                                    className="w-8 h-8 rounded-full text-center py-1 ml-2 text-gray-600 dark:text-gray-300"
-                                >
-                                    <Youtube/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+    const scrollToTop = () => {
+        window.scrollTo({top: 0, behavior: "smooth"});
+    };
 
-                    <div
-                        className="sm:flex sm:flex-wrap sm:-mx-4 mt-6 pt-6 sm:mt-12 sm:pt-12 border-t dark:border-gray-700">
-                        <div className="sm:w-full px-4 md:w-1/6">
-                            <strong className="dark:text-white">FWR</strong>
-                        </div>
-                        <div className="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
-                            <h6 className="font-bold mb-2 dark:text-white">Address</h6>
-                            <address className="not-italic mb-4 text-sm dark:text-gray-300">
-                                123 6th St.
-                                <br/>
-                                Melbourne, FL 32904
-                            </address>
-                        </div>
-                        <div className="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
-                            <h6 className="font-bold mb-2 dark:text-white">Free Resources</h6>
-                            <p className="mb-4 text-sm dark:text-gray-300">
-                                Use our HTML blocks for <strong>FREE</strong>.<br/>
-                                <em>All are MIT License</em>
-                            </p>
-                        </div>
-                        <div className="px-4 md:w-1/4 md:ml-auto mt-6 sm:mt-4 md:mt-0">
-                            <Button className="px-4 py-2 dark:bg-gray-700 dark:text-white">Get Started</Button>
-                        </div>
+    return (
+        <footer className="bg-green-200 dark:bg-gray-900 py-12 mt-10 text-gray-700 dark:text-gray-300 relative">
+            <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                {/* Features Section */}
+                <div>
+                    <h5 className="text-xl font-bold mb-4">Features</h5>
+                    <ul className="space-y-2">
+                        <li><Link to="/profile/dashboard/create-product" className="hover:underline">Sell your
+                            Item</Link></li>
+                        <li><Link to="/home" className="hover:underline">Buy an Item</Link></li>
+                        <li><Link to="/profile" className="hover:underline">Profile</Link></li>
+                        <li><Link to="/orders" className="hover:underline">Your Orders</Link></li>
+                        <li><Link to="/profile/dashboard/all-products" className="hover:underline">Your Listings</Link>
+                        </li>
+                        <li><Link to="/" className="hover:underline">Campus Thrift</Link></li>
+                    </ul>
+                </div>
+
+                {/* About Section */}
+                <div>
+                    <h5 className="text-xl font-bold mb-4">About</h5>
+                    <ul className="space-y-2">
+                        <li>
+                            <a href="https://github.com/Rishav154" target="_blank" rel="noopener noreferrer"
+                               className="hover:underline">Team</a>
+                        </li>
+                        <li>
+                            <a href="https://maps.app.goo.gl/TJzWPtMnzWEtgZr66" target="_blank"
+                               rel="noopener noreferrer" className="hover:underline">Locations</a>
+                        </li>
+                        <li><Link to="/privacy-policy" className="hover:underline">Privacy</Link></li>
+                        <li><Link to="/termsandconditions" className="hover:underline">Terms & Condition</Link></li>
+                        <li><Link to="/shipping-policy" className="hover:underline">Shipping Policy</Link></li>
+                        <li><Link to="/cancellation-and-refund-policy" className="hover:underline">Cancellation &
+                            Refund</Link></li>
+                    </ul>
+                </div>
+
+                {/* Help Section */}
+                <div>
+                    <h5 className="text-xl font-bold mb-4">Help</h5>
+                    <ul className="space-y-2">
+                        <li><a href="mailto:rishav15045@gmail.com" className="hover:underline">Contact Developers</a>
+                        </li>
+                        <li><a href="mailto:rishav15045@gmail.com" className="hover:underline">Help Center</a></li>
+                        <li><Link to="/contactus" className="hover:underline">Contact Us</Link></li>
+                    </ul>
+                </div>
+
+                {/* Social Links */}
+                <div>
+                    <h5 className="text-xl font-bold mb-4">Stay Connected</h5>
+                    <div className="flex space-x-4">
+                        <a href="https://github.com/Rishav154" target="_blank" rel="noopener noreferrer" title="GitHub">
+                            <Github className="hover:text-green-600 transition-transform hover:scale-110"/>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rishav-prasad154/" target="_blank"
+                           rel="noopener noreferrer" title="LinkedIn">
+                            <Linkedin className="hover:text-green-600 transition-transform hover:scale-110"/>
+                        </a>
+                        <a href="mailto:rishav15045@gmail.com" title="Email">
+                            <Mail className="hover:text-green-600 transition-transform hover:scale-110"/>
+                        </a>
                     </div>
                 </div>
-            </footer>
-        </>
+            </div>
+
+            {/* Back to Top Button */}
+            <button
+                onClick={scrollToTop}
+                title="Back to Top"
+                className="absolute right-6 bottom-6 bg-green-500 hover:bg-green-600 text-white p-2 rounded-full shadow-md transition-transform hover:scale-110"
+            >
+                <ArrowUp size={20}/>
+            </button>
+        </footer>
     );
 };
 

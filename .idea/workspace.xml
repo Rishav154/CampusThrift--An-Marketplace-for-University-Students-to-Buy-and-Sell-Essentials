@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Added Vercel.json">
-      <change afterPath="$PROJECT_DIR$/frontend/vercel.json" afterDir="false" />
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Added policy pages and updated footer,&#10;Added category based searching in home page">
+      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/useFilterProducts.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/CancellationsAndRefunds.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ContactUs.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/PrivacyPolicy.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ShippingPolicy.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AllProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AllProducts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/FilterMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FilterMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/TermsAndConditions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/TermsAndConditions.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +136,9 @@
       <workItem from="1746978302550" duration="11351000" />
       <workItem from="1746990672700" duration="4516000" />
       <workItem from="1747038825571" duration="1446000" />
-      <workItem from="1747051618572" duration="20117000" />
+      <workItem from="1747051618572" duration="20865000" />
+      <workItem from="1747101680252" duration="8819000" />
+      <workItem from="1747139170301" duration="984000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -189,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747073729529</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added vercel.json">
+      <option name="closed" value="true" />
+      <created>1747076685523</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1747076685523</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +227,9 @@
     <MESSAGE value="Add Cash on Delivery payment option and order creation functionality" />
     <MESSAGE value="Deploying backend" />
     <MESSAGE value="Added Vercel.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Vercel.json" />
+    <MESSAGE value="Added vercel.json" />
+    <MESSAGE value="Added policy pages and updated footer,&#10;Added category based searching in home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added policy pages and updated footer,&#10;Added category based searching in home page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

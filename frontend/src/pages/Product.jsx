@@ -60,7 +60,7 @@ function Product() {
                         <img
                             src={product?.images?.[selectedImage]?.url}
                             alt="Product"
-                            className="w-full lg:h-[30rem] rounded-xl object-center object-cover border dark:border-none"
+                            className="w-full lg:h-[34rem] rounded-xl object-center object-fit border dark:border-none"
                         />
 
                         {/* Thumbnails (square) */}

@@ -128,9 +128,15 @@ function CreateProduct() {
                                         <SelectValue placeholder="Select a category"/>
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="cat1">Cat1</SelectItem>
-                                        <SelectItem value="Cat2">Cat2</SelectItem>
-                                        <SelectItem value="Cat3">Cat3</SelectItem>
+                                        <SelectItem value="Textbooks">Textbooks</SelectItem>
+                                        <SelectItem value="Electronics">Electronics</SelectItem>
+                                        <SelectItem value="Furniture">Furniture</SelectItem>
+                                        <SelectItem value="Clothing">Clothing</SelectItem>
+                                        <SelectItem value="Stationary">Stationary</SelectItem>
+                                        <SelectItem value="Sports & Fitness Gear">Sports & Fitness Gear</SelectItem>
+                                        <SelectItem value="Dorm & Apartment Essentials">Dorm & Apartment
+                                            Essentials</SelectItem>
+                                        <SelectItem value="Others">Others</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </div>

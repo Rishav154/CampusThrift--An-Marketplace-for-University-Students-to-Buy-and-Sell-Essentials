@@ -1,114 +1,85 @@
-import React, {useState} from 'react';
-import {LogIn, Menu, PlusCircle, Search, User, X} from "lucide-react";
-import {Link} from "react-router-dom";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select"
+import {useEffect, useState} from "react";
+import {Input} from "@/components/ui/input.jsx";
+import axios from "axios";
+import {setProducts} from "@/redux/slices/productSlice.js";
+import {useDispatch} from "react-redux";
 
-function Navbar({showLoginButton = true, showProfileButton = true}) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+const categoryData = {
+    trigger: "Category",
+    items: ["Cat1", "Cat2", "Cat3"],
+}
+
+const priceData = {
+    trigger: "Price",
+    items: ["500", "1000", "2000", "3000", "4000", "5000"]
+}
+
+
+function FilterMenu() {
+
+    const [category, setCategory] = useState("");
+    const [price, setPrice] = useState("");
+    const [search, setSearch] = useState("");
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const getFilterProducts = async () => {
+            const res = await axios.get(
+                `${import.meta.env.VITE_API_URL}/get-products?category=${category}&price=${price}&search=${search}`
+            )
+            const data = await res.data;
+            dispatch(setProducts(data.data));
+        }
+        getFilterProducts()
+    }, [category, price, search]);
 
     return (
-        <nav
-            className="bg-green-200 backdrop-blur-md border-b border-green-300 border-opacity-40 text-gray-800 px-12 sticky top-0 z-50 shadow-md">
-            <div className="max-w-full mx-auto flex items-center justify-between h-16">
-                {/* Logo and Brand */}
-                <div className="flex items-center space-x-2">
-                    <Link to="/home">
-                        <span className="text-lg font-bold">CampusThrift</span>
-                    </Link>
+        <>
+            <div
+                className={"w-[93vw] flex flex-col sm:flex-row justify-between items-center mx-auto my-10 gap-3 sm:gap-0"}>
+                {/*Dropdown Filters*/}
+                <div className={"flex sm:w-[30%] w-full gap-3"}>
+                    <Select onValueChange={(value) => setCategory(value)}>
+                        <SelectTrigger id={categoryData.trigger} className={"w-full"}>
+                            <SelectValue placeholder={categoryData.trigger}/>
+                        </SelectTrigger>
+                        <SelectContent position={"popper"}>
+                            {
+                                categoryData.items.map((item, index) => (
+                                    <SelectItem value={item} key={index} className={"capitalize"}>{item}</SelectItem>
+                                ))
+                            }
+
+                        </SelectContent>
+                    </Select>
+
+                    <Select onValueChange={(value) => setPrice(value)}>
+                        <SelectTrigger id={priceData.trigger} className={"w-full"}>
+                            <SelectValue placeholder={priceData.trigger}/>
+                        </SelectTrigger>
+                        <SelectContent position={"popper"}>
+                            {
+                                priceData.items.map((item) => (
+                                    <SelectItem value={item} key={item} className={"capitalize"}>Less
+                                        than {item}</SelectItem>
+                                ))
+                            }
+
+                        </SelectContent>
+                    </Select>
                 </div>
 
-                {/* Search Bar - Hidden on mobile */}
-                <div className="relative w-full max-w-xl mx-4 lg:mx-12 hidden md:flex">
-                    <Search className="absolute left-2.5 top-3 h-4 w-4 text-gray-500 z-10"/>
-                    <input
-                        type="search"
-                        placeholder="Search for items..."
-                        className="pl-8 w-full bg-white bg-opacity-30 border border-green-300 border-opacity-40 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-green-300 shadow-sm transition-all duration-200"
-                    />
+                {/*Search Input*/}
+                <div className={"sm:w-[60%] w-full"}>
+                    <Input id={"search"} placeholder={"Search Here..."} onChange={(e) => {
+                        setSearch(e.target.value)
+                    }}/>
                 </div>
 
-                {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center space-x-4">
-                    <Link
-                        to="/profile/dashboard/create-product"
-                        className="whitespace-nowrap transition-all duration-500 ease-in-out bg-green-500 hover:bg-white hover:text-black backdrop-blur-sm text-white font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-400/40"
-                    >
-                        <PlusCircle className="h-5 w-5"/>
-                        <span>Sell Item</span>
-                    </Link>
-                    {showLoginButton && (
-                        <Link
-                            to="/login"
-                            className="transition-all duration-500 ease-in-out bg-white hover:bg-[#FADA7A] hover:text-black backdrop-blur-sm text-gray-800 font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-300/40"
-                        >
-                            <LogIn className="h-5 w-5"/>
-                            <span>Login</span>
-                        </Link>
-                    )}
-                    {showProfileButton && (
-                        <Link
-                            to="/profile"
-                            className="transition-all duration-500 ease-in-out bg-white hover:bg-blue-500 hover:text-white backdrop-blur-sm text-gray-800 font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-300/40"
-                        >
-                            <User className="h-5 w-5"/>
-                            <span>Profile</span>
-                        </Link>
-                    )}
-                </div>
-
-                {/* Mobile Menu Button */}
-                <div className="md:hidden flex items-center">
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="focus:outline-none"
-                    >
-                        {isMenuOpen ? (
-                            <X className="h-6 w-6"/>
-                        ) : (
-                            <Menu className="h-6 w-6"/>
-                        )}
-                    </button>
-                </div>
             </div>
-
-            {/* Mobile Menu */}
-            {isMenuOpen && (
-                <div
-                    className="md:hidden py-4 bg-green-200 bg-opacity-30 backdrop-blur-md rounded-lg mt-2 shadow-lg border border-green-300 border-opacity-40">
-                    <div className="relative w-full mb-4 px-4">
-                        <Search className="absolute left-6 top-3 h-4 w-4 text-gray-500"/>
-                        <input
-                            type="search"
-                            placeholder="Search for items..."
-                            className="pl-8 w-full bg-white bg-opacity-30 backdrop-blur-sm border border-green-300 border-opacity-40 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200"
-                        />
-                    </div>
-                    <div className="flex flex-col space-y-4 px-4">
-                        <Link
-                            className="transition-all duration-200 ease-in-out bg-green-500 bg-opacity-40 hover:bg-green-500 hover:bg-opacity-60 text-white font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-400/40"
-                            to="/sell">
-                            <PlusCircle className="h-5 w-5"/>
-                            <span>Sell Item</span>
-                        </Link>
-                        {showLoginButton && (
-                            <Link
-                                className="transition-all duration-200 ease-in-out bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-30 text-gray-800 font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-300/40"
-                                to="/login">
-                                <LogIn className="h-5 w-5"/>
-                                <span>Login</span>
-                            </Link>
-                        )}
-                        {showProfileButton && (
-                            <Link
-                                className="transition-all duration-200 ease-in-out bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-30 text-gray-800 font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-300/40"
-                                to="/profile">
-                                <User className="h-5 w-5"/>
-                            </Link>
-                        )}
-                    </div>
-                </div>
-            )}
-        </nav>
+        </>
     );
 }
 
-export default Navbar;
+export default FilterMenu;
