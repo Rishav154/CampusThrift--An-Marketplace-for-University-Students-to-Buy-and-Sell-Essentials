@@ -91,7 +91,7 @@ function Checkout() {
                 });
 
             toast.success("Order placed successfully!");
-            navigate('/orders');
+            navigate('/profile/dashboard/my-orders');
         } catch (error) {
             toast.error(error.response?.data?.message || "Failed to place order");
         }

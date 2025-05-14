@@ -16,7 +16,7 @@ import Error from "@/pages/Error.jsx";
 import MyOrders from "@/components/MyOrders.jsx";
 import Profile from "@/components/Profile.jsx";
 import CreateProduct from "@/components/CreateProduct.jsx";
-import AllProducts from "@/components/AllProducts.jsx";
+import MyProducts from "@/components/MyProducts.jsx";
 import Settings from "@/components/Settings.jsx";
 
 import TermsAndConditions from "@/pages/TermsAndConditions.jsx";
@@ -86,9 +86,9 @@ function App() {
                         <AdminLayout children={<CreateProduct/>}/>
                     </ProtectedRoute>
                 }/>
-                <Route path="/profile/dashboard/all-products" element={
+                <Route path="/profile/dashboard/my-products" element={
                     <ProtectedRoute>
-                        <AdminLayout children={<AllProducts/>}/>
+                        <AdminLayout children={<MyProducts/>}/>
                     </ProtectedRoute>
                 }/>
                 <Route path="/profile/dashboard/orders" element={

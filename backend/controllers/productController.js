@@ -152,6 +152,60 @@ const getProductByName = async (req, res) => {
     }
 }
 
+const getMyProducts = async (req, res) => {
+    try {
+        let {page, limit, category, price, search} = req.query;
+        page = parseInt(page) || 1;
+        limit = parseInt(limit) || 9;
+
+        let query = {
+            seller: req.user._id // Filter by the current logged-in user's ID
+        };
+
+        if (category && category !== "all") {
+            query.category = category.charAt(0).toUpperCase() + category.slice(1);
+        }
+
+        if (search) {
+            query.name = {$regex: search, $options: "i"};
+        }
+
+        if (price > 0) {
+            query.price = {$lte: price};
+        }
+
+        const totalProducts = await Product.countDocuments(query);
+        const totalPages = Math.ceil(totalProducts / limit);
+
+        const products = await Product.find(query)
+            .select("name price images description color category blacklisted")
+            .limit(limit)
+            .skip((page - 1) * limit);
+
+        let newProductsArray = [];
+        products.forEach((product) => {
+            const productObj = product.toObject();
+            productObj.image = productObj.images[0];
+            delete productObj.images;
+            newProductsArray.push(productObj);
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "Your products fetched successfully",
+            data: newProductsArray,
+            pagination: {
+                totalProducts,
+                totalPages,
+                currentPage: page,
+                pageSize: limit,
+            },
+        });
+    } catch (err) {
+        return res.status(500).json({success: false, message: err.message});
+    }
+};
+
 const blacklistProduct = async (req, res) => {
     const {id} = req.params;
     try {
@@ -193,6 +247,7 @@ module.exports = {
     deleteProduct,
     getProducts,
     getProductByName,
+    getMyProducts,
     blacklistProduct,
     removeBlacklistProduct
 };

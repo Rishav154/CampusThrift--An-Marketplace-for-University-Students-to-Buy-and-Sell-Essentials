@@ -5,7 +5,9 @@ const {
     deleteProduct,
     getProducts,
     getProductByName,
-    blacklistProduct, removeBlacklistProduct
+    getMyProducts,
+    blacklistProduct,
+    removeBlacklistProduct
 } = require("../controllers/productController");
 const router = require("express").Router();
 const verifyToken = require("../middlewares/verifyToken");
@@ -22,6 +24,8 @@ router.delete("/delete-product/:id", verifyToken, deleteProduct);
 router.get("/get-products", getProducts);
 
 router.get("/get-product-by-name/:name", getProductByName);
+
+router.get("/get-my-products", verifyToken, getMyProducts);
 
 router.put("/blacklist-product/:id", verifyToken, blacklistProduct);
 

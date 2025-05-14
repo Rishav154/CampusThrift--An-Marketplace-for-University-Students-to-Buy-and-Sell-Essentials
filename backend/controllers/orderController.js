@@ -21,24 +21,51 @@ const getOrderByUserId = async (req, res) => {
 
 const getAllOrders = async (req, res) => {
     const {page, limit} = req.query;
+    const sellerId = req.id;
+
     try {
-        const orders = await Order.find()
-            .populate({path: "products.id", select: "name price category images"}).populate({
+        const orders = await Order.find({
+            "products.id": {
+                $in: await Product.find({seller: sellerId}).select('_id')
+            }
+        })
+            .populate({
+                path: "products.id",
+                select: "name price category images seller"
+            })
+            .populate({
                 path: "userId",
-                select: "name email",
-            }).limit(limit * 1)
+                select: "name email"
+            })
+            .limit(limit * 1)
             .skip((page - 1) * limit)
             .sort({createdAt: -1});
 
-        if (!orders) {
-            return res.status(404).json({success: false, message: "No orders found"});
+        if (!orders || orders.length === 0) {
+            return res.status(200).json({
+                success: true,
+                data: [],
+                totalPages: 0,
+                currentPage: Number(page),
+            });
         }
 
-        const count = await Order.countDocuments();
+        const filteredOrders = orders.map(order => {
+            const orderObj = order.toObject();
+
+            orderObj.products = orderObj.products.filter(product =>
+                product.id && product.id.seller &&
+                product.id.seller.toString() === sellerId.toString()
+            );
+
+            return orderObj;
+        }).filter(order => order.products.length > 0);
+
+        const count = filteredOrders.length;
 
         return res.status(200).json({
             success: true,
-            data: orders,
+            data: filteredOrders,
             totalPages: Math.ceil(count / limit),
             currentPage: Number(page),
         });

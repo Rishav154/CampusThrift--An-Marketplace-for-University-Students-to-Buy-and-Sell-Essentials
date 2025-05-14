@@ -34,7 +34,7 @@ function MyOrders() {
                 <div className="flex-grow space-y-8">
                     <div className="space-y-4">
                         <h2 className="text-xl font-medium">Order Summary</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 gap-10 px-10">
                             {
                                 orders.length === 0 ? (
                                     <div className="col-span-full text-center">
@@ -54,6 +54,7 @@ function MyOrders() {
             </div>
         </>
     );
+
 }
 
 export default MyOrders;

@@ -125,7 +125,7 @@ function OrderData({
     };
     return (
         <>
-            <Card className={"grid gap-2 p-2"}>
+            <Card className={"grid gap-2 p-4"}>
                 {
                     products.map((product) => (
                         <div
@@ -139,8 +139,8 @@ function OrderData({
                                     className={"w-20 h-20 rounded-lg"}/>
                             </div>
                             <div>
-                                <h1 className={"font-semibold text-sm sm:text-lg"}>{product?.id?.name}</h1>
-                                <p className="flex text-xs sm:text-md gap-2 sm:gap-2 text-gray-500 my-2 sm:my-0">
+                                <h1 className={"font-semibold text-sm sm:text-lg capitalize"}>{product?.id?.name}</h1>
+                                <p className="flex text-xs sm:text-md gap-2 sm:gap-2 text-gray-500 my-3 sm:my-0">
                             <span className="font-semibold">
                                 Status :{" "}
                                 <span className="capitalize">
@@ -157,7 +157,7 @@ function OrderData({
 
                     ))
                 }
-                <div className={"flex flex-col sm:flex-row justify-between sm:items-center"}>
+                <div className={"flex flex-col sm:flex-row justify-between sm:items-center my-2"}>
                     <span>Ordered On:{" "}<span
                         className={"capitalize"}>{new Date(createdAt).toLocaleString()}</span></span>
                     <span onClick={handleDownloadInvoice}
@@ -167,7 +167,7 @@ function OrderData({
                     </span>
                 </div>
                 <hr/>
-                <span>Delivery At:{" "}<span
+                <span className={"my-2"}>Delivery At:{" "}<span
                     className={"capitalize"}>{address}</span></span>
 
             </Card>

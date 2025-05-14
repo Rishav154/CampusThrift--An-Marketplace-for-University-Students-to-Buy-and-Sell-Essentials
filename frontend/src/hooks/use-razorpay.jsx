@@ -17,6 +17,7 @@ const useRazorpay = () => {
                     }
                 });
             const data = res.data;
+            console.log(data);
             return data.data;
         } catch (err) {
             return toast.error(err.response?.data?.message || "Something went wrong");

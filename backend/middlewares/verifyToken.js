@@ -12,6 +12,7 @@ const verifyToken = (req, res, next) => {
                 return res.status(401).json({success: false, message: "Unauthorized Access: Invalid Token"});
             }
             req.user = user;
+            req.id = user._id;
             next();
         });
     } catch (err) {

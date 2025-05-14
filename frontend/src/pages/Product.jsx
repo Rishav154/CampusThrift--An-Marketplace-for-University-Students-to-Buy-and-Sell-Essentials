@@ -20,7 +20,6 @@ function Product() {
                 const formattedName = productName?.split("-").join(" ");
                 const res = await axios.get(`${import.meta.env.VITE_API_URL}/get-product-by-name/${formattedName}`);
                 const {data} = await res.data;
-                console.log(data);
                 setProduct(data);
             } catch (err) {
                 console.error("Error fetching product:", err);
@@ -85,7 +84,7 @@ function Product() {
                     {/*Right Part*/}
                     <div className="sm:w-[50%] lg:w-[30%]">
                         <div className="pb-5">
-                            <h2 className="font-extrabold text-2xl">{product?.name}</h2>
+                            <h2 className="font-extrabold text-2xl capitalize">{product?.name}</h2>
                             <p className="text-sm my-2">{product?.description}</p>
                         </div>
                         <div className="py-5 border-t border-b">

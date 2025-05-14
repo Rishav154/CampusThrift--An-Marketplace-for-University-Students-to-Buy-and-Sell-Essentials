@@ -13,7 +13,7 @@ import {setProducts} from "@/redux/slices/productSlice.js";
 import useErrorLogout from "@/hooks/use-error-logout.jsx";
 import toast from "react-hot-toast";
 
-function AllProducts() {
+function MyProducts() {
 
     const [category, setCategory] = useState("all");
     const [searchTerm, setSearchTerm] = useState("")
@@ -25,18 +25,26 @@ function AllProducts() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const getFilteredProducts = async () => {
-            const res = await axios.get(
-                `${import.meta.env.VITE_API_URL}/get-products?category=${category}&search=${searchTerm}`);
+        const getMyProducts = async () => {
+            try {
+                const res = await axios.get(
+                    `${import.meta.env.VITE_API_URL}/get-my-products?category=${category}&search=${searchTerm}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    }
+                );
 
-            const data = await res.data;
-            dispatch(setProducts(data.data));
-            console.log(data)
+                const data = await res.data;
+                dispatch(setProducts(data.data));
+            } catch (err) {
+                handleErrorLogout(err, "Error occurred while fetching your products");
+            }
         };
 
-
-        getFilteredProducts();
-    }, [searchTerm, category]);
+        getMyProducts();
+    }, [searchTerm, category, dispatch, handleErrorLogout]);
 
     const removeFromBlacklist = async (id) => {
         try {
@@ -52,14 +60,21 @@ function AllProducts() {
             const {message} = res.data;
             toast.success(`Success ${message}`);
 
-            const getFilteredProducts = async () => {
+            // Refresh product list after updating blacklist status
+            const getMyProducts = async () => {
                 const res = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/get-products?category=${category}&search=${searchTerm}`);
+                    `${import.meta.env.VITE_API_URL}/get-my-products?category=${category}&search=${searchTerm}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    }
+                );
 
                 const data = await res.data;
                 dispatch(setProducts(data.data));
             };
-            await getFilteredProducts();
+            await getMyProducts();
         } catch (err) {
             handleErrorLogout(err, "Error Occured while reverting changes");
         }
@@ -95,14 +110,22 @@ function AllProducts() {
                     </button>
                 </div>
             ));
-            const getFilteredProducts = async () => {
+
+            // Refresh product list after blacklisting
+            const getMyProducts = async () => {
                 const res = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/get-products?category=${category}&search=${searchTerm}`);
+                    `${import.meta.env.VITE_API_URL}/get-my-products?category=${category}&search=${searchTerm}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    }
+                );
 
                 const data = await res.data;
                 dispatch(setProducts(data.data));
             };
-            await getFilteredProducts();
+            await getMyProducts();
         } catch (err) {
             handleErrorLogout(err, "Error Occured while blacklisting product");
         }
@@ -154,17 +177,16 @@ function AllProducts() {
         } catch (error) {
             handleErrorLogout(error, "Error occured while updating product");
         }
-
     }
 
     return (
         <>
             <div className="mx-auto px-4 sm:px-8 -z-10 ">
-                <h1 className={"text-3xl font-bold mb-8"}>Our Products</h1>
+                <h1 className={"text-3xl font-bold mb-8"}>My Products</h1>
 
                 <div className={"mb-8"}>
-                    <form className={"flex gap-4 items-end sm:w-[80vw]"}>
-                        <div className={"flex-1"}>
+                    <form className={"flex flex-col sm:flex-row gap-4 items-start sm:items-end sm:w-full"}>
+                        <div className={"flex-1 w-full"}>
                             <label className={"block text-sm font-medium text-gray-700 mb-3"} htmlFor="search">Search
                                 Products</label>
                             <div className={"relative"}>
@@ -172,7 +194,7 @@ function AllProducts() {
                                     type="text"
                                     id="search"
                                     placeholder="Search by name or description"
-                                    className="pl-10"
+                                    className="pl-10 w-full"
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
                                 />
@@ -180,11 +202,11 @@ function AllProducts() {
                                         className="absolute top-1/2 left-3 text-gray-500 transform -translate-y-1/2"/>
                             </div>
                         </div>
-                        <div className={"w-48"}>
+                        <div className={"w-full sm:w-48"}>
                             <label className={"block text-sm font-medium text-gray-700 mb-3"}
                                    htmlFor={"Category"}>Category</label>
                             <Select value={category} onValueChange={(value) => setCategory(value)}>
-                                <SelectTrigger id={"Category"}>
+                                <SelectTrigger id={"Category"} className="w-full">
                                     <SelectValue placeholder="Select Category"/>
                                 </SelectTrigger>
                                 <SelectContent>
@@ -202,19 +224,18 @@ function AllProducts() {
                             </Select>
                         </div>
                     </form>
-
                 </div>
 
                 {
                     products?.length === 0 ? (<p className={"text-center text-gray-500 mt-8"}>
-                        No products found, Try adjusting your search or filter options.
+                        You haven't posted any products yet, or none match your search criteria.
                     </p>) : (
                         <div
                             className={"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-2 sm:mx-0"}>
                             {products?.map((product) => (
                                 <Card key={product._id}
-                                      className={"flex flex-col shadow-md hover:shadow-xl transition-shadow duration-200"}>
-                                    <div className={" relative"}>
+                                      className={"flex flex-col min-w-[300px] shadow-md hover:shadow-xl transition-shadow duration-200"}>
+                                    <div className={"relative"}>
                                         <img
                                             src={product.image.url}
                                             alt={product.name}
@@ -222,18 +243,17 @@ function AllProducts() {
                                         <hr className="border-t border-gray-200"/>
                                     </div>
 
-
-                                    <CardContent className={"flex-grow px-4"}>
+                                    <CardContent className={"flex-grow px-4 pt-4"}>
                                         <h3 className={"text-lg font-semibold mb-2"}>{product.name}</h3>
                                         <p className={"text-sm text-gray-600 mb-4 line-clamp-2"}>{product.description}</p>
                                         <p className={"text-lg font-bold"}>₹{product.price.toLocaleString()}</p>
                                     </CardContent>
 
                                     <CardFooter
-                                        className="p-4 pt-0 flex flex-col space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
+                                        className="p-4 pt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                                         <Button
                                             variant="outline"
-                                            className="w-full lg:flex-1"
+                                            className="w-full sm:flex-1"
                                             onClick={() => handleEdit(product)}
                                         >
                                             <Edit className="mr-2 h-4 w-4"/> Edit
@@ -244,7 +264,7 @@ function AllProducts() {
                                                     ? blacklistProduct(product._id)
                                                     : removeFromBlacklist(product._id);
                                             }}
-                                            className="w-full lg:flex-1"
+                                            className="w-full sm:flex-1 text-xs sm:text-sm"
                                         >
                                             {!product.blacklisted
                                                 ? "Blacklist Product"
@@ -254,11 +274,8 @@ function AllProducts() {
                                     </CardFooter>
                                 </Card>
                             ))}
-
                         </div>
-
                     )}
-
 
                 <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
                     <DialogContent className={"sm:max-w-[425px]"}>
@@ -308,15 +325,13 @@ function AllProducts() {
                                 <DialogFooter>
                                     <Button type="submit">Save Changes</Button>
                                 </DialogFooter>
-
                             </div>
                         </form>
                     </DialogContent>
                 </Dialog>
-
             </div>
         </>
     );
 }
 
-export default AllProducts;
+export default MyProducts;

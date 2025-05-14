@@ -28,8 +28,8 @@ const items = [
         icon: FilePlus2Icon,
     },
     {
-        title: "All Products",
-        url: "/profile/dashboard/all-products",
+        title: "My Products",
+        url: "/profile/dashboard/my-products",
         icon: GalleryVerticalEnd,
     },
     {

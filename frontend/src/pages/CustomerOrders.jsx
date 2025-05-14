@@ -13,48 +13,53 @@ import {
     PaginationPrevious
 } from "@/components/ui/pagination.jsx";
 
-
 function CustomerOrders() {
-
     const [orders, setOrders] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
-
     const {handleErrorLogout} = useErrorLogout();
 
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                axios.get(`${import.meta.env.VITE_API_URL}/get-all-orders?page=${currentPage}&limit=3`,
+                const response = await axios.get(
+                    `${import.meta.env.VITE_API_URL}/get-all-orders?page=${currentPage}&limit=3`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
                         },
-                    }).then((res) => {
-                    const {data, totalPages, currentPage} = res.data;
-                    console.log(data)
-                    setOrders(data)
-                    setTotalPages(totalPages)
-                    setCurrentPage(currentPage)
-                })
+                    }
+                );
+
+                const {data, totalPages, currentPage: pageFromResponse} = response.data;
+                console.log("Seller's orders:", data);
+                setOrders(data);
+                setTotalPages(totalPages);
+                setCurrentPage(pageFromResponse);
             } catch (error) {
-                handleErrorLogout(error, error.response.data.message);
+                handleErrorLogout(error, error.response?.data?.message);
             }
         }
+
         fetchOrders();
     }, [currentPage]);
 
     const updateOrderStatus = async (status, paymentId) => {
         try {
-            const res = await axios.put(`${import.meta.env.VITE_API_URL}/update-order-status/${paymentId}`, {
-                status
-            }, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                },
-            });
+            await axios.put(
+                `${import.meta.env.VITE_API_URL}/update-order-status/${paymentId}`,
+                {status},
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    },
+                }
+            );
+
+            // Refresh orders after status update
+            setCurrentPage(currentPage); // This will trigger a re-fetch
         } catch (error) {
-            handleErrorLogout(error, error.response.data.message);
+            handleErrorLogout(error, error.response?.data?.message);
         }
     }
 
@@ -66,7 +71,7 @@ function CustomerOrders() {
 
     return (
         <>
-            <h1 className="text-3xl font-bold mb-8 ml-3">Orders Received</h1>
+            <h1 className="text-3xl font-bold mb-8 ml-3">Orders for Your Products</h1>
             <div className="flex flex-col flex-1 overflow-y-auto px-3">
                 <div className="flex-grow space-y-8">
                     <div className="space-y-4">
@@ -76,7 +81,7 @@ function CustomerOrders() {
                                 orders.length === 0 ? (
                                     <div className="col-span-full text-center">
                                         <h2 className="text-xl text-gray-500 my-28">
-                                            Nothing to Show, Please add some products...
+                                            No orders found for your products yet.
                                         </h2>
                                     </div>
                                 ) : orders.map((item) => (
@@ -119,8 +124,9 @@ function CustomerOrders() {
                                             </p>
                                         </div>
                                         <Select onValueChange={(value) => {
-                                            alert("Do you want to change the status to " + value)
-                                            updateOrderStatus(value, item.razorpayPaymentId);
+                                            if (confirm(`Do you want to change the status to ${value}?`)) {
+                                                updateOrderStatus(value, item.razorpayPaymentId);
+                                            }
                                         }}>
                                             <SelectTrigger>
                                                 <SelectValue placeholder={item?.status}/>
@@ -138,7 +144,6 @@ function CustomerOrders() {
                         </div>
                     </div>
                 </div>
-
                 <div className="mt-6 self-center">
                     <Pagination>
                         <PaginationContent>
