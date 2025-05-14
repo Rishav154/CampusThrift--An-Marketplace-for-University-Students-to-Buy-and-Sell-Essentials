@@ -1,4 +1,4 @@
-import {FilePlus2Icon, GalleryVerticalEnd, PackageSearch, Settings, User} from "lucide-react"
+import {FilePlus2Icon, GalleryVerticalEnd, PackageSearch, Settings, ShoppingCart, User} from "lucide-react"
 
 import {
     Sidebar,
@@ -33,7 +33,12 @@ const items = [
         icon: GalleryVerticalEnd,
     },
     {
-        title: "Orders",
+        title: "My Orders",
+        url: "/profile/dashboard/my-orders",
+        icon: ShoppingCart,
+    },
+    {
+        title: "Customer Orders",
         url: "/profile/dashboard/orders",
         icon: PackageSearch,
     },

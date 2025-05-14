@@ -11,7 +11,7 @@ const verifyToken = (req, res, next) => {
             if (err) {
                 return res.status(401).json({success: false, message: "Unauthorized Access: Invalid Token"});
             }
-            req.id = user._id;
+            req.user = user;
             next();
         });
     } catch (err) {

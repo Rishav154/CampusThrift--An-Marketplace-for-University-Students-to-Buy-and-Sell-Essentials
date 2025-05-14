@@ -30,7 +30,7 @@ function Profile() {
                     <h1 className="text-3xl">
                         Hi{" "}
                         <span
-                            className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-transparent bg-clip-text hover:from-pink-600 hover:to-blue-600 transition-all duration-500">
+                            className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-transparent bg-clip-text hover:from-pink-600 hover:to-blue-600 transition-all duration-500 capitalize">
                             {user?.name?.split(" ")[0] || "User"}
                         </span>
                     </h1>
@@ -42,6 +42,32 @@ function Profile() {
                         <input
                             disabled
                             value={user?.name || "Not available"}
+                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent capitalize"
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <Label className="text-base text-gray-500">Joined On</Label>
+                        <input
+                            disabled
+                            value={
+                                user?.createdAt
+                                    ? new Date(user.createdAt).toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                    })
+                                    : "Not available"
+                            }
+                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <Label className="text-base text-gray-500">Phone <span className="text-sm text-gray-400">(only visible to you)</span></Label>
+                        <input
+                            disabled
+                            value={user?.phone || "Not available"}
                             className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
                         />
                     </div>
@@ -60,7 +86,7 @@ function Profile() {
                         <input
                             disabled
                             value={user?.course || "Not available"}
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent capitalize"
                         />
                     </div>
 
@@ -69,12 +95,13 @@ function Profile() {
                         <input
                             disabled
                             value={user?.university || "Not available"}
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent capitalize"
                         />
                     </div>
 
                     <div className="mb-4">
-                        <Label className="text-base text-gray-500">Year of Graduation</Label>
+                        <Label className="text-base text-gray-500">Year of Graduation <span
+                            className="text-sm text-gray-400">(only visible to you)</span> </Label>
                         <input
                             disabled
                             value={user?.yearOfGrad || "Not available"}

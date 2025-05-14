@@ -1,5 +1,6 @@
 const Product = require("../models/Product");
 const cloudinary = require("../utils/cloudinary");
+const User = require("../models/User");
 
 const createProduct = async (req, res) => {
     try {
@@ -24,7 +25,9 @@ const createProduct = async (req, res) => {
             color,
             category,
             images: uploadedImages,
-        })
+            seller: req.user._id,
+        });
+
 
         await product.save();
         return res.status(200).json({success: true, message: "Product listed successfully", data: product});
@@ -33,6 +36,18 @@ const createProduct = async (req, res) => {
         res.status(500).json({success: false, message: err.message});
     }
 }
+
+const getSellerById = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id).select("fullname email university course createdAt");
+        if (!user) {
+            return res.status(404).json({success: false, message: "Seller not found"});
+        }
+        res.status(200).json({success: true, data: user});
+    } catch (err) {
+        res.status(500).json({success: false, message: err.message});
+    }
+};
 
 const updateProduct = async (req, res) => {
     try {
@@ -127,7 +142,7 @@ const getProductByName = async (req, res) => {
             name: {
                 $regex: new RegExp(name, "i"),
             }
-        })
+        }).populate("seller", "fullname createdAt");
         if (!product) {
             return res.status(404).json({success: false, message: "Product not found"});
         }
@@ -173,6 +188,7 @@ const removeBlacklistProduct = async (req, res) => {
 
 module.exports = {
     createProduct,
+    getSellerById,
     updateProduct,
     deleteProduct,
     getProducts,

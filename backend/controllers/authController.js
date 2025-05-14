@@ -77,6 +77,7 @@ const login = async (req, res) => {
                 course: user.course,
                 university: user.university,
                 yearOfGrad: user.yearOfGrad,
+                createdAt: user.createdAt,
             },
         });
 

@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/pagination.jsx";
 
 
-function Orders() {
+function CustomerOrders() {
 
     const [orders, setOrders] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
@@ -66,7 +66,7 @@ function Orders() {
 
     return (
         <>
-            <h1 className="text-3xl font-bold mb-8 ml-3">Orders</h1>
+            <h1 className="text-3xl font-bold mb-8 ml-3">Orders Received</h1>
             <div className="flex flex-col flex-1 overflow-y-auto px-3">
                 <div className="flex-grow space-y-8">
                     <div className="space-y-4">
@@ -173,4 +173,4 @@ function Orders() {
     );
 }
 
-export default Orders;
+export default CustomerOrders;

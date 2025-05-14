@@ -1,5 +1,6 @@
 const {
     createProduct,
+    getSellerById,
     updateProduct,
     deleteProduct,
     getProducts,
@@ -11,6 +12,8 @@ const verifyToken = require("../middlewares/verifyToken");
 const upload = require("../middlewares/multer");
 
 router.post("/create-product", verifyToken, upload.array("images", 4), createProduct);
+
+router.get("/get-seller/:id", getSellerById);
 
 router.put("/update-product/:id", verifyToken, updateProduct);
 

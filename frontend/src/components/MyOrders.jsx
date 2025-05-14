@@ -1,5 +1,4 @@
 import OrderData from "@/components/OrderData.jsx";
-import Navbar from "@/components/Navbar.jsx";
 import useErrorLogout from "@/hooks/use-error-logout.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -30,16 +29,28 @@ function MyOrders() {
 
     return (
         <>
-            <Navbar showLoginButton={false}/>
-            <div className={"bg-customOrange w-[90vw] lg:w-[50vw] mx-auto mt-10 sm:my-32 grid gap-3"}>
-                <h1 className={"text-2xl font-bold"}>My Orders</h1>
-                <div className={"grid gap-3"}>
-                    {
-                        orders.length === 0 ? <h1>No Orders to Show</h1> : orders.map((order) => (
-                            <OrderData key={order._id} {...order} />))
-                    }
+            <h1 className="text-3xl font-bold mb-8 ml-3">My Orders</h1>
+            <div className="flex flex-col flex-1 overflow-y-auto px-3">
+                <div className="flex-grow space-y-8">
+                    <div className="space-y-4">
+                        <h2 className="text-xl font-medium">Order Summary</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {
+                                orders.length === 0 ? (
+                                    <div className="col-span-full text-center">
+                                        <h2 className="text-xl text-gray-500 my-28">
+                                            No Orders to Show
+                                        </h2>
+                                    </div>
+                                ) : (
+                                    orders.map((order) => (
+                                        <OrderData key={order._id} {...order} />
+                                    ))
+                                )
+                            }
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </>
     );

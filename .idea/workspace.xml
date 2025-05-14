@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Added search functionality in navbar">
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Refactor CreateProduct form and add reset functionality">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/verifyToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/verifyToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/productRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/productRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/faviconInverted.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/AdminLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AppSidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AppSidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Orders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CustomerOrders.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +138,8 @@
       <workItem from="1747038825571" duration="1446000" />
       <workItem from="1747051618572" duration="20865000" />
       <workItem from="1747101680252" duration="8819000" />
-      <workItem from="1747139170301" duration="4721000" />
+      <workItem from="1747139170301" duration="5346000" />
+      <workItem from="1747195284666" duration="5641000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -221,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747140841922</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Refactor CreateProduct form and add reset functionality">
+      <option name="closed" value="true" />
+      <created>1747144200078</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1747144200078</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +255,8 @@
     <MESSAGE value="Added vercel.json" />
     <MESSAGE value="Added policy pages and updated footer,&#10;Added category based searching in home page" />
     <MESSAGE value="Added search functionality in navbar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added search functionality in navbar" />
+    <MESSAGE value="Refactor CreateProduct form and add reset functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor CreateProduct form and add reset functionality" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

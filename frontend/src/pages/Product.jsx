@@ -20,6 +20,7 @@ function Product() {
                 const formattedName = productName?.split("-").join(" ");
                 const res = await axios.get(`${import.meta.env.VITE_API_URL}/get-product-by-name/${formattedName}`);
                 const {data} = await res.data;
+                console.log(data);
                 setProduct(data);
             } catch (err) {
                 console.error("Error fetching product:", err);
@@ -94,20 +95,31 @@ function Product() {
                             <h3 className="font-bold text-2xl">Description</h3>
                             <p className="text-base my-2">{product?.description}</p>
                         </div>
-                        <div className="flex items-center my-8 gap-5">
+                        <h4 className="font-bold text-lg mt-4 mb-4 text-gray-800">Seller :</h4>
+                        <div className="flex items-center mb-8 mt-4 gap-5">
                             <img
                                 src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
                                 alt="Seller Profile"
                                 className="w-14 h-14 rounded-full object-center object-cover border dark:border-none"
                             />
                             <div className="">
-                                <h2 className="font-bold text-xl">Rishav Prasad</h2>
-                                <p className="text-sm text-gray-600">Member since March 2025</p>
+                                <h2 className="font-bold text-lg capitalize">{product.seller.fullname.firstname} {product.seller.fullname.lastname}</h2>
+                                <p className="text-sm text-gray-600">
+                                    Member since {new Date(product?.seller?.createdAt).toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                })}
+                                </p>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-5 mt-8">
                             <Button className="rounded-lg text-base font-semibold h-12">Message Seller</Button>
-                            <Button className="rounded-lg text-base font-semibold h-12">Seller Profile</Button>
+                            <Button
+                                className="rounded-lg text-base font-semibold h-12"
+                                onClick={() => navigate(`/seller/${product?.seller?._id}`)}
+                            >
+                                Seller Profile
+                            </Button>
                         </div>
 
                         <Button

@@ -14,7 +14,6 @@ import Success from "@/pages/Success.jsx";
 import Error from "@/pages/Error.jsx";
 
 import MyOrders from "@/components/MyOrders.jsx";
-import Orders from "@/pages/Orders.jsx";
 import Profile from "@/components/Profile.jsx";
 import CreateProduct from "@/components/CreateProduct.jsx";
 import AllProducts from "@/components/AllProducts.jsx";
@@ -29,6 +28,9 @@ import ContactUs from "@/pages/ContactUs.jsx";
 // Layout & Auth
 import AdminLayout from "@/components/Layout/AdminLayout.jsx";
 import ProtectedRoute from "@/components/ProtectedRoute.jsx";
+import {Analytics} from "@vercel/analytics/react";
+import CustomerOrders from "@/pages/CustomerOrders.jsx";
+import SellerProfile from "@/components/SellerProfile.jsx";
 
 function App() {
     return (
@@ -44,6 +46,8 @@ function App() {
                 <Route path="/shipping-policy" element={<ShippingPolicy/>}/>
                 <Route path="/cancellation-and-refund-policy" element={<CancellationsAndRefunds/>}/>
                 <Route path="/contactus" element={<ContactUs/>}/>
+
+                <Route path="/seller/:sellerId" element={<SellerProfile/>}/>
 
                 <Route path="/login" element={
                     <ProtectedRoute>
@@ -66,9 +70,9 @@ function App() {
                         <Checkout/>
                     </ProtectedRoute>
                 }/>
-                <Route path="/orders" element={
+                <Route path="/profile/dashboard/my-orders" element={
                     <ProtectedRoute>
-                        <MyOrders/>
+                        <AdminLayout children={<MyOrders/>}/>
                     </ProtectedRoute>
                 }/>
 
@@ -89,7 +93,7 @@ function App() {
                 }/>
                 <Route path="/profile/dashboard/orders" element={
                     <ProtectedRoute>
-                        <AdminLayout children={<Orders/>}/>
+                        <AdminLayout children={<CustomerOrders/>}/>
                     </ProtectedRoute>
                 }/>
                 <Route path="/profile/dashboard/settings" element={
@@ -100,6 +104,7 @@ function App() {
 
                 <Route path="/*" element={<Error/>}/>
             </Routes>
+            <Analytics/>
         </Provider>
     );
 }

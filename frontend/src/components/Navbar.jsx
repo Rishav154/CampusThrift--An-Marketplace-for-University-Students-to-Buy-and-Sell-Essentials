@@ -15,9 +15,7 @@ function Navbar({showLoginButton = true, showProfileButton = true}) {
         if (e.key === 'Enter' || e.type === 'click') {
             e.preventDefault();
 
-            // If we have a search query
             if (searchQuery.trim()) {
-                // Fetch products with search query
                 try {
                     const params = new URLSearchParams();
                     params.append("search", searchQuery.trim());
@@ -25,10 +23,8 @@ function Navbar({showLoginButton = true, showProfileButton = true}) {
                     const res = await axios.get(`${import.meta.env.VITE_API_URL}/get-products?${params.toString()}`);
                     const data = await res.data;
 
-                    // Update products in Redux store
                     dispatch(setProducts(data.data));
 
-                    // Navigate to home page
                     navigate('/home');
                 } catch (error) {
                     console.error("Error searching products:", error);
