@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 function HeroSection() {
     return (
         <div className="flex flex-col min-h-screen bg-[#fce7c8]">
-            <Navbar showLoginButton={true}/>
+            <Navbar showLoginButton={true} showHomeButton={false}/>
 
             {/* Hero content */}
             <div className="flex-1 flex flex-col">

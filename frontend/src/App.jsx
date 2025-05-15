@@ -12,12 +12,14 @@ import Product from "@/pages/Product.jsx";
 import Checkout from "@/components/Checkout.jsx";
 import Success from "@/pages/Success.jsx";
 import Error from "@/pages/Error.jsx";
+import ProfileCompletion from "@/pages/ProfileCompletion.jsx";
 
 import MyOrders from "@/components/MyOrders.jsx";
 import Profile from "@/components/Profile.jsx";
 import CreateProduct from "@/components/CreateProduct.jsx";
 import MyProducts from "@/components/MyProducts.jsx";
 import Settings from "@/components/Settings.jsx";
+import AllPolicy from "@/components/AllPolicy.jsx";
 
 import TermsAndConditions from "@/pages/TermsAndConditions.jsx";
 import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
@@ -25,12 +27,12 @@ import ShippingPolicy from "@/pages/ShippingPolicy.jsx";
 import CancellationsAndRefunds from "@/pages/CancellationsAndRefunds.jsx";
 import ContactUs from "@/pages/ContactUs.jsx";
 
-// Layout & Auth
 import AdminLayout from "@/components/Layout/AdminLayout.jsx";
 import ProtectedRoute from "@/components/ProtectedRoute.jsx";
 import {Analytics} from "@vercel/analytics/react";
 import CustomerOrders from "@/pages/CustomerOrders.jsx";
 import SellerProfile from "@/components/SellerProfile.jsx";
+import GoogleSuccess from "@/components/GoggleSuccess.jsx";
 
 function App() {
     return (
@@ -45,9 +47,18 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
                 <Route path="/shipping-policy" element={<ShippingPolicy/>}/>
                 <Route path="/cancellation-and-refund-policy" element={<CancellationsAndRefunds/>}/>
-                <Route path="/contactus" element={<ContactUs/>}/>
+                <Route path="/contact-us" element={<ContactUs/>}/>
+                <Route path="/all-policy" element={<AllPolicy/>}/>
 
                 <Route path="/seller/:sellerId" element={<SellerProfile/>}/>
+
+                <Route path="/google-success" element={<GoogleSuccess/>}/>
+
+                <Route path="/complete-profile" element={
+                    <ProtectedRoute>
+                        <ProfileCompletion/>
+                    </ProtectedRoute>
+                }/>
 
                 <Route path="/login" element={
                     <ProtectedRoute>

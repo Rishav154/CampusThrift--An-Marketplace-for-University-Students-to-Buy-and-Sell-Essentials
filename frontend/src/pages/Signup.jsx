@@ -11,7 +11,7 @@ import {
     Mail,
     Phone,
     School,
-    User
+    User,
 } from 'lucide-react';
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -247,6 +247,7 @@ export default function RegisterForm() {
 
                 {/* Google Button */}
                 <button
+                    onClick={() => window.location.href = `${import.meta.env.VITE_API_URL}/google`}
                     className="w-full flex items-center justify-center gap-3 font-semibold border border-gray-600 text-orange-400 py-2 rounded-md hover:bg-white hover:text-black transition-all">
                     <svg className="h-5 w-5" viewBox="0 0 533.5 544.3">
                         <path fill="#EA4335"
@@ -261,7 +262,6 @@ export default function RegisterForm() {
                     Continue with Google
                 </button>
 
-                {/* Login Redirect */}
                 <p className="mt-6 text-center text-base text-gray-500">
                     Already have an account? <Link to="/login" className="text-orange-400 underline">Log in</Link>
                 </p>

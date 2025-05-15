@@ -52,7 +52,7 @@ const Footer = () => {
                         <li><a href="mailto:rishav15045@gmail.com" className="hover:underline">Contact Developers</a>
                         </li>
                         <li><a href="mailto:rishav15045@gmail.com" className="hover:underline">Help Center</a></li>
-                        <li><Link to="/contactus" className="hover:underline">Contact Us</Link></li>
+                        <li><Link to="/contact-us" className="hover:underline">Contact Us</Link></li>
                     </ul>
                 </div>
 

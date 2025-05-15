@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         select: false,
+    },
+    isProfileComplete: {
+        type: Boolean,
+        default: false,
     }
 }, {timestamps: true});
 

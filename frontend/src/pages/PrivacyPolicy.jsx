@@ -17,9 +17,8 @@ function PrivacyPolicy() {
                 <h2 className="text-xl font-semibold mb-2">What We Collect</h2>
                 <ul className="list-disc list-inside space-y-1">
                     <li>Name</li>
-                    <li>Contact information including email address</li>
-                    <li>Demographic information (e.g., postcode, preferences, interests)</li>
-                    <li>Other relevant info for surveys/offers</li>
+                    <li>Contact information including email address and phone number</li>
+                    <li>Other relevant info for like student Course, Year of Graduation and University</li>
                 </ul>
             </section>
 
@@ -28,7 +27,6 @@ function PrivacyPolicy() {
                 <ul className="list-disc list-inside space-y-1">
                     <li>Internal record keeping</li>
                     <li>Improving products and services</li>
-                    <li>Sending promotional emails</li>
                     <li>Contacting for market research</li>
                     <li>Customizing the website to your interests</li>
                 </ul>

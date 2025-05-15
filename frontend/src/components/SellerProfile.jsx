@@ -1,15 +1,17 @@
-import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {PuffLoader} from "react-spinners";
 import {Card, CardContent, CardTitle} from "@/components/ui/card";
 import {Label} from "@/components/ui/label.jsx";
 import Navbar from "@/components/Navbar.jsx";
+import {ArrowLeft} from "lucide-react";
 
 function SellerProfile() {
     const {sellerId} = useParams();
     const [seller, setSeller] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchSeller = async () => {
@@ -38,6 +40,12 @@ function SellerProfile() {
     return (
         <>
             <Navbar showLoginButton={false}/>
+            <button
+                className="absolute top-30 left-20 text-gray-700 hover:text-orange-400 transition-colors flex items-center gap-1"
+                onClick={() => navigate(-1)}
+            >
+                <ArrowLeft className="h-7 w-7"/>
+            </button>
             <Card className="p-6 bg-transparent min-h-screen">
                 <div className="flex flex-col items-center px-4 sm:px-8 md:px-16 lg:px-32">
                     <div
@@ -68,7 +76,7 @@ function SellerProfile() {
                                 disabled
                                 value={
                                     seller?.fullname
-                                        ? `${seller.fullname.firstname} ${seller.fullname.lastname}`
+                                        ? `${seller.fullname.firstname} ${seller.fullname.lastname || ""}`
                                         : "Not available"
                                 }
                                 className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"

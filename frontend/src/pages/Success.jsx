@@ -15,16 +15,16 @@ function Success() {
     }, [])
 
     setTimeout(() => {
-        window.location.href = "/home"
+        window.location.href = "/profile/dashboard/my-orders"
     }, 3000)
 
     return (
         <>
             <Navbar showLoginButton={false}/>
             <div className="flex flex-col justify-center items-center w-screen h-screen bg-orange-50">
-                <h1 className="text-3xl sm:text-4xl font-bold">Payment Successfull</h1>
-                <Link to={"/home"} className={"underline text-sm sm:text-lg"}>
-                    Go to Home (Redirecting you in {count} seconds )
+                <h1 className="text-3xl sm:text-4xl font-bold">Payment Successful</h1>
+                <Link to={"/profile/dashboard/my-orders"} className={"underline text-sm sm:text-lg"}>
+                    Go to your Orders (Redirecting you in {count} seconds )
                 </Link>
             </div>
         </>

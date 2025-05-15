@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {ArrowLeft, Eye, EyeOff, LoaderCircle, Lock, LogIn, Mail} from 'lucide-react';
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -117,6 +117,7 @@ export default function LoginForm() {
                 </div>
 
                 <button
+                    onClick={() => window.location.href = `${import.meta.env.VITE_API_URL}/google`}
                     className="w-full flex items-center justify-center gap-3 font-semibold border border-gray-600 text-orange-400 py-2 rounded-md hover:bg-white hover:text-black transition-all">
                     <svg className="h-5 w-5" viewBox="0 0 533.5 544.3">
                         <path fill="#EA4335"
@@ -131,9 +132,14 @@ export default function LoginForm() {
                     Continue with Google
                 </button>
 
-                <p className="mt-6 text-center text-base text-gray-500">
+                <p className="my-3 text-center text-base text-gray-500">
                     Don't have an account?{' '}
-                    <a href="/signup" className="text-orange-400 underline">Sign up</a>
+                    <Link to="/signup" className="text-orange-400 underline">Sign up</Link>
+                </p>
+
+                <p className="text-gray-600 text-xs text-center -mb-7">
+                    By continuing to use Campus Thrift, you agree to all of our <Link to={"/all-policy"}
+                                                                                      className={"text-orange-400 underline"}>policies</Link>.
                 </p>
             </div>
         </div>

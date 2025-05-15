@@ -4,21 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Refactor CreateProduct form and add reset functionality">
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Solved major bug on My orders and Customer Order page">
+      <change afterPath="$PROJECT_DIR$/backend/passport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/AllPolicy.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/GoggleSuccess.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/ProfileCompletion.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/orderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/verifyToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/verifyToken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/productRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/productRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/authRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AllProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/AppSidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AppSidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/OrderData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OrderData.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/use-razorpay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/use-razorpay.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/CustomerOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CustomerOrders.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/HeaderDisplay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HeaderDisplay.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PrivacyPolicy.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PrivacyPolicy.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Success.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Success.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +150,9 @@
       <workItem from="1747101680252" duration="8819000" />
       <workItem from="1747139170301" duration="5346000" />
       <workItem from="1747195284666" duration="5641000" />
-      <workItem from="1747219728550" duration="6582000" />
+      <workItem from="1747219728550" duration="9253000" />
+      <workItem from="1747268738175" duration="19579000" />
+      <workItem from="1747306883120" duration="2993000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -237,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747144200078</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Solved major bug on My orders and Customer Order page">
+      <option name="closed" value="true" />
+      <created>1747226655862</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747226655862</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +277,8 @@
     <MESSAGE value="Added policy pages and updated footer,&#10;Added category based searching in home page" />
     <MESSAGE value="Added search functionality in navbar" />
     <MESSAGE value="Refactor CreateProduct form and add reset functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor CreateProduct form and add reset functionality" />
+    <MESSAGE value="Solved major bug on My orders and Customer Order page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solved major bug on My orders and Customer Order page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

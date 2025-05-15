@@ -91,6 +91,7 @@ export function AppSidebar({navbarHeight = "64px"}) {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>
+                <Button variant={"outline"} className={"border-black"}><Link to={"/all-policy"}>Terms & Policies</Link></Button>
                 <Button onClick={handleLogout}>Logout</Button>
             </SidebarFooter>
         </Sidebar>

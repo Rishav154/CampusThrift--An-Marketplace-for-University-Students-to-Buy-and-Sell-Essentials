@@ -8,7 +8,7 @@ function Home() {
     return (
         <>
             <div className={"bg-orange-50"}>
-                <Navbar showLoginButton={false}/>
+                <Navbar showLoginButton={false} showHomeButton={false}/>
                 <HeaderDisplay/>
                 <FilterMenu/>
                 <ProductList/>

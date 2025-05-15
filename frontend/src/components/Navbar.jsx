@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {LogIn, Menu, PlusCircle, Search, User, X} from "lucide-react";
+import {Home, LogIn, Menu, PlusCircle, Search, User, X} from "lucide-react";
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import axios from "axios";
 import {setProducts} from "@/redux/slices/productSlice.js";
 
-function Navbar({showLoginButton = true, showProfileButton = true}) {
+function Navbar({showLoginButton = true, showProfileButton = true, showHomeButton = true}) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
@@ -39,7 +39,7 @@ function Navbar({showLoginButton = true, showProfileButton = true}) {
             <div className="max-w-full mx-auto flex items-center justify-between h-16">
                 {/* Logo and Brand */}
                 <div className="flex items-center space-x-2">
-                    <Link to="/home">
+                    <Link to="/">
                         <span className="text-lg font-bold">CampusThrift</span>
                     </Link>
                 </div>
@@ -62,6 +62,15 @@ function Navbar({showLoginButton = true, showProfileButton = true}) {
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-4">
+                    {showHomeButton && (
+                        <Link
+                            to="/home"
+                            className="transition-all duration-500 ease-in-out bg-white hover:bg-green-500 hover:text-white backdrop-blur-sm text-gray-800 font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-300/40"
+                        >
+                            <Home className="h-5 w-5"/>
+                            <span>Home</span>
+                        </Link>
+                    )}
                     <Link
                         to="/profile/dashboard/create-product"
                         className="whitespace-nowrap transition-all duration-500 ease-in-out bg-green-500 hover:bg-white hover:text-black backdrop-blur-sm text-white font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-400/40"
@@ -123,6 +132,14 @@ function Navbar({showLoginButton = true, showProfileButton = true}) {
                         />
                     </div>
                     <div className="flex flex-col space-y-4 px-4">
+                        {showHomeButton && (
+                            <Link
+                                className="transition-all duration-200 ease-in-out bg-white bg-opacity-20 hover:bg-white hover:bg-opacity-30 text-gray-800 font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-300/40"
+                                to="/home">
+                                <Home className="h-5 w-5"/>
+                                <span>Home</span>
+                            </Link>
+                        )}
                         <Link
                             className="transition-all duration-200 ease-in-out bg-green-500 bg-opacity-40 hover:bg-green-500 hover:bg-opacity-60 text-white font-medium py-2 px-4 rounded-lg flex items-center space-x-2 shadow-sm border border-green-400/40"
                             to="/sell">
