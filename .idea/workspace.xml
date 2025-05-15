@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Integrated Google OAuth for user authentication and added AllPolicy component">
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Refactor product fetching logic to exclude blacklisted products">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/HeaderDisplay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HeaderDisplay.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +130,10 @@
       <workItem from="1747195284666" duration="5641000" />
       <workItem from="1747219728550" duration="9253000" />
       <workItem from="1747268738175" duration="19579000" />
-      <workItem from="1747306883120" duration="4798000" />
+      <workItem from="1747306883120" duration="5175000" />
+      <workItem from="1747312331429" duration="20000" />
+      <workItem from="1747312553139" duration="236000" />
+      <workItem from="1747313455243" duration="747000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -244,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747310315165</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Refactor product fetching logic to exclude blacklisted products">
+      <option name="closed" value="true" />
+      <created>1747312044338</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747312044338</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +276,8 @@
     <MESSAGE value="Refactor CreateProduct form and add reset functionality" />
     <MESSAGE value="Solved major bug on My orders and Customer Order page" />
     <MESSAGE value="Integrated Google OAuth for user authentication and added AllPolicy component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Integrated Google OAuth for user authentication and added AllPolicy component" />
+    <MESSAGE value="Refactor product fetching logic to exclude blacklisted products" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor product fetching logic to exclude blacklisted products" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

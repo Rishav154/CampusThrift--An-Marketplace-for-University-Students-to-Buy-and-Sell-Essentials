@@ -19,7 +19,6 @@ app.use(cors({
     credentials: true
 }));
 
-// Session and Passport
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -28,7 +27,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Connect to DB
 connectToDB();
 
 // Health check
@@ -40,7 +38,6 @@ readdirSync("./routes").forEach((route) => {
     app.use("/api", require(`./routes/${route}`));
 });
 
-// Start server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

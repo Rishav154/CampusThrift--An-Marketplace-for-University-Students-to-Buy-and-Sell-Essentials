@@ -4,7 +4,7 @@ import {useRef} from "react"
 
 function HeaderDisplay() {
     const plugin = useRef(
-        Autoplay({delay: 6000, stopOnInteraction: false})
+        Autoplay({delay: 2500, stopOnInteraction: false})
     )
 
     const imageData = [

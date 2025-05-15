@@ -132,7 +132,7 @@ export default function LoginForm() {
                     Continue with Google
                 </button>
 
-                <p className="my-3 text-center text-base text-gray-500">
+                <p className="my-4 text-center text-base text-gray-500">
                     Don't have an account?{' '}
                     <Link to="/signup" className="text-orange-400 underline">Sign up</Link>
                 </p>
