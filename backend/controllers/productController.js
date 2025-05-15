@@ -86,14 +86,14 @@ const getProducts = async (req, res) => {
         page = parseInt(page) || 1;
         limit = parseInt(limit) || 9;
 
-        let query = {};
+        let query = {
+            blacklisted: false
+        };
 
-        if (category) {
+        if (category && category !== "all") {
             query.category = category.charAt(0).toUpperCase() + category.slice(1);
         }
-        if (category === "all") {
-            delete query.category;
-        }
+
         if (search) {
             query.name = {$regex: search, $options: "i"};
         }
@@ -101,12 +101,13 @@ const getProducts = async (req, res) => {
         if (price > 0) {
             query.price = {$lte: price};
         }
+
         const totalProducts = await Product.countDocuments(query);
         const totalPages = Math.ceil(totalProducts / limit);
         const products = await Product.find(query)
             .select("name price images description color category blacklisted")
             .limit(limit)
-            .skip((page - 1) * limit)
+            .skip((page - 1) * limit);
 
         let newProductsArray = [];
         products.forEach((product) => {
@@ -114,11 +115,8 @@ const getProducts = async (req, res) => {
             productObj.image = productObj.images[0];
             delete productObj.images;
             newProductsArray.push(productObj);
-        })
+        });
 
-        if (!products) {
-            return res.status(404).json({success: false, message: "No products found"});
-        }
         return res.status(200).json({
             success: true,
             message: "Products fetched successfully",
@@ -143,9 +141,11 @@ const getProductByName = async (req, res) => {
                 $regex: new RegExp(name, "i"),
             }
         }).populate("seller", "fullname createdAt");
+
         if (!product) {
             return res.status(404).json({success: false, message: "Product not found"});
         }
+
         return res.status(200).json({success: true, message: "Product found", data: product});
     } catch (err) {
         return res.status(500).json({success: false, message: err.message});

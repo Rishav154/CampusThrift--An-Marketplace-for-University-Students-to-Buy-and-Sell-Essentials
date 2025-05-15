@@ -58,7 +58,7 @@ function MyProducts() {
             );
 
             const {message} = res.data;
-            toast.success(`Success ${message}`);
+            toast.success(`${message}`);
 
             // Refresh product list after updating blacklist status
             const getMyProducts = async () => {
