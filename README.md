@@ -31,7 +31,6 @@ CampusThrift is a peer-to-peer platform that enables university students to buy 
 ## 📸 Features
 - Secure Google Sign-In
 - Buyer/Seller Profiles
-- Real-time Chat
 - Product Search & Filtering
 - Order Management Dashboard
 - Razorpay Integration for Payments
