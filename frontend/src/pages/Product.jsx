@@ -23,7 +23,6 @@ function Product() {
                 setProduct(data);
             } catch (err) {
                 console.error("Error fetching product:", err);
-                // Handle error appropriately
             } finally {
                 setIsLoading(false);
             }
@@ -33,7 +32,6 @@ function Product() {
     }, [productName]);
 
     const handleBuyNow = () => {
-        // Navigate to checkout with the product name in the URL
         navigate(`/checkout/${productName}`);
     };
 
@@ -85,13 +83,17 @@ function Product() {
                     <div className="sm:w-[50%] lg:w-[30%]">
                         <div className="pb-5">
                             <h2 className="font-extrabold text-2xl capitalize">{product?.name}</h2>
-                            <p className="text-sm my-2">{product?.description}</p>
+                            <p className="text-sm my-2">{product?.shortDescription}</p>
                         </div>
                         <div className="py-5 border-t border-b">
-                            <h3 className="font-bold text-2xl">₹{product?.price}</h3>
+                            <h3 className="font-bold text-2xl">₹{product?.price.toLocaleString()}</h3>
                         </div>
                         <div className="py-5 border-b">
-                            <h3 className="font-bold text-2xl">Description</h3>
+                            <p className="text-lg my-2"><span
+                                className={"font-bold text-xl"}>Color:</span>{" "}{product?.color}</p>
+                        </div>
+                        <div className="py-5 border-b">
+                            <h3 className="font-bold text-xl">Description</h3>
                             <p className="text-base my-2">{product?.description}</p>
                         </div>
                         <h4 className="font-bold text-lg mt-4 mb-4 text-gray-800">Seller :</h4>

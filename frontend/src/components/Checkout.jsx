@@ -165,7 +165,7 @@ function Checkout() {
                             <div className="space-y-2 mb-4">
                                 <p className="flex justify-between items-center">
                                     <span className="font-semibold text-slate-600">Subtotal:</span>
-                                    <span className="font-bold">₹{subtotal}</span>
+                                    <span className="font-bold">₹{subtotal.toLocaleString()}</span>
                                 </p>
                                 <p className="flex justify-between items-center">
                                     <span className="font-semibold text-slate-600">Platform Fee:</span>
@@ -177,7 +177,7 @@ function Checkout() {
 
                             <p className="flex justify-between items-center text-lg">
                                 <span className="font-bold">Total:</span>
-                                <span className="font-bold">₹{total}</span>
+                                <span className="font-bold">₹{total.toLocaleString()}</span>
                             </p>
                         </Card>
                     </div>

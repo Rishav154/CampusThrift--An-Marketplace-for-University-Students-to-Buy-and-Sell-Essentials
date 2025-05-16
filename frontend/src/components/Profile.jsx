@@ -2,9 +2,17 @@ import {Card, CardContent, CardTitle} from "@/components/ui/card";
 import {Label} from "@/components/ui/label.jsx";
 import {useSelector} from "react-redux";
 import {PuffLoader} from "react-spinners";
+import {useNavigate} from "react-router-dom";
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
+import {Pencil} from "lucide-react";
+
 
 function Profile() {
+
+    const navigate = useNavigate();
+
     const user = useSelector((state) => state.auth.user);
+
     if (!user) {
         return (
             <div className="flex justify-center items-center h-screen m-[-100px]">
@@ -15,6 +23,24 @@ function Profile() {
 
     return (
         <Card className="p-6 bg-transparent">
+            <div className="flex justify-end">
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <button
+                                onClick={() => navigate("/profile/dashboard/settings")}
+                                className="p-2 rounded-full hover:bg-gray-100 transition"
+                            >
+                                <Pencil size={20} className="text-gray-600"/>
+                            </button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Edit Profile</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+            </div>
+
             <div className="flex flex-col items-center px-4 sm:px-8 md:px-16 lg:px-32">
                 <div className="relative h-60 w-60 overflow-hidden rounded-full border-4 border-white shadow-xl mb-4">
                     <div className="absolute inset-0 rounded-full overflow-hidden">

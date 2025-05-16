@@ -16,6 +16,7 @@ function CreateProduct() {
     const [images, setImages] = useState([]);
     const fileInputRef = useRef(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [shortDescription, setShortDescription] = useState("");
     const {handleErrorLogout} = useErrorLogout()
     const formRef = useRef(null);
 
@@ -44,17 +45,24 @@ function CreateProduct() {
     const onSubmit = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
-        const description = e.target.description.value;
+        const shortDescription = e.target.shortDescription.value;
+        const longDescription = e.target.description.value;
         const price = e.target.price.value;
         const color = e.target.color.value;
         const category = e.target.category.value;
 
-        if (!name || !description || !price || !category || images.length === 0) {
+        if (!name || !shortDescription || !longDescription || !price || !category || images.length === 0) {
             toast.error("Please fill all the fields");
             return;
         }
 
-        if (name.trim() === "" || description.trim() === "" || price <= 0 || category.trim() === "") {
+        if (
+            name.trim() === "" ||
+            shortDescription.trim() === "" ||
+            longDescription.trim() === "" ||
+            price <= 0 ||
+            category.trim() === ""
+        ) {
             toast.error("Fields cannot be empty");
             return;
         }
@@ -67,7 +75,8 @@ function CreateProduct() {
         setIsLoading(true);
         const formData = new FormData();
         formData.append("name", name);
-        formData.append("description", description);
+        formData.append("shortDescription", shortDescription);
+        formData.append("description", longDescription);
         formData.append("price", price);
         formData.append("color", color);
         formData.append("category", category);
@@ -86,7 +95,6 @@ function CreateProduct() {
                 }
             )
             toast.success(`Success\n${res.data.message}`);
-            // Reset form after successful submission
             resetForm();
         } catch (error) {
             return handleErrorLogout(error, "Error uploading product");
@@ -94,6 +102,7 @@ function CreateProduct() {
             setIsLoading(false);
         }
     }
+
 
     return (
         <>
@@ -114,12 +123,35 @@ function CreateProduct() {
                                        required/>
                             </div>
                             <div className="space-y-4 mb-5">
-                                <Label htmlFor="description" className="font-medium">Description</Label>
-                                <Textarea rows={4} id="description" name="description"
-                                          placeholder="Enter Product Description"
-                                          className="mt-1 resize-none"
-                                          required/>
+                                <Label htmlFor="shortDescription" className="font-medium">
+                                    Short Description
+                                    <span className="text-xs text-gray-500 ml-3">{shortDescription.length}/100 characters</span>
+                                </Label>
+                                <Textarea
+                                    rows="1"
+                                    id="shortDescription"
+                                    name="shortDescription"
+                                    placeholder="Enter a brief description"
+                                    className="mt-1 h-10 resize-none"
+                                    maxLength={100}
+                                    value={shortDescription}
+                                    onChange={(e) => setShortDescription(e.target.value)}
+                                    required
+                                />
                             </div>
+
+                            <div className="space-y-4 mb-5">
+                                <Label htmlFor="description" className="font-medium">Description</Label>
+                                <Textarea
+                                    rows="7"
+                                    id="description"
+                                    name="description"
+                                    placeholder="Enter detailed Description"
+                                    className="mt-1 h-32 resize-none"
+                                    required
+                                />
+                            </div>
+
                             <div className="space-y-4 mb-5">
                                 <Label htmlFor="price" className="font-medium">Price</Label>
                                 <Input id="price" name="price" type="number" placeholder="0.00" step="0.01"

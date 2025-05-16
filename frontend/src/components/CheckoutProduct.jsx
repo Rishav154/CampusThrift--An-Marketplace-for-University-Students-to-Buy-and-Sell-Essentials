@@ -67,7 +67,7 @@ function CheckoutProduct() {
             <span className="font-semibold">
               Price:{" "}
                 <span className="font-medium text-gray-500">
-                ₹{product.price}
+                ₹{product.price.toLocaleString()}
               </span>
             </span>
                     </p>

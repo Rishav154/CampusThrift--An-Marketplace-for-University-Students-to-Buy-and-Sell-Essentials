@@ -150,7 +150,7 @@ function OrderData({
                             </div>
                             <div className={"flex sm:flex-col gap-3 sm:gap-0 mt-2 sm:mt-0 sm:items-center"}>
                                 <h2 className={"text-md sm:text-xl font-bold flex items-center"}>
-                                    <IndianRupee size={18}/>{product?.id?.price}
+                                    <IndianRupee size={18}/>{product?.id?.price.toLocaleString()}
                                 </h2>
                             </div>
                         </div>

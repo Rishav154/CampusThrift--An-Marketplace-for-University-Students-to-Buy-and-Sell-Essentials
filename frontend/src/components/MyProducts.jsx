@@ -19,6 +19,8 @@ function MyProducts() {
     const [searchTerm, setSearchTerm] = useState("")
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
+    const [shortDescription, setShortDescription] = useState("");
+
 
     const {products} = useSelector(state => state.product);
     const {handleErrorLogout} = useErrorLogout()
@@ -60,7 +62,6 @@ function MyProducts() {
             const {message} = res.data;
             toast.success(`${message}`);
 
-            // Refresh product list after updating blacklist status
             const getMyProducts = async () => {
                 const res = await axios.get(
                     `${import.meta.env.VITE_API_URL}/get-my-products?category=${category}&search=${searchTerm}`,
@@ -133,8 +134,10 @@ function MyProducts() {
 
     const handleEdit = (product) => {
         setEditingProduct(product);
+        setShortDescription(product.shortDescription || "");
         setIsEditModalOpen(true);
-    }
+    };
+
 
     const handleEditSubmit = async (e) => {
         e.preventDefault();
@@ -142,6 +145,7 @@ function MyProducts() {
         const updatedProduct = {
             ...editingProduct,
             name: formData.get("name"),
+            shortDescription,
             description: formData.get("description"),
             price: formData.get("price"),
             color: formData.get("color"),
@@ -158,6 +162,7 @@ function MyProducts() {
             const res = await axios.put(`${import.meta.env.VITE_API_URL}/update-product/${editingProduct._id}`,
                 {
                     name: updatedProduct.name,
+                    shortDescription: updatedProduct.shortDescription,
                     description: updatedProduct.description,
                     price: updatedProduct.price,
                     color: updatedProduct.color,
@@ -245,7 +250,7 @@ function MyProducts() {
 
                                     <CardContent className={"flex-grow px-4 pt-4"}>
                                         <h3 className={"text-lg font-semibold mb-2"}>{product.name}</h3>
-                                        <p className={"text-sm text-gray-600 mb-4 line-clamp-2"}>{product.description}</p>
+                                        <p className={"text-sm text-gray-600 mb-4 line-clamp-2"}>{product.shortDescription}</p>
                                         <p className={"text-lg font-bold"}>₹{product.price.toLocaleString()}</p>
                                     </CardContent>
 
@@ -289,6 +294,24 @@ function MyProducts() {
                                     <Label htmlFor={"name"}>Name</Label>
                                     <Input id={"name"} name={"name"} defaultValue={editingProduct?.name}/>
                                 </div>
+                                <div className="space-y-4 mb-5">
+                                    <Label htmlFor="shortDescription" className="font-medium">
+                                        Short Description
+                                        <span className="text-xs text-gray-500 ml-3">{shortDescription.length}/100 characters</span>
+                                    </Label>
+                                    <Textarea
+                                        rows="1"
+                                        id="shortDescription"
+                                        name="shortDescription"
+                                        placeholder="Enter a brief description"
+                                        className="mt-1 h-10 resize-none"
+                                        maxLength={100}
+                                        value={shortDescription}
+                                        onChange={(e) => setShortDescription(e.target.value)}
+                                        required
+                                    />
+                                </div>
+
                                 <div className={"grid gap-4 items-center"}>
                                     <Label htmlFor={"description"}>Description</Label>
                                     <Textarea id={"description"} name={"description"}

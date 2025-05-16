@@ -95,7 +95,8 @@ function CustomerOrders() {
                                         <div className="grid space-y-1 gap-2">
                                             <p className="flex justify-between gap-2 items-center px-3">
                                                 <span className="font-bold">Total:</span>
-                                                <span className="text-sm text-gray-500">₹{item?.amount}</span>
+                                                <span
+                                                    className="text-sm text-gray-500">₹{item?.amount.toLocaleString()}</span>
                                             </p>
                                             <div className="flex justify-between gap-2 items-start px-3">
                                                 <span className="font-bold">Address:</span>

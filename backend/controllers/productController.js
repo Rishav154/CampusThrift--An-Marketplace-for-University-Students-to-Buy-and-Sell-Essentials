@@ -1,17 +1,18 @@
+// controllers/productController.js
+
 const Product = require("../models/Product");
 const cloudinary = require("../utils/cloudinary");
 const User = require("../models/User");
 
 const createProduct = async (req, res) => {
     try {
-        const {name, price, description, color, category} = req.body;
+        const {name, shortDescription, price, description, color, category} = req.body;
 
         const uploadedImages = [];
         for (const file of req.files) {
             const result = await cloudinary.uploader.upload(file.path, {
                 folder: "products",
             });
-
             uploadedImages.push({
                 url: result.secure_url,
                 id: result.public_id,
@@ -20,6 +21,7 @@ const createProduct = async (req, res) => {
 
         const product = new Product({
             name,
+            shortDescription,
             price,
             description,
             color,
@@ -28,14 +30,16 @@ const createProduct = async (req, res) => {
             seller: req.user._id,
         });
 
-
         await product.save();
-        return res.status(200).json({success: true, message: "Product listed successfully", data: product});
-
+        return res.status(200).json({
+            success: true,
+            message: "Product listed successfully",
+            data: product,
+        });
     } catch (err) {
         res.status(500).json({success: false, message: err.message});
     }
-}
+};
 
 const getSellerById = async (req, res) => {
     try {
@@ -51,19 +55,23 @@ const getSellerById = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
-        const {...data} = req.body;
         const {id} = req.params;
+        const data = req.body;
 
         const product = await Product.findByIdAndUpdate(id, data, {new: true});
         if (!product) {
             return res.status(404).json({success: false, message: "Product not found"});
         }
 
-        return res.status(200).json({success: true, message: "Product updated successfully", data: product});
+        return res.status(200).json({
+            success: true,
+            message: "Product updated successfully",
+            data: product,
+        });
     } catch (err) {
         return res.status(500).json({success: false, message: err.message});
     }
-}
+};
 
 const deleteProduct = async (req, res) => {
     try {
@@ -78,7 +86,7 @@ const deleteProduct = async (req, res) => {
     } catch (err) {
         return res.status(500).json({success: false, message: err.message});
     }
-}
+};
 
 const getProducts = async (req, res) => {
     try {
@@ -86,9 +94,7 @@ const getProducts = async (req, res) => {
         page = parseInt(page) || 1;
         limit = parseInt(limit) || 9;
 
-        let query = {
-            blacklisted: false
-        };
+        let query = {blacklisted: false};
 
         if (category && category !== "all") {
             query.category = category.charAt(0).toUpperCase() + category.slice(1);
@@ -104,17 +110,17 @@ const getProducts = async (req, res) => {
 
         const totalProducts = await Product.countDocuments(query);
         const totalPages = Math.ceil(totalProducts / limit);
+
         const products = await Product.find(query)
-            .select("name price images description color category blacklisted")
+            .select("name price shortDescription images description color category blacklisted")
             .limit(limit)
             .skip((page - 1) * limit);
 
-        let newProductsArray = [];
-        products.forEach((product) => {
+        const newProductsArray = products.map(product => {
             const productObj = product.toObject();
             productObj.image = productObj.images[0];
             delete productObj.images;
-            newProductsArray.push(productObj);
+            return productObj;
         });
 
         return res.status(200).json({
@@ -131,15 +137,13 @@ const getProducts = async (req, res) => {
     } catch (err) {
         return res.status(500).json({success: false, message: err.message});
     }
-}
+};
 
 const getProductByName = async (req, res) => {
     const {name} = req.params;
     try {
         const product = await Product.findOne({
-            name: {
-                $regex: new RegExp(name, "i"),
-            }
+            name: {$regex: new RegExp(name, "i")}
         }).populate("seller", "fullname createdAt");
 
         if (!product) {
@@ -150,7 +154,7 @@ const getProductByName = async (req, res) => {
     } catch (err) {
         return res.status(500).json({success: false, message: err.message});
     }
-}
+};
 
 const getMyProducts = async (req, res) => {
     try {
@@ -158,9 +162,7 @@ const getMyProducts = async (req, res) => {
         page = parseInt(page) || 1;
         limit = parseInt(limit) || 9;
 
-        let query = {
-            seller: req.user._id // Filter by the current logged-in user's ID
-        };
+        let query = {seller: req.user._id};
 
         if (category && category !== "all") {
             query.category = category.charAt(0).toUpperCase() + category.slice(1);
@@ -178,16 +180,15 @@ const getMyProducts = async (req, res) => {
         const totalPages = Math.ceil(totalProducts / limit);
 
         const products = await Product.find(query)
-            .select("name price images description color category blacklisted")
+            .select("name price shortDescription images description color category blacklisted")
             .limit(limit)
             .skip((page - 1) * limit);
 
-        let newProductsArray = [];
-        products.forEach((product) => {
+        const newProductsArray = products.map(product => {
             const productObj = product.toObject();
             productObj.image = productObj.images[0];
             delete productObj.images;
-            newProductsArray.push(productObj);
+            return productObj;
         });
 
         return res.status(200).json({
@@ -221,7 +222,7 @@ const blacklistProduct = async (req, res) => {
     } catch (err) {
         return res.status(500).json({success: false, message: err.message});
     }
-}
+};
 
 const removeBlacklistProduct = async (req, res) => {
     const {id} = req.params;
@@ -238,7 +239,7 @@ const removeBlacklistProduct = async (req, res) => {
     } catch (err) {
         return res.status(500).json({success: false, message: err.message});
     }
-}
+};
 
 module.exports = {
     createProduct,
@@ -249,5 +250,5 @@ module.exports = {
     getProductByName,
     getMyProducts,
     blacklistProduct,
-    removeBlacklistProduct
+    removeBlacklistProduct,
 };
