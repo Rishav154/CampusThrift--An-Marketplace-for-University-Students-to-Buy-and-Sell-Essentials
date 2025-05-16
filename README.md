@@ -13,7 +13,7 @@ CampusThrift is a peer-to-peer platform that enables university students to buy 
 - **Email:** `johndoe@gmail.com`  
 - **Password:** `demo_public_password`
 
-> ⚠️ Note: Demo data is reset periodically. Please refrain from changing passwords or submitting sensitive information.
+> ⚠️ Note: Demo data is reset periodically. Please refrain from changing passwords or submitting sensitive information. 
 
 ---
 
