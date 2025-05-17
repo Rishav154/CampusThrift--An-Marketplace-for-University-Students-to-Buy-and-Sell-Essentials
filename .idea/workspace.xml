@@ -6,33 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Enhance styling for responsive design and better user experience">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AppSidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AppSidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/HeaderDisplay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HeaderDisplay.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/AdminLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/OrderData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OrderData.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/OrderProductTile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OrderProductTile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Settings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Settings.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/CustomerOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CustomerOrders.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PrivacyPolicy.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PrivacyTerms.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProfileCompletion.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProfileCompletion.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +135,7 @@
       <workItem from="1747317178717" duration="293000" />
       <workItem from="1747328585512" duration="1724000" />
       <workItem from="1747356306638" duration="8083000" />
-      <workItem from="1747442026457" duration="11265000" />
+      <workItem from="1747442026457" duration="11719000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -300,7 +273,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747363000038</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Enhance styling for responsive design and better user experience">
+      <option name="closed" value="true" />
+      <created>1747453552103</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1747453552103</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Enhance styling for responsive design and better user experience">
+      <option name="closed" value="true" />
+      <created>1747453800788</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1747453800789</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

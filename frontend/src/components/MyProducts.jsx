@@ -21,10 +21,13 @@ function MyProducts() {
     const [editingProduct, setEditingProduct] = useState(null);
     const [shortDescription, setShortDescription] = useState("");
 
-
     const {products} = useSelector(state => state.product);
     const {handleErrorLogout} = useErrorLogout()
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setProducts([]));
+    }, [dispatch]);
 
     useEffect(() => {
         const getMyProducts = async () => {
@@ -112,7 +115,6 @@ function MyProducts() {
                 </div>
             ));
 
-            // Refresh product list after blacklisting
             const getMyProducts = async () => {
                 const res = await axios.get(
                     `${import.meta.env.VITE_API_URL}/get-my-products?category=${category}&search=${searchTerm}`,
@@ -137,7 +139,6 @@ function MyProducts() {
         setShortDescription(product.shortDescription || "");
         setIsEditModalOpen(true);
     };
-
 
     const handleEditSubmit = async (e) => {
         e.preventDefault();
