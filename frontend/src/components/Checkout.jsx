@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import useRazorpay from "@/hooks/use-razorpay.jsx";
 import {PuffLoader} from "react-spinners";
-import axios from "axios"; // Make sure to import axios
+import axios from "axios";
 
 function Checkout() {
     const [billingInfo, setBillingInfo] = useState({
@@ -148,124 +148,122 @@ function Checkout() {
         <div className="bg-orange-50 min-h-screen">
             <Navbar showLoginButton={false}/>
 
-            <div className="container mx-auto py-8 px-4">
-                <h1 className="text-2xl font-bold mb-6">Checkout</h1>
+            <div className="w-[95%] mx-auto py-4 sm:py-6 md:py-8 px-2 sm:px-4 max-w-6xl">
+                <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Checkout</h1>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2">
-                        <Card className="p-6 shadow-md">
-                            <h2 className="text-xl font-medium mb-4">Order Summary</h2>
+                <div className="flex flex-col space-y-6 md:space-y-8">
+                    <Card className="p-4 sm:p-6 shadow-md">
+                        <h2 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4">Order Summary</h2>
 
-                            <div className="mb-6">
-                                <CheckoutProduct/>
-                            </div>
+                        <div className="mb-4 sm:mb-6">
+                            <CheckoutProduct/>
+                        </div>
 
-                            <hr className="my-4"/>
+                        <hr className="my-3 sm:my-4"/>
 
-                            <div className="space-y-2 mb-4">
-                                <p className="flex justify-between items-center">
-                                    <span className="font-semibold text-slate-600">Subtotal:</span>
-                                    <span className="font-bold">₹{subtotal.toLocaleString()}</span>
-                                </p>
-                                <p className="flex justify-between items-center">
-                                    <span className="font-semibold text-slate-600">Platform Fee:</span>
-                                    <span className="font-bold">₹{platformFee}</span>
-                                </p>
-                            </div>
-
-                            <hr className="my-4"/>
-
-                            <p className="flex justify-between items-center text-lg">
-                                <span className="font-bold">Total:</span>
-                                <span className="font-bold">₹{total.toLocaleString()}</span>
+                        <div className="space-y-2 mb-3 sm:mb-4">
+                            <p className="flex justify-between items-center">
+                                <span className="font-semibold text-slate-600">Subtotal:</span>
+                                <span className="font-bold">₹{subtotal.toLocaleString()}</span>
                             </p>
-                        </Card>
-                    </div>
+                            <p className="flex justify-between items-center">
+                                <span className="font-semibold text-slate-600">Platform Fee:</span>
+                                <span className="font-bold">₹{platformFee}</span>
+                            </p>
+                        </div>
 
-                    <div className="lg:col-span-1">
-                        <Card className="p-6 shadow-md">
-                            <h2 className="text-xl font-medium mb-4">Billing Information</h2>
+                        <hr className="my-3 sm:my-4"/>
 
-                            <div className="space-y-4">
-                                <div>
-                                    <Label htmlFor="name">Full Name</Label>
-                                    <Input
-                                        id="name"
-                                        placeholder="John Doe"
-                                        value={billingInfo.name}
-                                        onChange={handleInputChange}
-                                        className="w-full mt-1"
-                                    />
-                                </div>
+                        <p className="flex justify-between items-center text-base sm:text-lg">
+                            <span className="font-bold">Total:</span>
+                            <span className="font-bold">₹{total.toLocaleString()}</span>
+                        </p>
+                    </Card>
 
-                                <div>
-                                    <Label htmlFor="email">Email Address</Label>
-                                    <Input
-                                        id="email"
-                                        type="email"
-                                        placeholder="your@email.com"
-                                        value={billingInfo.email}
-                                        onChange={handleInputChange}
-                                        className="w-full mt-1"
-                                    />
-                                </div>
+                    <Card className="p-4 sm:p-6 shadow-md">
+                        <h2 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4">Billing Information</h2>
 
-                                <div>
-                                    <Label htmlFor="phone">Phone Number</Label>
-                                    <Input
-                                        id="phone"
-                                        placeholder="98xxxxxx10"
-                                        value={billingInfo.phone}
-                                        onChange={handleInputChange}
-                                        className="w-full mt-1"
-                                    />
-                                </div>
-
-                                <div>
-                                    <Label htmlFor="address">Pickup Location</Label>
-                                    <Textarea
-                                        id="address"
-                                        rows="4"
-                                        placeholder="Enter the pickup location."
-                                        value={billingInfo.address}
-                                        onChange={handleInputChange}
-                                        className="w-full mt-1"
-                                    />
-                                </div>
-
-                                <div className="mt-4">
-                                    <Label className="text-base font-medium mb-2 block">Payment Method</Label>
-                                    <RadioGroup
-                                        value={paymentMethod}
-                                        onValueChange={setPaymentMethod}
-                                        className="flex flex-col space-y-2"
-                                    >
-                                        <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="online" id="online"/>
-                                            <Label htmlFor="online" className="font-normal">Online Payment</Label>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="cod" id="cod"/>
-                                            <Label htmlFor="cod" className="font-normal">Cash on Delivery</Label>
-                                        </div>
-                                    </RadioGroup>
-                                </div>
+                        <div className="space-y-3 sm:space-y-4">
+                            <div>
+                                <Label htmlFor="name" className="text-sm sm:text-base">Full Name</Label>
+                                <Input
+                                    id="name"
+                                    placeholder="John Doe"
+                                    value={billingInfo.name}
+                                    onChange={handleInputChange}
+                                    className="w-full mt-1 h-10 sm:h-11"
+                                />
                             </div>
 
-                            <Button
-                                onClick={handlePayment}
-                                className="w-full mt-6"
-                                disabled={isProcessing}
-                            >
-                                {isProcessing ? (
-                                    <div className="flex items-center gap-2">
-                                        <PuffLoader color="white" size={30}/>
-                                        Processing...
+                            <div>
+                                <Label htmlFor="email" className="text-sm sm:text-base">Email Address</Label>
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    placeholder="your@email.com"
+                                    value={billingInfo.email}
+                                    onChange={handleInputChange}
+                                    className="w-full mt-1 h-10 sm:h-11"
+                                />
+                            </div>
+
+                            <div>
+                                <Label htmlFor="phone" className="text-sm sm:text-base">Phone Number</Label>
+                                <Input
+                                    id="phone"
+                                    placeholder="98xxxxxx10"
+                                    value={billingInfo.phone}
+                                    onChange={handleInputChange}
+                                    className="w-full mt-1 h-10 sm:h-11"
+                                />
+                            </div>
+
+                            <div>
+                                <Label htmlFor="address" className="text-sm sm:text-base">Pickup Location</Label>
+                                <Textarea
+                                    id="address"
+                                    rows="3"
+                                    placeholder="Enter the pickup location."
+                                    value={billingInfo.address}
+                                    onChange={handleInputChange}
+                                    className="w-full mt-1"
+                                />
+                            </div>
+
+                            <div className="mt-3 sm:mt-4">
+                                <Label className="text-sm sm:text-base font-medium mb-2 block">Payment Method</Label>
+                                <RadioGroup
+                                    value={paymentMethod}
+                                    onValueChange={setPaymentMethod}
+                                    className="flex flex-col space-y-2"
+                                >
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="online" id="online"/>
+                                        <Label htmlFor="online" className="font-normal text-sm sm:text-base">Online
+                                            Payment</Label>
                                     </div>
-                                ) : paymentMethod === "cod" ? "Place Order (COD)" : "Proceed to Payment"}
-                            </Button>
-                        </Card>
-                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="cod" id="cod"/>
+                                        <Label htmlFor="cod" className="font-normal text-sm sm:text-base">Cash on
+                                            Delivery</Label>
+                                    </div>
+                                </RadioGroup>
+                            </div>
+                        </div>
+
+                        <Button
+                            onClick={handlePayment}
+                            className="w-full mt-5 sm:mt-6 h-12 text-base sm:text-lg"
+                            disabled={isProcessing}
+                        >
+                            {isProcessing ? (
+                                <div className="flex items-center justify-center gap-2">
+                                    <PuffLoader color="white" size={24}/>
+                                    <span>Processing...</span>
+                                </div>
+                            ) : paymentMethod === "cod" ? "Place Order (COD)" : "Proceed to Payment"}
+                        </Button>
+                    </Card>
                 </div>
             </div>
         </div>

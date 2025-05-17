@@ -22,7 +22,7 @@ import Settings from "@/components/Settings.jsx";
 import AllPolicy from "@/components/AllPolicy.jsx";
 
 import TermsAndConditions from "@/pages/TermsAndConditions.jsx";
-import PrivacyPolicy from "@/pages/PrivacyPolicy.jsx";
+import PrivacyTerms from "@/pages/PrivacyTerms.jsx";
 import ShippingPolicy from "@/pages/ShippingPolicy.jsx";
 import CancellationsAndRefunds from "@/pages/CancellationsAndRefunds.jsx";
 import ContactUs from "@/pages/ContactUs.jsx";
@@ -44,7 +44,7 @@ function App() {
                 <Route path="/product/:productName" element={<Product/>}/>
                 <Route path="/success" element={<Success/>}/>
                 <Route path="/termsandconditions" element={<TermsAndConditions/>}/>
-                <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+                <Route path="/privacy-policy" element={<PrivacyTerms/>}/>
                 <Route path="/shipping-policy" element={<ShippingPolicy/>}/>
                 <Route path="/cancellation-and-refund-policy" element={<CancellationsAndRefunds/>}/>
                 <Route path="/contact-us" element={<ContactUs/>}/>

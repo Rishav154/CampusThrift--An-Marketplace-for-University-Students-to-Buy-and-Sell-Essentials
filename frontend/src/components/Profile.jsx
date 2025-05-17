@@ -8,9 +8,7 @@ import {Pencil} from "lucide-react";
 
 
 function Profile() {
-
     const navigate = useNavigate();
-
     const user = useSelector((state) => state.auth.user);
 
     if (!user) {
@@ -22,7 +20,7 @@ function Profile() {
     }
 
     return (
-        <Card className="p-6 bg-transparent">
+        <Card className="p-3 sm:p-6 bg-transparent">
             <div className="flex justify-end">
                 <TooltipProvider>
                     <Tooltip>
@@ -41,8 +39,9 @@ function Profile() {
                 </TooltipProvider>
             </div>
 
-            <div className="flex flex-col items-center px-4 sm:px-8 md:px-16 lg:px-32">
-                <div className="relative h-60 w-60 overflow-hidden rounded-full border-4 border-white shadow-xl mb-4">
+            <div className="flex flex-col items-center px-2 sm:px-4 md:px-8 lg:px-16">
+                <div
+                    className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-60 lg:h-60 overflow-hidden rounded-full border-4 border-white shadow-xl mb-4">
                     <div className="absolute inset-0 rounded-full overflow-hidden">
                         <img
                             src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
@@ -52,8 +51,8 @@ function Profile() {
                     </div>
                 </div>
 
-                <CardTitle className="mb-6">
-                    <h1 className="text-3xl">
+                <CardTitle className="mb-4 sm:mb-6">
+                    <h1 className="text-2xl sm:text-3xl">
                         Hi{" "}
                         <span
                             className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-transparent bg-clip-text hover:from-pink-600 hover:to-blue-600 transition-all duration-500 capitalize">
@@ -62,18 +61,18 @@ function Profile() {
                     </h1>
                 </CardTitle>
 
-                <CardContent className="w-full">
-                    <div className="mb-4">
-                        <Label className="text-base text-gray-500">Name</Label>
+                <CardContent className="w-full p-0 sm:p-2">
+                    <div className="mb-3 sm:mb-4">
+                        <Label className="text-sm sm:text-base text-gray-500">Name</Label>
                         <input
                             disabled
                             value={user?.name || "Not available"}
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent capitalize"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-2 sm:p-3 bg-transparent capitalize text-sm sm:text-base"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <Label className="text-base text-gray-500">Joined On</Label>
+                    <div className="mb-3 sm:mb-4">
+                        <Label className="text-sm sm:text-base text-gray-500">Joined On</Label>
                         <input
                             disabled
                             value={
@@ -85,53 +84,58 @@ function Profile() {
                                     })
                                     : "Not available"
                             }
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <Label className="text-base text-gray-500">Phone <span className="text-sm text-gray-400">(only visible to you)</span></Label>
+                    <div className="mb-3 sm:mb-4">
+                        <Label className="text-sm sm:text-base text-gray-500">
+                            Phone
+                            <span className="text-xs sm:text-sm text-gray-400 ml-1">(only visible to you)</span>
+                        </Label>
                         <input
                             disabled
                             value={user?.phone || "Not available"}
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <Label className="text-base text-gray-500">Email</Label>
+                    <div className="mb-3 sm:mb-4">
+                        <Label className="text-sm sm:text-base text-gray-500">Email</Label>
                         <input
                             disabled
                             value={user?.email || "Not available"}
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <Label className="text-base text-gray-500">Course</Label>
+                    <div className="mb-3 sm:mb-4">
+                        <Label className="text-sm sm:text-base text-gray-500">Course</Label>
                         <input
                             disabled
                             value={user?.course || "Not available"}
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent capitalize"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-2 sm:p-3 bg-transparent capitalize text-sm sm:text-base"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <Label className="text-base text-gray-500">University</Label>
+                    <div className="mb-3 sm:mb-4">
+                        <Label className="text-sm sm:text-base text-gray-500">University</Label>
                         <input
                             disabled
                             value={user?.university || "Not available"}
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent capitalize"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-2 sm:p-3 bg-transparent capitalize text-sm sm:text-base"
                         />
                     </div>
 
-                    <div className="mb-4">
-                        <Label className="text-base text-gray-500">Year of Graduation <span
-                            className="text-sm text-gray-400">(only visible to you)</span> </Label>
+                    <div className="mb-3 sm:mb-4">
+                        <Label className="text-sm sm:text-base text-gray-500">
+                            Year of Graduation
+                            <span className="text-xs sm:text-sm text-gray-400 ml-1">(only visible to you)</span>
+                        </Label>
                         <input
                             disabled
                             value={user?.yearOfGrad || "Not available"}
-                            className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                            className="border-2 border-gray-200 rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                         />
                     </div>
                 </CardContent>

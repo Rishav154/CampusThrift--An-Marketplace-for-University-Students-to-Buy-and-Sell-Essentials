@@ -56,7 +56,6 @@ function CustomerOrders() {
                 }
             );
 
-            // Refresh orders after status update
             setCurrentPage(currentPage); // This will trigger a re-fetch
         } catch (error) {
             handleErrorLogout(error, error.response?.data?.message);
@@ -70,112 +69,116 @@ function CustomerOrders() {
     }
 
     return (
-        <>
-            <h1 className="text-3xl font-bold mb-8 ml-3">Orders for Your Products</h1>
-            <div className="flex flex-col flex-1 overflow-y-auto px-3">
-                <div className="flex-grow space-y-8">
-                    <div className="space-y-4">
-                        <h2 className="text-xl font-medium">Order Summary</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="w-full px-2 sm:px-3 pb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8 mx-1 sm:ml-3">Orders for Your Products</h1>
+            <div className="flex flex-col flex-1 overflow-y-auto">
+                <div className="flex-grow space-y-6 sm:space-y-8">
+                    <div className="space-y-3 sm:space-y-4">
+                        <h2 className="text-lg sm:text-xl font-medium mx-1 sm:mx-0">Order Summary</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                             {
                                 orders.length === 0 ? (
                                     <div className="col-span-full text-center">
-                                        <h2 className="text-xl text-gray-500 my-28">
+                                        <h2 className="text-lg sm:text-xl text-gray-500 my-16 sm:my-28">
                                             No orders found for your products yet.
                                         </h2>
                                     </div>
                                 ) : orders.map((item) => (
-                                    <Card key={item._id} className="space-y-2 p-3 shadow-md">
-                                        <div className="grid sm:grid-cols-1 gap-2">
+                                    <Card key={item._id} className="space-y-2 p-2 sm:p-3 shadow-md">
+                                        <div className="grid gap-2">
                                             {item?.products?.map((product) => (
                                                 <OrderProductTile key={product._id} {...product} />
                                             ))}
                                         </div>
                                         <hr className="my-2"/>
-                                        <div className="grid space-y-1 gap-2">
-                                            <p className="flex justify-between gap-2 items-center px-3">
+                                        <div className="grid space-y-1 gap-1 sm:gap-2 text-sm sm:text-base">
+                                            <p className="flex justify-between gap-2 items-center px-2 sm:px-3">
                                                 <span className="font-bold">Total:</span>
                                                 <span
-                                                    className="text-sm text-gray-500">₹{item?.amount.toLocaleString()}</span>
+                                                    className="text-gray-500">₹{item?.amount.toLocaleString()}</span>
                                             </p>
-                                            <div className="flex justify-between gap-2 items-start px-3">
+                                            <div className="flex justify-between gap-2 items-start px-2 sm:px-3">
                                                 <span className="font-bold">Address:</span>
                                                 <span
-                                                    className="text-sm text-gray-500 text-right max-w-[65%] break-words">
+                                                    className="text-gray-500 text-right max-w-[65%] break-words">
                                                     {item?.address}
                                                 </span>
                                             </div>
-                                            <p className="flex justify-between gap-2 items-center px-3">
+                                            <p className="flex justify-between gap-2 items-center px-2 sm:px-3">
                                                 <span className="font-bold">Name:</span>
-                                                <span className="text-sm text-gray-500 text-right truncate max-w-[65%]">
+                                                <span className="text-gray-500 text-right truncate max-w-[65%]">
                                                     {item?.name}
                                                 </span>
                                             </p>
-                                            <p className="flex justify-between gap-2 items-center px-3">
+                                            <p className="flex justify-between gap-2 items-center px-2 sm:px-3">
                                                 <span className="font-bold">Email:</span>
-                                                <span className="text-sm text-gray-500 text-right truncate max-w-[65%]">
-                                                    {item?.email}
+                                                <span className="text-gray-500 text-right truncate max-w-[65%]">
+                                                    {truncateText(item?.email, 20)}
                                                 </span>
                                             </p>
-                                            <p className="flex justify-between gap-2 items-center px-3">
+                                            <p className="flex justify-between gap-2 items-center px-2 sm:px-3">
                                                 <span className="font-bold">Payment Id:</span>
-                                                <span className="text-sm text-gray-500 text-right truncate max-w-[65%]">
-                                                    {truncateText(item?.razorpayPaymentId, 15)}
+                                                <span className="text-gray-500 text-right truncate max-w-[65%]">
+                                                    {truncateText(item?.razorpayPaymentId, 12)}
                                                 </span>
                                             </p>
                                         </div>
-                                        <Select onValueChange={(value) => {
-                                            if (confirm(`Do you want to change the status to ${value}?`)) {
-                                                updateOrderStatus(value, item.razorpayPaymentId);
-                                            }
-                                        }}>
-                                            <SelectTrigger>
-                                                <SelectValue placeholder={item?.status}/>
-                                            </SelectTrigger>
-                                            <SelectContent className="capitalize">
-                                                <SelectItem value="pending">Pending</SelectItem>
-                                                <SelectItem value="processing">Processing</SelectItem>
-                                                <SelectItem value="shipped">Shipped</SelectItem>
-                                                <SelectItem value="delivered">Delivered</SelectItem>
-                                            </SelectContent>
-                                        </Select>
+                                        <div className="mt-1 px-1">
+                                            <Select onValueChange={(value) => {
+                                                if (confirm(`Do you want to change the status to ${value}?`)) {
+                                                    updateOrderStatus(value, item.razorpayPaymentId);
+                                                }
+                                            }}>
+                                                <SelectTrigger className="h-9 text-sm sm:text-base">
+                                                    <SelectValue placeholder={item?.status}/>
+                                                </SelectTrigger>
+                                                <SelectContent className="capitalize text-sm sm:text-base">
+                                                    <SelectItem value="pending">Pending</SelectItem>
+                                                    <SelectItem value="processing">Processing</SelectItem>
+                                                    <SelectItem value="shipped">Shipped</SelectItem>
+                                                    <SelectItem value="delivered">Delivered</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
                                     </Card>
                                 ))
                             }
                         </div>
                     </div>
                 </div>
-                <div className="mt-6 self-center">
-                    <Pagination>
-                        <PaginationContent>
-                            <PaginationItem>
-                                <PaginationPrevious
-                                    onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                                    className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
-                                />
-                            </PaginationItem>
-                            {[...Array(totalPages)].map((_, index) => (
-                                <PaginationItem key={index}>
-                                    <PaginationLink
-                                        href="#"
-                                        onClick={() => setCurrentPage(index + 1)}
-                                        className={currentPage === index + 1 ? "bg-gray-200" : ""}
-                                    >
-                                        {index + 1}
-                                    </PaginationLink>
+                {totalPages > 1 && (
+                    <div className="mt-4 sm:mt-6 self-center">
+                        <Pagination>
+                            <PaginationContent className="flex flex-wrap justify-center gap-1">
+                                <PaginationItem>
+                                    <PaginationPrevious
+                                        onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                                        className={`text-sm sm:text-base ${currentPage === 1 ? "pointer-events-none opacity-50" : ""}`}
+                                    />
                                 </PaginationItem>
-                            ))}
-                            <PaginationItem>
-                                <PaginationNext
-                                    onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                                    className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
-                                />
-                            </PaginationItem>
-                        </PaginationContent>
-                    </Pagination>
-                </div>
+                                {[...Array(totalPages)].map((_, index) => (
+                                    <PaginationItem key={index}>
+                                        <PaginationLink
+                                            href="#"
+                                            onClick={() => setCurrentPage(index + 1)}
+                                            className={`h-8 w-8 sm:h-10 sm:w-10 flex items-center justify-center text-sm sm:text-base ${currentPage === index + 1 ? "bg-gray-200" : ""}`}
+                                        >
+                                            {index + 1}
+                                        </PaginationLink>
+                                    </PaginationItem>
+                                ))}
+                                <PaginationItem>
+                                    <PaginationNext
+                                        onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                                        className={`text-sm sm:text-base ${currentPage === totalPages ? "pointer-events-none opacity-50" : ""}`}
+                                    />
+                                </PaginationItem>
+                            </PaginationContent>
+                        </Pagination>
+                    </div>
+                )}
             </div>
-        </>
+        </div>
     );
 }
 

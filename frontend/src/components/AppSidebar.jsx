@@ -1,4 +1,5 @@
-import {FilePlus2Icon, GalleryVerticalEnd, PackageSearch, Settings, ShoppingCart, User} from "lucide-react"
+import React from 'react';
+import {FilePlus2Icon, GalleryVerticalEnd, Home, PackageSearch, Settings, ShoppingCart, User} from "lucide-react"
 
 import {
     Sidebar,
@@ -17,6 +18,11 @@ import {setUserLogout} from "@/redux/slices/authSlice.js";
 
 // Menu items.
 const items = [
+    {
+        title: "Home",
+        url: "/home",
+        icon: Home,
+    },
     {
         title: "Profile",
         url: "/profile",
@@ -50,26 +56,20 @@ const items = [
 ]
 
 
-export function AppSidebar({navbarHeight = "64px"}) {
-    const {pathname} = useLocation()
+export function AppSidebar() {
+    const {pathname} = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleLogout = () => {
         dispatch(setUserLogout());
-
         navigate('/login');
     };
 
-
     return (
         <Sidebar
-            style={{
-                "--navbar-height": navbarHeight,
-                top: "var(--navbar-height)",
-                height: "calc(100vh - var(--navbar-height))"
-            }}
-            className="z-40 "
+
+            className="z-40 transition-all duration-300"
         >
             <SidebarContent>
                 <SidebarHeader>
@@ -79,9 +79,12 @@ export function AppSidebar({navbarHeight = "64px"}) {
                     <SidebarMenu>
                         {items.map((item) => (
                             <SidebarMenuItem key={item.title}>
-                                <SidebarMenuButton asChild className={`${pathname === item.url && "bg-zinc-200 "}`}>
+                                <SidebarMenuButton
+                                    asChild
+                                    className={`${pathname === item.url && "bg-zinc-200"}`}
+                                >
                                     <Link to={item.url}>
-                                        <item.icon/>
+                                        <item.icon className="h-5 w-5"/>
                                         <span>{item.title}</span>
                                     </Link>
                                 </SidebarMenuButton>
@@ -91,9 +94,11 @@ export function AppSidebar({navbarHeight = "64px"}) {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>
-                <Button variant={"outline"} className={"border-black"}><Link to={"/all-policy"}>Terms & Policies</Link></Button>
-                <Button onClick={handleLogout}>Logout</Button>
+                <Button variant="outline" className="border-black w-full mb-2">
+                    <Link to="/all-policy" className="w-full">Terms & Policies</Link>
+                </Button>
+                <Button onClick={handleLogout} className="w-full">Logout</Button>
             </SidebarFooter>
         </Sidebar>
-    )
+    );
 }

@@ -45,16 +45,17 @@ export default function LoginForm() {
     };
 
     return (
-        <div className="min-h-screen bg-[#fce7c8] flex items-center justify-center px-4">
+        <div className="min-h-screen bg-[#fce7c8] flex items-center justify-center p-4 sm:p-6">
             <button
-                className="absolute top-10 left-10 text-gray-700 hover:text-orange-400 transition-colors flex items-center gap-1"
+                className="absolute top-4 left-4 sm:top-10 sm:left-10 text-gray-700 hover:text-orange-400 transition-colors flex items-center gap-1"
                 onClick={() => navigate('/')}
             >
-                <ArrowLeft className="h-7 w-7"/>
+                <ArrowLeft className="h-5 w-5 sm:h-7 sm:w-7"/>
             </button>
-            <div className="max-w-md w-full bg-white p-8 rounded-xl border border-gray-800 shadow-lg">
-                <h2 className="text-orange-400 text-3xl font-bold mb-2 text-center">Welcome Back</h2>
-                <p className="text-gray-500 text-sm mb-6 text-center">
+            <div className="max-w-md w-full bg-white p-4 sm:p-8 rounded-xl border border-gray-800 shadow-lg">
+                <h2 className="text-orange-400 text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 text-center">Welcome
+                    Back</h2>
+                <p className="text-gray-500 text-xs sm:text-sm mb-4 sm:mb-6 text-center">
                     Login to your Campus Thrift account
                 </p>
                 <form onSubmit={handleSubmit}>
@@ -118,8 +119,8 @@ export default function LoginForm() {
 
                 <button
                     onClick={() => window.location.href = `${import.meta.env.VITE_API_URL}/google`}
-                    className="w-full flex items-center justify-center gap-3 font-semibold border border-gray-600 text-orange-400 py-2 rounded-md hover:bg-white hover:text-black transition-all">
-                    <svg className="h-5 w-5" viewBox="0 0 533.5 544.3">
+                    className="w-full flex items-center justify-center gap-2 sm:gap-3 font-semibold border border-gray-600 text-orange-400 py-2 rounded-md hover:bg-white hover:text-black transition-all">
+                    <svg className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 533.5 544.3">
                         <path fill="#EA4335"
                               d="M533.5 278.4c0-18.5-1.5-36.2-4.3-53.4H272v101h147.1c-6.4 34.3-25.5 63.4-54.3 82.9v68h87.9c51.5-47.4 80.8-117.2 80.8-198.5z"/>
                         <path fill="#34A853"
@@ -132,12 +133,12 @@ export default function LoginForm() {
                     Continue with Google
                 </button>
 
-                <p className="my-4 text-center text-base text-gray-500">
+                <p className="my-4 text-center text-sm sm:text-base text-gray-500">
                     Don't have an account?{' '}
                     <Link to="/signup" className="text-orange-400 underline">Sign up</Link>
                 </p>
 
-                <p className="text-gray-600 text-xs text-center -mb-7">
+                <p className="text-gray-600 text-xs text-center">
                     By continuing to use Campus Thrift, you agree to all of our <Link to={"/all-policy"}
                                                                                       className={"text-orange-400 underline"}>policies</Link>.
                 </p>

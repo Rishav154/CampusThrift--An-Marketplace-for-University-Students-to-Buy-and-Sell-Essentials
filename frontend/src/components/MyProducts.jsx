@@ -95,17 +95,17 @@ function MyProducts() {
             const {message, data} = res.data;
             toast.custom((t) => (
                 <div
-                    className={`bg-white px-6 py-4 shadow-md rounded-md flex items-center gap-4 ${t.visible ? 'animate-enter' : 'animate-leave'}`}>
+                    className={`bg-white px-4 sm:px-6 py-3 sm:py-4 shadow-md rounded-md flex items-center gap-2 sm:gap-4 ${t.visible ? 'animate-enter' : 'animate-leave'}`}>
                     <div className="flex-1">
                         <p className="font-medium text-green-700">Success</p>
-                        <p className="text-sm text-gray-700 whitespace-pre-line">{message}</p>
+                        <p className="text-xs sm:text-sm text-gray-700 whitespace-pre-line">{message}</p>
                     </div>
                     <button
                         onClick={() => {
                             removeFromBlacklist(data._id);
                             toast.dismiss(t.id);
                         }}
-                        className="text-sm text-blue-600 font-semibold hover:underline"
+                        className="text-xs sm:text-sm text-blue-600 font-semibold hover:underline"
                     >
                         Undo
                     </button>
@@ -186,15 +186,16 @@ function MyProducts() {
 
     return (
         <>
-            <div className="mx-auto px-4 sm:px-8 -z-10 ">
-                <h1 className={"text-3xl font-bold mb-8"}>My Products</h1>
+            <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 -z-10">
+                <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8">My Products</h1>
 
-                <div className={"mb-8"}>
-                    <form className={"flex flex-col sm:flex-row gap-4 items-start sm:items-end sm:w-full"}>
-                        <div className={"flex-1 w-full"}>
-                            <label className={"block text-sm font-medium text-gray-700 mb-3"} htmlFor="search">Search
-                                Products</label>
-                            <div className={"relative"}>
+                <div className="mb-4 sm:mb-8">
+                    <form className="flex flex-col gap-4 w-full">
+                        <div className="w-full">
+                            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="search">
+                                Search Products
+                            </label>
+                            <div className="relative">
                                 <Input
                                     type="text"
                                     id="search"
@@ -207,11 +208,12 @@ function MyProducts() {
                                         className="absolute top-1/2 left-3 text-gray-500 transform -translate-y-1/2"/>
                             </div>
                         </div>
-                        <div className={"w-full sm:w-48"}>
-                            <label className={"block text-sm font-medium text-gray-700 mb-3"}
-                                   htmlFor={"Category"}>Category</label>
+                        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                            <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="Category">
+                                Category
+                            </label>
                             <Select value={category} onValueChange={(value) => setCategory(value)}>
-                                <SelectTrigger id={"Category"} className="w-full">
+                                <SelectTrigger id="Category" className="w-full">
                                     <SelectValue placeholder="Select Category"/>
                                 </SelectTrigger>
                                 <SelectContent>
@@ -232,33 +234,37 @@ function MyProducts() {
                 </div>
 
                 {
-                    products?.length === 0 ? (<p className={"text-center text-gray-500 mt-8"}>
-                        You haven't posted any products yet, or none match your search criteria.
-                    </p>) : (
-                        <div
-                            className={"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-2 sm:mx-0"}>
+                    products?.length === 0 ? (
+                        <p className="text-center text-gray-500 mt-8">
+                            You haven't posted any products yet, or none match your search criteria.
+                        </p>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                             {products?.map((product) => (
                                 <Card key={product._id}
-                                      className={"flex flex-col min-w-[300px] shadow-md hover:shadow-xl transition-shadow duration-200"}>
-                                    <div className={"relative"}>
+                                      className="flex flex-col w-full shadow-md hover:shadow-xl transition-shadow duration-200">
+                                    <div className="relative">
                                         <img
                                             src={product.image.url}
                                             alt={product.name}
-                                            className={"rounded-t-lg h-64 w-full object-cover bg-gray-100"}/>
+                                            className="rounded-t-lg h-48 sm:h-64 w-full object-cover bg-gray-100"/>
                                         <hr className="border-t border-gray-200"/>
                                     </div>
 
-                                    <CardContent className={"flex-grow px-4 pt-4"}>
-                                        <h3 className={"text-lg font-semibold mb-2"}>{product.name}</h3>
-                                        <p className={"text-sm text-gray-600 mb-4 line-clamp-2"}>{product.shortDescription}</p>
-                                        <p className={"text-lg font-bold"}>₹{product.price.toLocaleString()}</p>
+                                    <CardContent className="flex-grow px-3 sm:px-4 pt-3 sm:pt-4">
+                                        <h3 className="text-base sm:text-lg font-semibold mb-2">{product.name}</h3>
+                                        <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2">
+                                            {product.shortDescription}
+                                        </p>
+                                        <p className="text-base sm:text-lg font-bold">
+                                            ₹{product.price.toLocaleString()}
+                                        </p>
                                     </CardContent>
 
-                                    <CardFooter
-                                        className="p-4 pt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                                    <CardFooter className="p-3 sm:p-4 pt-0 flex flex-col space-y-2">
                                         <Button
                                             variant="outline"
-                                            className="w-full sm:flex-1"
+                                            className="w-full text-sm"
                                             onClick={() => handleEdit(product)}
                                         >
                                             <Edit className="mr-2 h-4 w-4"/> Edit
@@ -269,7 +275,7 @@ function MyProducts() {
                                                     ? blacklistProduct(product._id)
                                                     : removeFromBlacklist(product._id);
                                             }}
-                                            className="w-full sm:flex-1 text-xs sm:text-sm"
+                                            className="w-full text-xs sm:text-sm"
                                         >
                                             {!product.blacklisted
                                                 ? "Blacklist Product"
@@ -283,21 +289,23 @@ function MyProducts() {
                     )}
 
                 <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
-                    <DialogContent className={"sm:max-w-[425px]"}>
+                    <DialogContent className="sm:max-w-[425px] max-w-[90vw] p-4 sm:p-6">
                         <DialogHeader>
                             <DialogTitle>Edit Product</DialogTitle>
                         </DialogHeader>
 
                         <form onSubmit={handleEditSubmit}>
-                            <div className={"grid gap-4 py-4"}>
-                                <div className={"grid gap-4 items-center"}>
-                                    <Label htmlFor={"name"}>Name</Label>
-                                    <Input id={"name"} name={"name"} defaultValue={editingProduct?.name}/>
+                            <div className="grid gap-4 py-3 sm:py-4">
+                                <div className="grid gap-2 sm:gap-4 items-center">
+                                    <Label htmlFor="name">Name</Label>
+                                    <Input id="name" name="name" defaultValue={editingProduct?.name}/>
                                 </div>
-                                <div className="space-y-4 mb-5">
+                                <div className="space-y-2 sm:space-y-4 mb-3 sm:mb-5">
                                     <Label htmlFor="shortDescription" className="font-medium">
                                         Short Description
-                                        <span className="text-xs text-gray-500 ml-3">{shortDescription.length}/100 characters</span>
+                                        <span className="text-xs text-gray-500 ml-2 sm:ml-3">
+                                            {shortDescription.length}/100 characters
+                                        </span>
                                     </Label>
                                     <Textarea
                                         rows="1"
@@ -312,22 +320,22 @@ function MyProducts() {
                                     />
                                 </div>
 
-                                <div className={"grid gap-4 items-center"}>
-                                    <Label htmlFor={"description"}>Description</Label>
-                                    <Textarea id={"description"} name={"description"}
+                                <div className="grid gap-2 sm:gap-4 items-center">
+                                    <Label htmlFor="description">Description</Label>
+                                    <Textarea id="description" name="description"
                                               defaultValue={editingProduct?.description}/>
                                 </div>
-                                <div className={"grid gap-4 items-center"}>
-                                    <Label htmlFor={"price"}>Price</Label>
-                                    <Input id={"price"} name={"price"} defaultValue={editingProduct?.price}/>
+                                <div className="grid gap-2 sm:gap-4 items-center">
+                                    <Label htmlFor="price">Price</Label>
+                                    <Input id="price" name="price" defaultValue={editingProduct?.price}/>
                                 </div>
-                                <div className={"grid gap-4 items-center"}>
-                                    <Label htmlFor={"color"}>Color</Label>
-                                    <Input id={"color"} name={"color"} defaultValue={editingProduct?.color}/>
+                                <div className="grid gap-2 sm:gap-4 items-center">
+                                    <Label htmlFor="color">Color</Label>
+                                    <Input id="color" name="color" defaultValue={editingProduct?.color}/>
                                 </div>
 
-                                <div className={"grid gap-4 items-center"}>
-                                    <Label htmlFor={"category"}>Category</Label>
+                                <div className="grid gap-2 sm:gap-4 items-center">
+                                    <Label htmlFor="category">Category</Label>
                                     <Select name="category" defaultValue={editingProduct?.category} required>
                                         <SelectTrigger>
                                             <SelectValue placeholder="Select a category"/>

@@ -108,18 +108,21 @@ export default function AccountSettings() {
     };
 
     return (
-        <div className="flex flex-col md:flex-row gap-6 w-full max-w-4xl mx-auto p-6 bg-white">
+        <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 w-full">
             <div className="w-full max-w-4xl mx-auto">
-                <h1 className="text-2xl font-bold mb-6 text-gray-800">Account Settings</h1>
-                <p className="text-gray-600 mb-8">Update your account information below.</p>
-                <div className="flex flex-col md:flex-row gap-6">
+                <h1 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-6 text-gray-800">Account Settings</h1>
+                <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-8">Update your account information
+                    below.</p>
+
+                <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
                     {/* Password Change Section */}
                     <Card className="flex-1 border border-gray-200 shadow-sm">
-                        <CardContent className="p-6">
-                            <h2 className="text-xl font-medium mb-4 text-gray-800">Change Password</h2>
-                            <div className="space-y-4">
+                        <CardContent className="p-3 sm:p-4 md:p-6">
+                            <h2 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-gray-800">Change
+                                Password</h2>
+                            <div className="space-y-3 sm:space-y-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                         Email or Phone
                                     </label>
                                     <Input
@@ -127,11 +130,11 @@ export default function AccountSettings() {
                                         placeholder="Enter email or phone"
                                         value={emailOrPhone}
                                         onChange={e => setEmailOrPhone(e.target.value)}
-                                        className="border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                        className="text-sm sm:text-base h-9 sm:h-10 border-gray-300 focus:border-green-500 focus:ring-green-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                         Previous Password
                                     </label>
                                     <Input
@@ -139,11 +142,11 @@ export default function AccountSettings() {
                                         placeholder="Enter previous password"
                                         value={previousPassword}
                                         onChange={e => setPreviousPassword(e.target.value)}
-                                        className="border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                        className="text-sm sm:text-base h-9 sm:h-10 border-gray-300 focus:border-green-500 focus:ring-green-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                         New Password
                                     </label>
                                     <Input
@@ -151,12 +154,12 @@ export default function AccountSettings() {
                                         placeholder="Enter new password"
                                         value={newPassword}
                                         onChange={e => setNewPassword(e.target.value)}
-                                        className="border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                        className="text-sm sm:text-base h-9 sm:h-10 border-gray-300 focus:border-green-500 focus:ring-green-500"
                                     />
                                 </div>
                                 <Button
                                     onClick={handlePasswordChange}
-                                    className="w-full text-white"
+                                    className="w-full text-white h-9 sm:h-10 text-sm sm:text-base mt-2"
                                     disabled={isLoading.password}
                                 >
                                     {isLoading.password ? "Processing..." : "Change Password"}
@@ -164,13 +167,15 @@ export default function AccountSettings() {
                             </div>
                         </CardContent>
                     </Card>
+
                     {/* Phone Change Section */}
-                    <Card className="flex-1 border border-gray-200 shadow-sm">
-                        <CardContent className="p-6">
-                            <h2 className="text-xl font-medium mb-4 text-gray-800">Change Phone Number</h2>
-                            <div className="space-y-4">
+                    <Card className="flex-1 border border-gray-200 shadow-sm mt-4 lg:mt-0">
+                        <CardContent className="p-3 sm:p-4 md:p-6">
+                            <h2 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-gray-800">Change Phone
+                                Number</h2>
+                            <div className="space-y-3 sm:space-y-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                         Email
                                     </label>
                                     <Input
@@ -178,11 +183,11 @@ export default function AccountSettings() {
                                         placeholder="Enter email"
                                         value={email}
                                         onChange={e => setEmail(e.target.value)}
-                                        className="border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                        className="text-sm sm:text-base h-9 sm:h-10 border-gray-300 focus:border-green-500 focus:ring-green-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                         Password
                                     </label>
                                     <Input
@@ -190,11 +195,11 @@ export default function AccountSettings() {
                                         placeholder="Enter password"
                                         value={password}
                                         onChange={e => setPassword(e.target.value)}
-                                        className="border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                        className="text-sm sm:text-base h-9 sm:h-10 border-gray-300 focus:border-green-500 focus:ring-green-500"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                                         New Phone Number
                                     </label>
                                     <Input
@@ -202,12 +207,12 @@ export default function AccountSettings() {
                                         placeholder="Enter new phone number"
                                         value={newPhone}
                                         onChange={e => setNewPhone(e.target.value)}
-                                        className="border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                        className="text-sm sm:text-base h-9 sm:h-10 border-gray-300 focus:border-green-500 focus:ring-green-500"
                                     />
                                 </div>
                                 <Button
                                     onClick={handlePhoneChange}
-                                    className="w-full text-white"
+                                    className="w-full text-white h-9 sm:h-10 text-sm sm:text-base mt-2"
                                     disabled={isLoading.phone}
                                 >
                                     {isLoading.phone ? "Processing..." : "Change Phone Number"}

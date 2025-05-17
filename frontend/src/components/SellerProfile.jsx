@@ -41,15 +41,15 @@ function SellerProfile() {
         <>
             <Navbar showLoginButton={false}/>
             <button
-                className="absolute top-30 left-20 text-gray-700 hover:text-orange-400 transition-colors flex items-center gap-1"
+                className="absolute top-20 sm:top-24 left-4 sm:left-8 md:left-16 lg:left-20 text-gray-700 hover:text-orange-400 transition-colors flex items-center gap-1"
                 onClick={() => navigate(-1)}
             >
-                <ArrowLeft className="h-7 w-7"/>
+                <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"/>
             </button>
-            <Card className="p-6 bg-transparent min-h-screen">
-                <div className="flex flex-col items-center px-4 sm:px-8 md:px-16 lg:px-32">
+            <Card className="p-4 sm:p-6 bg-transparent min-h-screen">
+                <div className="flex flex-col items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
                     <div
-                        className="relative h-60 w-60 overflow-hidden rounded-full border-4 border-white shadow-xl mb-4">
+                        className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-52 md:w-52 lg:h-60 lg:w-60 overflow-hidden rounded-full border-4 border-white shadow-xl mb-4">
                         <div className="absolute inset-0 rounded-full overflow-hidden">
                             <img
                                 src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
@@ -59,8 +59,8 @@ function SellerProfile() {
                         </div>
                     </div>
 
-                    <CardTitle className="mb-6">
-                        <h1 className="text-3xl">
+                    <CardTitle className="mb-4 sm:mb-6 text-center">
+                        <h1 className="text-xl sm:text-2xl md:text-3xl">
                             Meet your seller{" "}
                             <span
                                 className="bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 text-transparent bg-clip-text capitalize">
@@ -69,9 +69,9 @@ function SellerProfile() {
                         </h1>
                     </CardTitle>
 
-                    <CardContent className="w-1/2">
-                        <div className="mb-4">
-                            <Label className="text-base text-gray-500">Name</Label>
+                    <CardContent className="w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+                        <div className="mb-3 sm:mb-4">
+                            <Label className="text-sm sm:text-base text-gray-500">Name</Label>
                             <input
                                 disabled
                                 value={
@@ -79,12 +79,12 @@ function SellerProfile() {
                                         ? `${seller.fullname.firstname} ${seller.fullname.lastname || ""}`
                                         : "Not available"
                                 }
-                                className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                                className="border-2 border-gray-200 rounded-xl sm:rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                             />
                         </div>
 
-                        <div className="mb-4">
-                            <Label className="text-base text-gray-500">Joined On</Label>
+                        <div className="mb-3 sm:mb-4">
+                            <Label className="text-sm sm:text-base text-gray-500">Joined On</Label>
                             <input
                                 disabled
                                 value={
@@ -96,44 +96,44 @@ function SellerProfile() {
                                         })
                                         : "Not available"
                                 }
-                                className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                                className="border-2 border-gray-200 rounded-xl sm:rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                             />
                         </div>
 
-                        <div className="mb-4">
-                            <Label className="text-base text-gray-500">Phone</Label>
+                        <div className="mb-3 sm:mb-4">
+                            <Label className="text-sm sm:text-base text-gray-500">Phone</Label>
                             <input
                                 type={"password"}
                                 disabled
                                 value={"----------"}
-                                className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                                className="border-2 border-gray-200 rounded-xl sm:rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                             />
                         </div>
 
-                        <div className="mb-4">
-                            <Label className="text-base text-gray-500">Email</Label>
+                        <div className="mb-3 sm:mb-4">
+                            <Label className="text-sm sm:text-base text-gray-500">Email</Label>
                             <input
                                 disabled
                                 value={seller?.email || "Not available"}
-                                className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent"
+                                className="border-2 border-gray-200 rounded-xl sm:rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                             />
                         </div>
 
-                        <div className="mb-4">
-                            <Label className="text-base text-gray-500">University</Label>
+                        <div className="mb-3 sm:mb-4">
+                            <Label className="text-sm sm:text-base text-gray-500">University</Label>
                             <input
                                 disabled
                                 value={seller?.university || "Not available"}
-                                className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent capitalize"
+                                className="border-2 border-gray-200 rounded-xl sm:rounded-2xl w-full p-2 sm:p-3 bg-transparent capitalize text-sm sm:text-base"
                             />
                         </div>
 
-                        <div className="mb-4">
-                            <Label className="text-base text-gray-500">Course</Label>
+                        <div className="mb-3 sm:mb-4">
+                            <Label className="text-sm sm:text-base text-gray-500">Course</Label>
                             <input
                                 disabled
                                 value={seller?.course || "Not available"}
-                                className="border-2 border-gray-200 rounded-2xl w-full p-3 bg-transparent capitalize"
+                                className="border-2 border-gray-200 rounded-xl sm:rounded-2xl w-full p-2 sm:p-3 bg-transparent capitalize text-sm sm:text-base"
                             />
                         </div>
                     </CardContent>

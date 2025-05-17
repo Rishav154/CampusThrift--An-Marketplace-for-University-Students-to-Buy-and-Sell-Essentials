@@ -64,21 +64,22 @@ export default function CompleteProfile() {
     };
 
     return (
-        <div className="min-h-screen bg-customOrange flex flex-col items-center justify-center px-4">
-            <h1 className={"text-4xl font-bold mb-20"}>
+        <div className="min-h-screen bg-customOrange flex flex-col items-center justify-center px-4 py-8">
+            <h1 className="text-2xl md:text-4xl font-bold mb-8 md:mb-20 text-center">
                 <span
-                    className={"bg-gradient-to-r from-yellow-400 via-pink-400 to-orange-500 text-transparent bg-clip-text"}>
+                    className="bg-gradient-to-r from-yellow-400 via-pink-400 to-orange-500 text-transparent bg-clip-text">
                     Just one
                 </span>
                 🤏{" "}
                 <span
-                    className={"bg-gradient-to-r from-yellow-400 via-pink-400 to-orange-500 text-transparent bg-clip-text"}>
+                    className="bg-gradient-to-r from-yellow-400 via-pink-400 to-orange-500 text-transparent bg-clip-text">
                     last step before we proceed!
                 </span>
             </h1>
-            <div className="max-w-md w-full bg-white p-8 rounded-xl border border-gray-800 shadow-lg">
-                <h2 className="text-orange-400 text-3xl font-bold mb-2 text-center">Complete Your Profile</h2>
-                <p className="text-gray-500 text-sm mb-6 text-center">
+            <div className="w-full max-w-md bg-white p-4 md:p-8 rounded-xl border border-gray-800 shadow-lg">
+                <h2 className="text-orange-400 text-2xl md:text-3xl font-bold mb-2 text-center">Complete Your
+                    Profile</h2>
+                <p className="text-gray-500 text-xs md:text-sm mb-4 md:mb-6 text-center">
                     Just a few more details to get you started with Campus Thrift
                 </p>
 
@@ -159,7 +160,6 @@ export default function CompleteProfile() {
                         )}
                     </button>
                 </form>
-
             </div>
         </div>
     );

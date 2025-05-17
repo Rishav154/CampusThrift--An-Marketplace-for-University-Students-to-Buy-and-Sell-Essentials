@@ -4,23 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Refactor app structure and update HeaderDisplay component for improved performance">
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Enhance styling for responsive design and better user experience">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Pincode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AppSidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AppSidebar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Checkout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/HeaderDisplay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HeaderDisplay.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Layout/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Layout/AdminLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyOrders.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/OrderData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OrderData.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/OrderProductTile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OrderProductTile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Settings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Settings.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/CustomerOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CustomerOrders.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PrivacyPolicy.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PrivacyTerms.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProfileCompletion.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProfileCompletion.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +161,8 @@
       <workItem from="1747313455243" duration="1344000" />
       <workItem from="1747317178717" duration="293000" />
       <workItem from="1747328585512" duration="1724000" />
-      <workItem from="1747356306638" duration="6339000" />
+      <workItem from="1747356306638" duration="8083000" />
+      <workItem from="1747442026457" duration="11265000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -279,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747314388324</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add short description field to product model and update related components for better product representation">
+      <option name="closed" value="true" />
+      <created>1747363000038</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1747363000038</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +323,9 @@
     <MESSAGE value="Integrated Google OAuth for user authentication and added AllPolicy component" />
     <MESSAGE value="Refactor product fetching logic to exclude blacklisted products" />
     <MESSAGE value="Refactor app structure and update HeaderDisplay component for improved performance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor app structure and update HeaderDisplay component for improved performance" />
+    <MESSAGE value="Add short description field to product model and update related components for better product representation" />
+    <MESSAGE value="Enhance styling for responsive design and better user experience" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance styling for responsive design and better user experience" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

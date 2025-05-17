@@ -51,83 +51,112 @@ function Product() {
         <>
             <div className="bg-orange-50 min-h-screen">
                 <Navbar showLoginButton={false}/>
-                <main
-                    className="w-[93vw] lg:w-[70vw] flex flex-col sm:flex-row justify-start items-start gap-10 mx-auto my-10">
-                    {/*Left Part*/}
-                    <div className="grid sm:w-[50%] gap-3">
-                        <img
-                            src={product?.images?.[selectedImage]?.url}
-                            alt="Product"
-                            className="w-full lg:h-[34rem] rounded-xl object-center object-fit border dark:border-none"
-                        />
+                <main className="w-[92%] max-w-6xl mx-auto my-4 sm:my-10 px-2 sm:px-4">
+                    <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
+                        {/* Left Part - Images */}
+                        <div className="w-full lg:w-1/2">
+                            {/* Main Image */}
+                            <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px] mb-3 sm:mb-4">
+                                <img
+                                    src={product?.images?.[selectedImage]?.url}
+                                    alt="Product"
+                                    className="w-full h-full rounded-xl object-cover border dark:border-none"
+                                />
+                            </div>
 
-                        {/* Thumbnails (square) */}
-                        <div className="grid grid-cols-4 gap-3">
-                            {product?.images?.map(({url, id}, index) => (
-                                <div
-                                    key={id}
-                                    className="aspect-square overflow-hidden rounded-xl border dark:border-none cursor-pointer transition-all duration-300 ease-in-out hover:brightness-50"
-                                    onClick={() => setSelectedImage(index)}
-                                >
-                                    <img
-                                        src={url}
-                                        alt="Product"
-                                        className="w-full h-full object-cover object-center"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/*Right Part*/}
-                    <div className="sm:w-[50%] lg:w-[30%]">
-                        <div className="pb-5">
-                            <h2 className="font-extrabold text-2xl capitalize">{product?.name}</h2>
-                            <p className="text-sm my-2">{product?.shortDescription}</p>
-                        </div>
-                        <div className="py-5 border-t border-b">
-                            <h3 className="font-bold text-2xl">₹{product?.price.toLocaleString()}</h3>
-                        </div>
-                        <div className="py-5 border-b">
-                            <p className="text-lg my-2"><span
-                                className={"font-bold text-xl"}>Color:</span>{" "}{product?.color}</p>
-                        </div>
-                        <div className="py-5 border-b">
-                            <h3 className="font-bold text-xl">Description</h3>
-                            <p className="text-base my-2">{product?.description}</p>
-                        </div>
-                        <h4 className="font-bold text-lg mt-4 mb-4 text-gray-800">Seller :</h4>
-                        <div className="flex items-center mb-8 mt-4 gap-5">
-                            <img
-                                src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
-                                alt="Seller Profile"
-                                className="w-14 h-14 rounded-full object-center object-cover border dark:border-none"
-                            />
-                            <div className="">
-                                <h2 className="font-bold text-lg capitalize">{product.seller.fullname.firstname} {product.seller.fullname.lastname}</h2>
-                                <p className="text-sm text-gray-600">
-                                    Member since {new Date(product?.seller?.createdAt).toLocaleDateString('en-US', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                })}
-                                </p>
+                            {/* Thumbnails */}
+                            <div className="grid grid-cols-4 gap-2 sm:gap-3">
+                                {product?.images?.map(({url, id}, index) => (
+                                    <div
+                                        key={id}
+                                        className={`aspect-square overflow-hidden rounded-xl border cursor-pointer transition-all duration-300 ease-in-out hover:brightness-75 ${
+                                            selectedImage === index ? 'ring-2 ring-green-500' : ''
+                                        }`}
+                                        onClick={() => setSelectedImage(index)}
+                                    >
+                                        <img
+                                            src={url}
+                                            alt="Product thumbnail"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-5 mt-8">
-                            <Button className="rounded-lg text-base font-semibold h-12">Message Seller</Button>
+
+                        {/* Right Part - Product Details */}
+                        <div className="w-full lg:w-1/2 mt-4 lg:mt-0">
+                            {/* Product Title and Short Description */}
+                            <div className="pb-4 sm:pb-5">
+                                <h2 className="font-extrabold text-xl sm:text-2xl capitalize">{product?.name}</h2>
+                                <p className="text-sm my-2">{product?.shortDescription}</p>
+                            </div>
+
+                            {/* Price */}
+                            <div className="py-3 sm:py-5 border-t border-b">
+                                <h3 className="font-bold text-xl sm:text-2xl">₹{product?.price?.toLocaleString()}</h3>
+                            </div>
+
+                            {/* Product Details */}
+                            <div className="py-3 sm:py-5 border-b">
+                                <p className="text-base sm:text-lg mt-1">
+                                    <span className="font-semibold">Color:</span>{" "}
+                                    {product?.color}
+                                </p>
+                                <p className="text-base sm:text-lg mb-1">
+                                    <span className="font-semibold">Category:</span>{" "}
+                                    {product?.category}
+                                </p>
+                            </div>
+
+                            {/* Description */}
+                            <div className="py-3 sm:py-5 border-b">
+                                <h3 className="font-bold text-lg sm:text-xl">Description</h3>
+                                <p className="text-sm sm:text-base my-2">{product?.description}</p>
+                            </div>
+
+                            {/* Seller Info */}
+                            <h4 className="font-bold text-base sm:text-lg mt-4 mb-2 text-gray-800">Seller:</h4>
+                            <div className="flex items-center mb-6 mt-2 gap-3 sm:gap-5">
+                                <img
+                                    src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
+                                    alt="Seller Profile"
+                                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border"
+                                />
+                                <div>
+                                    <h2 className="font-bold text-base sm:text-lg capitalize">
+                                        {product?.seller?.fullname?.firstname} {product?.seller?.fullname?.lastname}
+                                    </h2>
+                                    <p className="text-xs sm:text-sm text-gray-600">
+                                        Member since {new Date(product?.seller?.createdAt).toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                    })}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Action Buttons */}
+                            <div className="grid grid-cols-2 gap-3 sm:gap-5 mt-4 sm:mt-6">
+                                <Button className="rounded-lg text-sm sm:text-base font-semibold h-10 sm:h-12">
+                                    Message Seller
+                                </Button>
+                                <Button
+                                    className="rounded-lg text-sm sm:text-base font-semibold h-10 sm:h-12"
+                                    onClick={() => navigate(`/seller/${product?.seller?._id}`)}
+                                >
+                                    Seller Profile
+                                </Button>
+                            </div>
+
+                            {/* Buy Button */}
                             <Button
-                                className="rounded-lg text-base font-semibold h-12"
-                                onClick={() => navigate(`/seller/${product?.seller?._id}`)}
+                                className="bg-green-500 hover:bg-green-500/70 rounded-lg w-full mt-3 sm:mt-5 text-lg sm:text-xl font-bold h-12"
+                                onClick={handleBuyNow}
                             >
-                                Seller Profile
+                                Buy
                             </Button>
                         </div>
-
-                        <Button
-                            className="bg-green-500 hover:bg-green-500/70 rounded-lg w-full mt-5 text-xl font-bold h-12"
-                            onClick={handleBuyNow}>
-                            Buy
-                        </Button>
                     </div>
                 </main>
                 <Footer/>

@@ -161,3 +161,32 @@ body {
     font-style: normal;
 }
 
+.shiny-text {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(
+            120deg,
+            #166534 20%,
+            #22c55e 40%,
+            #bbf7d0 50%,
+            #22c55e 60%,
+            #166534 80%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+
+
+

@@ -124,54 +124,68 @@ function OrderData({
         }
     };
     return (
-        <>
-            <Card className={"grid gap-2 p-4"}>
-                {
-                    products.map((product) => (
-                        <div
-                            className="flex flex-col sm:flex-row justify-between items-end sm:items-center border p-3 rounded-lg bg-gray-100"
-                            key={product._id}>
-
-                            <div className={"flex items-center gap-2"}>
-                                <img
-                                    src={product?.id?.images?.[0].url}
-                                    alt={product?.id?.name}
-                                    className={"w-20 h-20 rounded-lg"}/>
-                            </div>
-                            <div>
-                                <h1 className={"font-semibold text-sm sm:text-lg capitalize"}>{product?.id?.name}</h1>
-                                <p className="flex text-xs sm:text-md gap-2 sm:gap-2 text-gray-500 my-3 sm:my-0">
-                            <span className="font-semibold">
-                                Status :{" "}
-                                <span className="capitalize">
-                                    {status}</span>{" "}
-                            </span>
+        <Card className="grid gap-3 p-3 sm:p-4">
+            <div className="space-y-3">
+                {products.map((product) => (
+                    <div
+                        className="flex flex-col md:flex-row gap-3 justify-between border p-2 sm:p-3 rounded-lg bg-gray-100"
+                        key={product._id}
+                    >
+                        <div className="flex items-start gap-3">
+                            <img
+                                src={product?.id?.images?.[0].url}
+                                alt={product?.id?.name}
+                                className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover"
+                            />
+                            <div className="flex flex-col">
+                                <h1 className="font-semibold text-sm sm:text-base md:text-lg capitalize line-clamp-2">
+                                    {product?.id?.name}
+                                </h1>
+                                <p className="flex text-xs sm:text-sm gap-1 text-gray-500 mt-1">
+                                    <span className="font-semibold">
+                                        Status:{" "}
+                                        <span className="capitalize">{status}</span>
+                                    </span>
                                 </p>
-                            </div>
-                            <div className={"flex sm:flex-col gap-3 sm:gap-0 mt-2 sm:mt-0 sm:items-center"}>
-                                <h2 className={"text-md sm:text-xl font-bold flex items-center"}>
-                                    <IndianRupee size={18}/>{product?.id?.price.toLocaleString()}
-                                </h2>
+                                <div className="md:hidden mt-1">
+                                    <h2 className="text-sm sm:text-base font-bold flex items-center">
+                                        <IndianRupee size={16}/>
+                                        {product?.id?.price.toLocaleString()}
+                                    </h2>
+                                </div>
                             </div>
                         </div>
+                        <div className="hidden md:flex flex-col items-end justify-center">
+                            <h2 className="text-md sm:text-lg md:text-xl font-bold flex items-center">
+                                <IndianRupee size={18}/>
+                                {product?.id?.price.toLocaleString()}
+                            </h2>
+                        </div>
+                    </div>
+                ))}
+            </div>
 
-                    ))
-                }
-                <div className={"flex flex-col sm:flex-row justify-between sm:items-center my-2"}>
-                    <span>Ordered On:{" "}<span
-                        className={"capitalize"}>{new Date(createdAt).toLocaleString()}</span></span>
-                    <span onClick={handleDownloadInvoice}
-                          className={"hover:underline text-sm cursor-pointer flex items-center gap-2"}>
-                        <ArrowDownToLine size={15}/>
-                        Download Invoice
-                    </span>
-                </div>
-                <hr/>
-                <span className={"my-2"}>Delivery At:{" "}<span
-                    className={"capitalize"}>{address}</span></span>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mt-1">
+                <span className="text-xs sm:text-sm">
+                    Ordered On:{" "}
+                    <span className="capitalize">{new Date(createdAt).toLocaleString()}</span>
+                </span>
+                <button
+                    onClick={handleDownloadInvoice}
+                    className="hover:underline text-xs sm:text-sm cursor-pointer flex items-center gap-1 text-blue-600"
+                >
+                    <ArrowDownToLine size={14}/>
+                    Download Invoice
+                </button>
+            </div>
 
-            </Card>
-        </>
+            <hr className="my-1"/>
+
+            <div className="text-xs sm:text-sm">
+                <span className="font-medium">Delivery Address:</span>
+                <span className="ml-1 text-gray-700 break-words">{address}</span>
+            </div>
+        </Card>
     );
 }
 
