@@ -26,7 +26,8 @@ passport.use(new GoogleStrategy({
                 university: "N/A",
                 course: "N/A",
                 yearOfGrad: 0,
-                password: await User.hashPassword("dummy_password")
+                password: await User.hashPassword("dummy_password"),
+                googleSignIn: true,
             });
 
             await newUser.save();

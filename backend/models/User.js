@@ -47,7 +47,11 @@ const userSchema = new mongoose.Schema({
     isProfileComplete: {
         type: Boolean,
         default: false,
-    }
+    },
+    googleSignIn: {
+        type: Boolean,
+        default: false,
+    },
 }, {timestamps: true});
 
 userSchema.methods.generateAuthToken = function () {

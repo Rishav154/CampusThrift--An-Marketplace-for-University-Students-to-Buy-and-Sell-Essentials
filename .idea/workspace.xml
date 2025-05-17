@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Enhance styling for responsive design and better user experience">
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Solved a major critical bug in my product page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SellerProfile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +140,8 @@
       <workItem from="1747328585512" duration="1724000" />
       <workItem from="1747356306638" duration="8083000" />
       <workItem from="1747442026457" duration="11719000" />
+      <workItem from="1747454647362" duration="675000" />
+      <workItem from="1747462103046" duration="5012000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -289,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747453800789</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Solved a major critical bug in my product page">
+      <option name="closed" value="true" />
+      <created>1747455067686</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1747455067686</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +328,8 @@
     <MESSAGE value="Refactor app structure and update HeaderDisplay component for improved performance" />
     <MESSAGE value="Add short description field to product model and update related components for better product representation" />
     <MESSAGE value="Enhance styling for responsive design and better user experience" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance styling for responsive design and better user experience" />
+    <MESSAGE value="Solved a major critical bug in my product page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solved a major critical bug in my product page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
