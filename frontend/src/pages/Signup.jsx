@@ -147,9 +147,46 @@ export default function RegisterForm() {
                                 className="bg-transparent border border-gray-700 text-orange-500 text-sm rounded-md pl-10 py-2 w-full appearance-none"
                             >
                                 <option value="">Select course</option>
+
                                 <option value="btech">BTech</option>
+                                <option value="bsc">BSc (Hons.)</option>
                                 <option value="bca">BCA</option>
+                                <option value="bcom">BCom (Hons.)</option>
                                 <option value="bba">BBA</option>
+                                <option value="ba-llb">BA LLB (Hons.)</option>
+                                <option value="bba-llb">BBA LLB (Hons.)</option>
+                                <option value="llb">LLB (Hons.)</option>
+                                <option value="ba">BA (Hons.)</option>
+                                <option value="bsc-agriculture">BSc Agriculture</option>
+                                <option value="bsc-hotel-admin">BSc Hospitality and Hotel Administration</option>
+                                <option value="bachelor-hotel-mgmt">Bachelor in Hotel Management and Catering
+                                    Technology
+                                </option>
+
+                                <option value="mtech">MTech</option>
+                                <option value="msc">MSc</option>
+                                <option value="mca">MCA</option>
+                                <option value="mba">MBA</option>
+                                <option value="mcom">MCom</option>
+                                <option value="ma">MA (English)</option>
+                                <option value="llm">LLM</option>
+
+                                <option value="phd-cse">PhD in Computer Science & Engineering</option>
+                                <option value="phd-civil">PhD in Civil Engineering</option>
+                                <option value="phd-ece">PhD in Electronics & Communication Engineering</option>
+                                <option value="phd-eee">PhD in Electrical & Electronics Engineering</option>
+                                <option value="phd-mechanical">PhD in Mechanical Engineering</option>
+                                <option value="phd-biotech">PhD in Biotechnology</option>
+                                <option value="phd-chemistry">PhD in Chemistry</option>
+                                <option value="phd-environmental">PhD in Environmental Science</option>
+                                <option value="phd-mathematics">PhD in Mathematics</option>
+                                <option value="phd-microbiology">PhD in Microbiology</option>
+                                <option value="phd-physics">PhD in Physics</option>
+                                <option value="phd-law">PhD in Law</option>
+                                <option value="phd-management">PhD in Business/Management Studies</option>
+                                <option value="phd-commerce">PhD in Commerce</option>
+                                <option value="phd-english">PhD in English</option>
+
                             </select>
                         </div>
 
