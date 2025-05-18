@@ -119,7 +119,7 @@ function Product() {
                             <h4 className="font-bold text-base sm:text-lg mt-4 mb-2 text-gray-800">Seller:</h4>
                             <div className="flex items-center mb-6 mt-2 gap-3 sm:gap-5">
                                 <img
-                                    src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
+                                    src="https://avatar.iran.liara.run/public"
                                     alt="Seller Profile"
                                     className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border"
                                 />

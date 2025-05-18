@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Add additional course options to ProfileCompletion component">
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Added Loading screen to home page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +139,8 @@
       <workItem from="1747454647362" duration="675000" />
       <workItem from="1747462103046" duration="5012000" />
       <workItem from="1747468226332" duration="341000" />
-      <workItem from="1747487284984" duration="303000" />
+      <workItem from="1747487284984" duration="449000" />
+      <workItem from="1747488527709" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -317,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747468566146</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added Loading screen to home page">
+      <option name="closed" value="true" />
+      <created>1747487704349</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1747487704349</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +354,8 @@
     <MESSAGE value="Solved a major critical bug in my product page" />
     <MESSAGE value="Add googleSignIn field to User model and update passport.js for new user creation" />
     <MESSAGE value="Add additional course options to ProfileCompletion component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add additional course options to ProfileCompletion component" />
+    <MESSAGE value="Added Loading screen to home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Loading screen to home page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

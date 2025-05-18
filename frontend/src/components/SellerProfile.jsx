@@ -52,7 +52,7 @@ function SellerProfile() {
                         className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-52 md:w-52 lg:h-60 lg:w-60 overflow-hidden rounded-full border-4 border-white shadow-xl mb-4">
                         <div className="absolute inset-0 rounded-full overflow-hidden">
                             <img
-                                src="https://t4.ftcdn.net/jpg/05/49/98/39/240_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg"
+                                src="https://avatar.iran.liara.run/public"
                                 alt="Seller Avatar"
                                 className="h-full w-full object-cover"
                             />
