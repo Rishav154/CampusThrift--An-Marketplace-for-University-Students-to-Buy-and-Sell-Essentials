@@ -142,15 +142,14 @@ const getProducts = async (req, res) => {
 const getProductByName = async (req, res) => {
     const {name} = req.params;
     try {
-        // Method 1: More flexible regex that handles variations in spacing and special characters
         const searchPattern = name
             .toLowerCase()
-            .replace(/[^a-z0-9]/g, ' ') // Replace non-alphanumeric with spaces
-            .replace(/\s+/g, ' ')       // Replace multiple spaces with single space
+            .replace(/[^a-z0-9]/g, ' ')
+            .replace(/\s+/g, ' ')
             .trim()
             .split(' ')
-            .filter(word => word.length > 0) // Remove empty strings
-            .map(word => `(?=.*${word})`)    // Create positive lookahead for each word
+            .filter(word => word.length > 0)
+            .map(word => `(?=.*${word})`)
             .join('');
 
         const product = await Product.findOne({

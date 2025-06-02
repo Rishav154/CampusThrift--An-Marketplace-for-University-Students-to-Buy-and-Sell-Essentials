@@ -191,7 +191,7 @@ function MyProducts() {
                 <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8">My Products</h1>
 
                 <div className="mb-4 sm:mb-8">
-                    <form className="flex flex-col gap-4 w-full">
+                    <form className="flex flex-col md:flex-row gap-4 w-full">
                         <div className="w-full">
                             <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="search">
                                 Search Products

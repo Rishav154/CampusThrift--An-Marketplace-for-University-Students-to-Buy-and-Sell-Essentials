@@ -108,7 +108,7 @@ function CreateProduct() {
     return (
         <>
             <div className="w-full max-w-5xl -z-10 mx-auto px-4 sm:px-6">
-                <CardHeader className="py-4 sm:py-6 px-4 sm:px-8">
+                <CardHeader className="py-4 sm:py-2 px-4 sm:px-8">
                     <CardTitle className="text-xl sm:text-2xl font-bold">Add New Product</CardTitle>
                     <CardDescription className="text-gray-600 mt-1 text-sm sm:text-base">Enter the details for the new
                         product you want to

@@ -14,6 +14,11 @@ function Product() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
         const fetchProductByName = async () => {
             setIsLoading(true);
             try {
