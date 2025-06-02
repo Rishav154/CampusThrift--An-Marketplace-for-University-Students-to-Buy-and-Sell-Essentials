@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Added Loading screen to home page">
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Update seller and profile images to use new randomly generated avatar URL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/FilterMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FilterMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +145,10 @@
       <workItem from="1747468226332" duration="341000" />
       <workItem from="1747487284984" duration="449000" />
       <workItem from="1747488527709" duration="12000" />
+      <workItem from="1747552507861" duration="218000" />
+      <workItem from="1748353146996" duration="3848000" />
+      <workItem from="1748424194934" duration="160000" />
+      <workItem from="1748842839267" duration="2189000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -326,7 +334,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747487704349</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Update seller and profile images to use new randomly generated avatar URL">
+      <option name="closed" value="true" />
+      <created>1747552548084</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1747552548084</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +371,8 @@
     <MESSAGE value="Add googleSignIn field to User model and update passport.js for new user creation" />
     <MESSAGE value="Add additional course options to ProfileCompletion component" />
     <MESSAGE value="Added Loading screen to home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Loading screen to home page" />
+    <MESSAGE value="Update seller and profile images to use new randomly generated avatar URL" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update seller and profile images to use new randomly generated avatar URL" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
