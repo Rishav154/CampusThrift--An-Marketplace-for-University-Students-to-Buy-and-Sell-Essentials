@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Update seller and profile images to use new randomly generated avatar URL">
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Fixed pagination issue in home page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/FilterMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FilterMenu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +144,7 @@
       <workItem from="1747552507861" duration="218000" />
       <workItem from="1748353146996" duration="3848000" />
       <workItem from="1748424194934" duration="160000" />
-      <workItem from="1748842839267" duration="2189000" />
+      <workItem from="1748842839267" duration="3214000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -342,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747552548084</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Fixed pagination issue in home page">
+      <option name="closed" value="true" />
+      <created>1748845188426</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1748845188426</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +376,8 @@
     <MESSAGE value="Add additional course options to ProfileCompletion component" />
     <MESSAGE value="Added Loading screen to home page" />
     <MESSAGE value="Update seller and profile images to use new randomly generated avatar URL" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update seller and profile images to use new randomly generated avatar URL" />
+    <MESSAGE value="Fixed pagination issue in home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed pagination issue in home page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
