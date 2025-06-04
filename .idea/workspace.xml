@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Enhance product search functionality with flexible regex for name matching">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/productController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CreateProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MyProducts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Product.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="50a75e99-8ec4-4c64-b9ec-87bf162597cb" name="Changes" comment="Refactor product components for improved layout and user experience" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,7 +142,7 @@
       <workItem from="1747552507861" duration="218000" />
       <workItem from="1748353146996" duration="3848000" />
       <workItem from="1748424194934" duration="160000" />
-      <workItem from="1748842839267" duration="4206000" />
+      <workItem from="1748842839267" duration="5053000" />
     </task>
     <task id="LOCAL-00001" summary="Landing page and login/signup page done">
       <option name="closed" value="true" />
@@ -358,14 +352,21 @@
       <option name="project" value="LOCAL" />
       <updated>1748846368771</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Refactor product components for improved layout and user experience">
+      <option name="closed" value="true" />
+      <created>1748847224794</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1748847224794</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Landing page and login/signup page done" />
     <MESSAGE value="Backend Done" />
     <MESSAGE value="..." />
     <MESSAGE value="Payment Gateway Integrated" />
@@ -390,7 +391,8 @@
     <MESSAGE value="Update seller and profile images to use new randomly generated avatar URL" />
     <MESSAGE value="Fixed pagination issue in home page" />
     <MESSAGE value="Enhance product search functionality with flexible regex for name matching" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance product search functionality with flexible regex for name matching" />
+    <MESSAGE value="Refactor product components for improved layout and user experience" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor product components for improved layout and user experience" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
