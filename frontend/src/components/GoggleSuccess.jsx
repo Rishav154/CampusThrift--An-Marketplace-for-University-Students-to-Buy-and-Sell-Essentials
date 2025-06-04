@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setUserLogin} from "@/redux/slices/authSlice";
 import toast from "react-hot-toast";
-import {PuffLoader} from "react-spinners";
 import axios from "axios";
 
 export default function GoogleSuccess() {
@@ -49,5 +48,19 @@ export default function GoogleSuccess() {
         }
     }, [dispatch, navigate]);
 
-    return <PuffLoader className="mx-auto mt-20" color="#FF5722" size={60}/>;
+    return (
+        <div className="min-h-screen bg-customOrange flex flex-col items-center justify-center px-4 py-8">
+            <div
+                className="w-full max-w-md bg-white p-8 rounded-xl border border-gray-800 shadow-lg animate-pulse space-y-6">
+                <div className="h-10 bg-gray-300 rounded w-3/4 mx-auto"></div>
+                <div className="h-6 bg-gray-300 rounded w-5/6 mx-auto"></div>
+                <div className="space-y-4 mt-8">
+                    {[...Array(5)].map((_, i) => (
+                        <div key={i} className="h-10 bg-gray-300 rounded w-full"></div>
+                    ))}
+                </div>
+                <div className="h-12 bg-gray-400 rounded mt-6 w-full"></div>
+            </div>
+        </div>
+    );
 }

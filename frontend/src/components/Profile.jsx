@@ -44,7 +44,7 @@ function Profile() {
                     className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-60 lg:h-60 overflow-hidden rounded-full border-4 border-white shadow-xl mb-4">
                     <div className="absolute inset-0 rounded-full overflow-hidden">
                         <img
-                            src="https://avatar.iran.liara.run/public"
+                            src="https://avatar.iran.liara.run/public/boy"
                             alt="Profile Picture"
                             className="h-full w-full object-cover"
                         />
