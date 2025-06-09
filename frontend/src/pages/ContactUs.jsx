@@ -5,7 +5,7 @@ function ContactUs() {
             <p className="text-lg text-gray-800 text-center leading-relaxed">
                 You may contact the CampusThrift support team using the information below:
                 <br/><br/>
-                <strong>Phone:</strong> 96466 92142
+                <strong>Phone:</strong> 964******2
                 <br/>
                 <strong>Email:</strong>{" "}
                 <a href="mailto:rishav15045@gmail.com" className="text-blue-600 underline">
