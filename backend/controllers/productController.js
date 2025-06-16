@@ -43,7 +43,7 @@ const createProduct = async (req, res) => {
 
 const getSellerById = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).select("fullname email university course createdAt");
+        const user = await User.findById(req.params.id).select("fullname email phone university course createdAt");
         if (!user) {
             return res.status(404).json({success: false, message: "Seller not found"});
         }

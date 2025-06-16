@@ -64,7 +64,7 @@ function SellerProfile() {
                             Meet your seller{" "}
                             <span
                                 className="bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 text-transparent bg-clip-text capitalize">
-                            {seller?.fullname?.firstname || "Seller"}
+                            {seller?.fullname?.firstname || ""}
                         </span>
                         </h1>
                     </CardTitle>
@@ -103,9 +103,8 @@ function SellerProfile() {
                         <div className="mb-3 sm:mb-4">
                             <Label className="text-sm sm:text-base text-gray-500">Phone</Label>
                             <input
-                                type={"password"}
                                 disabled
-                                value={"----------"}
+                                value={seller?.phone || "Not available"}
                                 className="border-2 border-gray-200 rounded-xl sm:rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                             />
                         </div>

@@ -102,6 +102,23 @@ function Product() {
         fetchProductByName();
     }, [productName]);
 
+    const handleMessageSeller = async () => {
+        try {
+            const data = await axios.get(`${import.meta.env.VITE_API_URL}/get-seller/${product?.seller?._id}`);
+            const phone = data?.data?.data?.phone;
+            if (phone) {
+                const productUrl = window.location.href;
+                const message = `Hello! I'm interested in your product listed Campus Thrift: ${productUrl}`;
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/${phone}?text=${encodedMessage}`, "_blank");
+            } else {
+                alert("Seller's phone number is not available.");
+            }
+        } catch (err) {
+            console.error("Error fetching seller information:", err);
+        }
+    }
+
     const handleBuyNow = () => {
         navigate(`/checkout/${productName}`);
     };
@@ -210,7 +227,8 @@ function Product() {
 
                             {/* Action Buttons */}
                             <div className="grid grid-cols-2 gap-3 sm:gap-5 mt-4 sm:mt-6">
-                                <Button className="rounded-lg text-sm sm:text-base font-semibold h-10 sm:h-12">
+                                <Button className="rounded-lg text-sm sm:text-base font-semibold h-10 sm:h-12"
+                                        onClick={handleMessageSeller}>
                                     Message Seller
                                 </Button>
                                 <Button

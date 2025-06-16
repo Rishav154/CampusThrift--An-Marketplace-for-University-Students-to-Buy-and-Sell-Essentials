@@ -91,7 +91,7 @@ function Profile() {
                     <div className="mb-3 sm:mb-4">
                         <Label className="text-sm sm:text-base text-gray-500">
                             Phone
-                            <span className="text-xs sm:text-sm text-gray-400 ml-1">(only visible to you)</span>
+                            <span className="text-xs sm:text-sm text-gray-400 ml-1">(only visible to others when you sell/list an item)</span>
                         </Label>
                         <input
                             disabled
