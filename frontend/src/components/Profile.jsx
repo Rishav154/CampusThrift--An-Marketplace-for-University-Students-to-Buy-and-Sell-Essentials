@@ -5,11 +5,20 @@ import {PuffLoader} from "react-spinners";
 import {useNavigate} from "react-router-dom";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 import {Pencil} from "lucide-react";
+import {useEffect} from "react";
 
 
 function Profile() {
     const navigate = useNavigate();
     const user = useSelector((state) => state.auth.user);
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }, []);
 
     if (!user) {
         return (
