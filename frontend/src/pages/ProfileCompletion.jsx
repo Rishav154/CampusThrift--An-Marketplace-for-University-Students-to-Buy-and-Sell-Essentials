@@ -89,7 +89,7 @@ export default function CompleteProfile() {
                         <Phone className="absolute left-3 top-3.5 text-gray-600 h-4 w-4"/>
                         <input
                             type="tel"
-                            placeholder="Phone Number"
+                            placeholder="Phone Number (WhatsApp)"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             className="bg-transparent border border-gray-700 text-orange-500 text-sm rounded-md pl-10 py-2 w-full"
