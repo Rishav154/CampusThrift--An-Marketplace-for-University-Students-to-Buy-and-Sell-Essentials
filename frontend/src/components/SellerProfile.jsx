@@ -103,8 +103,9 @@ function SellerProfile() {
                         <div className="mb-3 sm:mb-4">
                             <Label className="text-sm sm:text-base text-gray-500">Phone</Label>
                             <input
+                                type={"password"}
                                 disabled
-                                value={seller?.phone || "Not available"}
+                                value={"9999999999"}
                                 className="border-2 border-gray-200 rounded-xl sm:rounded-2xl w-full p-2 sm:p-3 bg-transparent text-sm sm:text-base"
                             />
                         </div>
