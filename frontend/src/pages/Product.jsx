@@ -70,7 +70,7 @@ function ProductSkeleton() {
 }
 
 function Product() {
-    const {productName} = useParams();
+    const {slug} = useParams();
     const [product, setProduct] = useState({});
     const [selectedImage, setSelectedImage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -86,9 +86,8 @@ function Product() {
         const fetchProductByName = async () => {
             setIsLoading(true);
             try {
-                const formattedName = productName?.split("-").join(" ");
                 const res = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/get-product-by-name/${formattedName}`
+                    `${import.meta.env.VITE_API_URL}/get-product-by-slug/${slug}`
                 );
                 const {data} = await res.data;
                 setProduct(data);

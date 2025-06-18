@@ -1,12 +1,19 @@
-// controllers/productController.js
-
 const Product = require("../models/Product");
 const cloudinary = require("../utils/cloudinary");
 const User = require("../models/User");
+const slugify = require("slugify");
+
 
 const createProduct = async (req, res) => {
     try {
-        const {name, shortDescription, price, description, color, category} = req.body;
+        const {
+            name,
+            shortDescription,
+            price,
+            description,
+            color,
+            category
+        } = req.body;
 
         const uploadedImages = [];
         for (const file of req.files) {
@@ -31,15 +38,45 @@ const createProduct = async (req, res) => {
         });
 
         await product.save();
+
+        const baseSlug = slugify(name, {lower: true, strict: true});
+        product.slug = `${baseSlug}-${product._id.toString().slice(-5)}`;
+
+        await product.save();
+
         return res.status(200).json({
             success: true,
             message: "Product listed successfully",
             data: product,
         });
+
     } catch (err) {
-        res.status(500).json({success: false, message: err.message});
+        return res.status(500).json({
+            success: false,
+            message: err.message,
+        });
     }
 };
+
+const getProductBySlug = async (req, res) => {
+    const {slug} = req.params;
+    try {
+        const product = await Product.findOne({slug}).populate("seller", "fullname createdAt");
+
+        if (!product) {
+            return res.status(404).json({success: false, message: "Product not found"});
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Product found",
+            data: product,
+        });
+    } catch (err) {
+        return res.status(500).json({success: false, message: err.message});
+    }
+};
+
 
 const getSellerById = async (req, res) => {
     try {
@@ -253,6 +290,7 @@ const removeBlacklistProduct = async (req, res) => {
 
 module.exports = {
     createProduct,
+    getProductBySlug,
     getSellerById,
     updateProduct,
     deleteProduct,

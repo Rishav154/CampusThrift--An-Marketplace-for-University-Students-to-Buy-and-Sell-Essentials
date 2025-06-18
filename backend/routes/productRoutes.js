@@ -1,5 +1,6 @@
 const {
     createProduct,
+    getProductBySlug,
     getSellerById,
     updateProduct,
     deleteProduct,
@@ -22,6 +23,8 @@ router.put("/update-product/:id", verifyToken, updateProduct);
 router.delete("/delete-product/:id", verifyToken, deleteProduct);
 
 router.get("/get-products", getProducts);
+
+router.get("/get-product-by-slug/:slug", getProductBySlug);
 
 router.get("/get-product-by-name/:name", getProductByName);
 

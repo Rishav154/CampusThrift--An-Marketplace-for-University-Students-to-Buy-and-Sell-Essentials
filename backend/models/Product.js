@@ -47,6 +47,11 @@ const productSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
+    slug: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     blacklisted: {
         type: Boolean,
         default: false,

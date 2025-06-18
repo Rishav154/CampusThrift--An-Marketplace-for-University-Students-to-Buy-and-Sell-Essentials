@@ -41,7 +41,7 @@ function App() {
             <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Hero/>}/>
-                <Route path="/product/:productName" element={<Product/>}/>
+                <Route path="/product/:slug" element={<Product/>}/>
                 <Route path="/success" element={<Success/>}/>
                 <Route path="/termsandconditions" element={<TermsAndConditions/>}/>
                 <Route path="/privacy-policy" element={<PrivacyTerms/>}/>
