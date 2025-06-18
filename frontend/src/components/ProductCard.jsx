@@ -3,6 +3,7 @@ import LinkButton from "@/components/LinkButton.jsx";
 
 function ProductCard({
                          name = "Product Title",
+                         slug = "product-title-abc12",
                          price = 1000,
                          color = "no color",
                          image = {
@@ -62,7 +63,7 @@ function ProductCard({
           </span>
                 </div>
 
-                <LinkButton to={`/product/${name.split(" ").join("-")}`} text="View Product"/>
+                <LinkButton to={`/product/${slug}`} text="View Product"/>
             </div>
         </div>
     );

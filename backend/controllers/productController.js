@@ -77,7 +77,6 @@ const getProductBySlug = async (req, res) => {
     }
 };
 
-
 const getSellerById = async (req, res) => {
     try {
         const user = await User.findById(req.params.id).select("fullname email phone university course createdAt");
@@ -149,7 +148,7 @@ const getProducts = async (req, res) => {
         const totalPages = Math.ceil(totalProducts / limit);
 
         const products = await Product.find(query)
-            .select("name price shortDescription images description color category blacklisted")
+            .select("name slug price shortDescription images description color category blacklisted")
             .limit(limit)
             .skip((page - 1) * limit);
 
