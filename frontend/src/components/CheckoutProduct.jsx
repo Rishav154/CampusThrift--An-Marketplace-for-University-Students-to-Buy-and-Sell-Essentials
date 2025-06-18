@@ -13,7 +13,7 @@ function CheckoutProduct() {
 
     useEffect(() => {
         const fetchProductByName = async () => {
-            if (!productName) return;
+            if (!slug) return;
 
             setIsLoading(true);
             try {
