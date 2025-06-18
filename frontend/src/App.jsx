@@ -76,7 +76,7 @@ function App() {
                         <Home/>
                     </ProtectedRoute>
                 }/>
-                <Route path="/checkout/:productName" element={
+                <Route path="/checkout/:slug" element={
                     <ProtectedRoute>
                         <Checkout/>
                     </ProtectedRoute>

@@ -13,13 +13,11 @@ function CheckoutProduct() {
 
     useEffect(() => {
         const fetchProductByName = async () => {
-            if (!slug) return;
+            if (!productName) return;
 
             setIsLoading(true);
             try {
-                const res = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/get-product-by-slug/${slug}`
-                );
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/get-product-by-slug/${slug}`);
                 const {data} = await res.data;
                 setProduct(data);
             } catch (err) {
