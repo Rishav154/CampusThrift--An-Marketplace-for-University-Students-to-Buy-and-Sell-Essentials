@@ -8,17 +8,18 @@ function CheckoutProduct() {
     const [isLoading, setIsLoading] = useState(true);
     const [imageError, setImageError] = useState(false);
 
-    const {productName} = useParams();
+    const {slug} = useParams();
     const {handleErrorLogout} = useErrorLogout();
 
     useEffect(() => {
         const fetchProductByName = async () => {
-            if (!productName) return;
+            if (!slug) return;
 
             setIsLoading(true);
             try {
-                const formattedName = productName.split("-").join(" ");
-                const res = await axios.get(`${import.meta.env.VITE_API_URL}/get-product-by-name/${formattedName}`);
+                const res = await axios.get(
+                    `${import.meta.env.VITE_API_URL}/get-product-by-slug/${slug}`
+                );
                 const {data} = await res.data;
                 setProduct(data);
             } catch (err) {
@@ -30,7 +31,7 @@ function CheckoutProduct() {
         };
 
         fetchProductByName();
-    }, [productName]);
+    }, [slug]);
 
     useEffect(() => {
         if (window.setCheckoutProduct && !isLoading) {

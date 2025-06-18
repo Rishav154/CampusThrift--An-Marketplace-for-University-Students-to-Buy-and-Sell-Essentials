@@ -99,7 +99,7 @@ function Product() {
         };
 
         fetchProductByName();
-    }, [productName]);
+    }, [slug]);
 
     const handleMessageSeller = async () => {
         try {
@@ -119,7 +119,7 @@ function Product() {
     }
 
     const handleBuyNow = () => {
-        navigate(`/checkout/${productName}`);
+        navigate(`/checkout/${slug}`);
     };
 
     if (isLoading) {
