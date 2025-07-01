@@ -21,7 +21,6 @@ app.use(cors({
         const allowedOrigins = [
             process.env.CLIENT_URL,
             process.env.CLIENT_URL_IP,
-            "192.168.1.34:5153",
         ].filter(Boolean);
 
         if (allowedOrigins.includes(origin) || allowedOrigins.some(allowed => origin.startsWith(allowed))) {
