@@ -3,7 +3,7 @@
 CampusThrift is a peer-to-peer platform that enables university students to buy and sell essentials such as books, electronics, clothing, and hostel supplies. It offers secure payments, real-time chat, Google sign-in, and a dashboard for managing orders.
 
 ## 🚀 Live Demo
-👉 [campusthriftstore.vercel.app](https://campusthriftstore.vercel.app)
+👉 [campusthrift.rishav0x.me](https://campusthrift.rishav0x.me)
 
 ---
 
