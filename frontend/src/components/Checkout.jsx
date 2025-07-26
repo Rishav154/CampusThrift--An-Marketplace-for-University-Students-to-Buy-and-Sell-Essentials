@@ -112,6 +112,11 @@ function Checkout() {
             return;
         }
 
+        if (paymentMethod === "online") {
+            toast.error("We're currently upgrading our payment system. Please use Cash on Delivery for now—we'll be back online soon!");
+            return;
+        }
+
         if (paymentMethod === "cod") {
             try {
                 setIsProcessing(true);
