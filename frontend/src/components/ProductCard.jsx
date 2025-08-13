@@ -33,7 +33,7 @@ function ProductCard({
             onMouseLeave={() => !isMobile && setIsDetailsVisible(false)}
             onClick={() => isMobile && setIsDetailsVisible(!isDetailsVisible)}
         >
-            <div className="aspect-[3/2] w-full">
+            <div className="aspect-square w-full">
                 <img
                     src={image.url}
                     alt={name}
